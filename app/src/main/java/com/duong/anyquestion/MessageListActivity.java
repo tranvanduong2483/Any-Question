@@ -1,0 +1,303 @@
+package com.duong.anyquestion;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.duong.anyquestion.Tool.ToolSupport;
+import com.duong.anyquestion.classes.ConnectThread;
+import com.duong.anyquestion.classes.Expert;
+import com.duong.anyquestion.classes.MessageListAdapter;
+import com.duong.anyquestion.classes.Message;
+import com.duong.anyquestion.classes.SessionManager;
+import com.duong.anyquestion.classes.ToastNew;
+import com.duong.anyquestion.classes.User;
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.github.nkzawa.emitter.Emitter;
+import com.github.nkzawa.socketio.client.Socket;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MessageListActivity extends AppCompatActivity {
+
+    private final int REQUEST_TAKE_PHOTO = 123;
+    private final int REQUEST_CHOOSE_PHOTO = 132;
+    private RecyclerView mMessageRecycler;
+    private MessageListAdapter mMessageAdapter;
+    private List<Message> messageList = new ArrayList<>();
+    private SessionManager sessionManager;
+    private ImageButton btn_send, btn_camera, btn_picture;
+    private EditText edt_message;
+    private User user;
+    private Expert expert;
+    private Socket mSocket = ConnectThread.getInstance().getSocket();
+    private Bundle bundle;
+
+    private View mShadowView;
+    private FloatingActionButton btn_close;
+
+
+    Bitmap bitmap_you;
+    Bitmap bitmap_me;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_message_list);
+
+        sessionManager = new SessionManager(this);
+
+        AnhXa();
+        initEventButton();
+
+        if (sessionManager.isUser()) user = sessionManager.getUser();
+        else expert = sessionManager.getExpert();
+
+
+        bundle = getIntent().getExtras();
+        if (bundle != null) {
+            String stringAvatar = bundle.getString("stringAvatar");
+            if (stringAvatar != null)
+                bitmap_you = ToolSupport.convertStringBase64ToBitmap(stringAvatar);
+        }
+
+        mSocket.on("server-send-message", callback_nhantinnhan);
+        mSocket.on("user-ready-thao-luan", callback_gioithieu);
+
+        mMessageAdapter = new MessageListAdapter(this, messageList);
+        mMessageRecycler.setLayoutManager(new LinearLayoutManager(this));
+        mMessageRecycler.setAdapter(mMessageAdapter);
+
+        if (user != null) {
+            ToastNew.showToast(this, "Bạn và chuyên gia đã được kết nối với nhau!", Toast.LENGTH_LONG);
+            mSocket.emit("user-ready-thao-luan");
+        }
+
+        if (expert != null) {
+            ToastNew.showToast(this, "Bạn và người đặt câu hỏi đã được kết nối với nhau!", Toast.LENGTH_LONG);
+            mSocket.emit("expert-ready-thao-luan");
+        }
+
+
+        if (getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+
+    private void AnhXa() {
+        btn_picture = findViewById(R.id.btn_picture);
+        btn_send = findViewById(R.id.btn_send);
+        edt_message = findViewById(R.id.edt_message);
+        btn_camera = findViewById(R.id.btn_camera);
+        mMessageRecycler = findViewById(R.id.reyclerview_message_list);
+        mShadowView=findViewById(R.id.shadowView);
+        btn_close = findViewById(R.id.btn_close);
+    }
+
+
+    private void initEventButton() {
+        btn_picture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToolSupport.choosePicture(MessageListActivity.this, REQUEST_CHOOSE_PHOTO);
+            }
+        });
+
+        btn_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String message = edt_message.getText().toString();
+                if (message.isEmpty()) return;
+
+                Message message_new = new Message(user != null ? user.getAccount() : expert.getExpert_id(), message, false);
+                sendMessage(message_new);
+                edt_message.setText("");
+            }
+        });
+
+        btn_camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToolSupport.take_picture(MessageListActivity.this, REQUEST_TAKE_PHOTO);
+            }
+        });
+
+        btn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
+
+        FloatingActionsMenu floatingMenu = findViewById(R.id.floatingMenu);
+
+        floatingMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
+            @Override
+            public void onMenuExpanded() {
+                mShadowView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onMenuCollapsed() {
+                mShadowView.setVisibility(View.GONE);
+
+            }
+        });
+    }
+
+    private void sendMessage(Message message_new) {
+        messageList.add(message_new);
+        mMessageAdapter.notifyDataSetChanged();
+        mMessageRecycler.smoothScrollToPosition(mMessageAdapter.getItemCount());
+        mSocket.emit("client-send-message-to-other-people", message_new.toJSON());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (data == null) return;
+
+        if (requestCode == REQUEST_CHOOSE_PHOTO && resultCode == RESULT_OK) {
+            try {
+                Uri uri = data.getData();
+                InputStream is = getContentResolver().openInputStream(uri);
+                Bitmap bm = BitmapFactory.decodeStream(is);
+
+
+
+                String image_message = ToolSupport.convertBitmapToStringBase64(bm);
+                Message message_new = new Message(user != null ? user.getAccount() : expert.getExpert_id(), image_message, true);
+                sendMessage(message_new);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                ToastNew.showToast(this, "Xuất hiện lỗi nào đó!", Toast.LENGTH_LONG);
+            }
+        } else if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
+            if (data.getExtras() == null) return;
+
+            Bitmap bm = (Bitmap) data.getExtras().get("data");
+
+            String image_message = ToolSupport.convertBitmapToStringBase64(bm);
+            Message message_new = new Message(user != null ? user.getAccount() : expert.getExpert_id(), image_message, true);
+            sendMessage(message_new);
+        }
+    }
+
+    private Emitter.Listener callback_nhantinnhan = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        JSONObject data = (JSONObject) args[0];
+                        String message = data.getString("message");
+                        Gson gson = new Gson();
+                        Message message_new = gson.fromJson(message, Message.class);
+                        messageList.add(message_new);
+                        mMessageAdapter.notifyDataSetChanged();
+                        mMessageRecycler.smoothScrollToPosition(mMessageAdapter.getItemCount());
+                    } catch (Exception e) {
+                        ToastNew.showToast(MessageListActivity.this, "Xuất hiện lỗi nào đó!", Toast.LENGTH_LONG);
+                    }
+                }
+            });
+        }
+    };
+
+
+    private Emitter.Listener callback_gioithieu = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        if (bundle != null) {
+                            String tinnhangioithieu = bundle.getString("tinnhangioithieu", "");
+                            if (!tinnhangioithieu.isEmpty()) {
+                                Message message = new Message(expert.getExpert_id(), tinnhangioithieu);
+                                messageList.add(message);
+                                mMessageAdapter.notifyDataSetChanged();
+                                mSocket.emit("client-send-message-to-other-people", message.toJSON());
+                                mSocket.off("user-ready-thao-luan");
+                            }
+                        }
+                    } catch (Exception ignored) {
+                    }
+
+                }
+            });
+        }
+    };
+
+    @Override
+    public void onBackPressed() {
+        ask();
+    }
+
+
+    public void ask() {
+        try {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Bạn muốn kết thúc cuộc thảo luận này?")
+                    .setCancelable(false)
+                    .setPositiveButton("Vâng", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+
+                            Intent intent = new Intent(MessageListActivity.this, RatingForExpertActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                ask();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+}
