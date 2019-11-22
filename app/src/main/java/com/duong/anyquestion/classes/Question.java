@@ -1,22 +1,27 @@
 package com.duong.anyquestion.classes;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Question {
     int id;
     String tittle;
-    String field;
+    int field_id;
     String imageString;
-    String descriptdetail;
-    String keywords;
+    String note;
+    int money;
 
-    public Question(String tittle, String field, String imageString, String descriptdetail, String keywords) {
+    public Question(int id, String tittle, int field_id, String imageString, String note, int money) {
+        this.id = id;
         this.tittle = tittle;
-        this.field = field;
+        this.field_id = field_id;
         this.imageString = imageString;
-        this.descriptdetail = descriptdetail;
-        this.keywords = keywords;
+        this.note = note;
+        this.money = money;
     }
 
-    public Question(){}
+    public Question() {
+    }
 
     public int getId() {
         return id;
@@ -34,12 +39,12 @@ public class Question {
         this.tittle = tittle;
     }
 
-    public String getField() {
-        return field;
+    public int getFieldID() {
+        return field_id;
     }
 
-    public void setField(String field) {
-        this.field = field;
+    public void setFieldId(int field) {
+        this.field_id = field;
     }
 
     public String getImageString() {
@@ -50,20 +55,38 @@ public class Question {
         this.imageString = imageString;
     }
 
-    public String getDescriptdetail() {
-        return descriptdetail;
+    public String getNote() {
+        return note;
     }
 
-    public void setDescriptdetail(String descriptdetail) {
-        this.descriptdetail = descriptdetail;
+    public void setNote(String note) {
+        this.note = note;
     }
 
-    public String getKeywords() {
-        return keywords;
+    public int getMoney() {
+        return money;
     }
 
-    public void setKeywords(String keywords) {
-        this.keywords = keywords;
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+
+    public String toJSON() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("id", getId());
+            jsonObject.put("tittle", getTittle());
+            jsonObject.put("field", getFieldID());
+            jsonObject.put("imageString", getImageString());
+            jsonObject.put("note", getNote());
+            jsonObject.put("money", getMoney());
+
+            return jsonObject.toString();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 }
 

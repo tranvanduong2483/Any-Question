@@ -2,15 +2,23 @@ package com.duong.anyquestion;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
+import com.duong.anyquestion.classes.Question;
+import com.duong.anyquestion.classes.User;
 import com.duong.anyquestion.ui_expert.*;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -38,7 +46,6 @@ public class ExpertMainActivity extends AppCompatActivity {
 
         mSocket.on("send-question-to-expert", callback_question);
 
-
         BottomNavigationView nav_view = findViewById(R.id.nav_view);
         nav_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -55,12 +62,19 @@ public class ExpertMainActivity extends AppCompatActivity {
                     JSONObject data = (JSONObject) args[0];
                     final String noidung, account;
                     try {
-                        noidung = data.getString("ketqua");
+                        noidung = data.getString("question");
+
+                        Gson gson = new Gson();
+                        Question question = gson.fromJson(noidung, Question.class);
+
+                        Bitmap question_bitmap = ToolSupport.convertStringBase64ToBitmap(question.getImageString());
+
                         account = data.getString("id");
                         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(ExpertMainActivity.this);
-                        builder.setMessage(noidung)
-                                .setTitle("Câu hỏi")
+                        builder.setMessage(question.getTittle())
+                                .setTitle("Câu hỏi: " + question.getMoney() + " VND")
                                 .setCancelable(false)
+                                .setIcon(new BitmapDrawable(getResources(), question_bitmap))
                                 .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
                                         mSocket.emit("expert-phanhoi", account + "-true");

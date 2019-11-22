@@ -29,6 +29,7 @@ import com.duong.anyquestion.R;
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.Field;
+import com.duong.anyquestion.classes.Question;
 import com.duong.anyquestion.classes.ToastNew;
 import com.duong.anyquestion.register.UserRegisterActivity;
 import com.github.nkzawa.emitter.Emitter;
@@ -81,8 +82,12 @@ public class SearchExpertFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String tittle = edt_tille.getText() + "";
+                int field_id = 1;
+                String imageString = avatarString;
                 String note = edt_note.getText() + "";
-                String money = tv_money.getText() + "";
+                int money = 10000;
+
+                Question question = new Question(1, tittle, field_id, imageString, note, money);
 
                 if (tittle.isEmpty()) {
                     ToastNew.showToast(getActivity(), "Thiếu thông tin", Toast.LENGTH_SHORT);
@@ -90,10 +95,7 @@ public class SearchExpertFragment extends Fragment {
                 }
 
                 Bundle bundle = new Bundle();
-                bundle.putString("tittle", tittle);
-                bundle.putString("note", note);
-                bundle.putString("money", money);
-
+                bundle.putString("question", question.toJSON());
                 Intent intent_loading_search_expert = new Intent(view.getContext(), LoadingSearchExpertActivity.class);
                 intent_loading_search_expert.putExtras(bundle);
                 startActivity(intent_loading_search_expert);
@@ -147,6 +149,8 @@ public class SearchExpertFragment extends Fragment {
                 InputStream is = view.getContext().getContentResolver().openInputStream(uri);
 
                 Bitmap avatar_bitmap = BitmapFactory.decodeStream(is);
+                avatar_bitmap = ToolSupport.resize(avatar_bitmap, 300, 300);
+
                 iv_image.setImageBitmap(avatar_bitmap);
                 avatarString = ToolSupport.convertBitmapToStringBase64(avatar_bitmap);
 
@@ -156,12 +160,13 @@ public class SearchExpertFragment extends Fragment {
             }
         } else if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
             if (data.getExtras() == null) return;
+
             Bitmap avatar_bitmap = (Bitmap) data.getExtras().get("data");
+            avatar_bitmap = ToolSupport.resize(avatar_bitmap, 300, 300);
+
             iv_image.setImageBitmap(avatar_bitmap);
             avatarString = ToolSupport.convertBitmapToStringBase64(avatar_bitmap);
         }
-
-        ToastNew.showToast(view.getContext(), "2345", Toast.LENGTH_SHORT);
 
 
 

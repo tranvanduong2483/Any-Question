@@ -28,7 +28,7 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
     private Socket mSocket = ConnectThread.getInstance().getSocket();
     final Handler handler = new Handler();
     TextView tv_tittle, tv_money, tv_note;
-    private String tittle, note, money;
+    private String queston_json;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,22 +44,18 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
 
 
         if (getIntent().getExtras() != null) {
-            tittle = getIntent().getExtras().getString("tittle");
-            note = getIntent().getExtras().getString("note");
-            money = getIntent().getExtras().getString("money");
+            queston_json = getIntent().getExtras().getString("question");
 
-            tv_tittle.setText(tittle);
-            tv_money.setText(money);
-            tv_note.setText(note);
-
-
+            //tv_tittle.setText(tittle);
+            //tv_money.setText(money);
+            //tv_note.setText(note);
         }
 
 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mSocket.emit("user-search-expert", tittle);
+                mSocket.emit("user-search-expert", queston_json);
             }
         }, 5000);
 
@@ -71,8 +67,6 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
                 finish();
             }
         }, 15000);
-
-
         mSocket.on("ket-qua-tim-kiem-chuyen-gia", callback_kqtkcg);
     }
 
