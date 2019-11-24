@@ -9,7 +9,7 @@ public class Message {
 
     private int message_id;
     private int conversation_id;
-    private String from;
+    private String sender;
     private String message;
     private boolean typeImage;
     private String time;
@@ -34,11 +34,11 @@ public class Message {
     }
 
     public String getFrom() {
-        return from;
+        return sender;
     }
 
     public void setFrom(String from) {
-        this.from = from;
+        this.sender = from;
     }
 
     public String getMessage() {
@@ -67,7 +67,7 @@ public class Message {
 
     public Message(int conversation_id, String from, String message, boolean typeImage) {
         this.conversation_id = conversation_id;
-        this.from = from;
+        this.sender = from;
         this.message = message;
         this.typeImage = typeImage;
         SetTimeNow();
@@ -84,7 +84,7 @@ public class Message {
         JSONObject jsonObject= new JSONObject();
         try {
             jsonObject.put("conversation_id", getConversation_id());
-            jsonObject.put("from", getFrom());
+            jsonObject.put("sender", getFrom());
             jsonObject.put("message", getMessage());
             jsonObject.put("typeImage", isTypeImage());
             jsonObject.put("time", getTime());

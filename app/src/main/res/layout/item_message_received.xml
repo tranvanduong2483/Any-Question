@@ -1,59 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
+    android:orientation="horizontal"
     android:paddingTop="17dp">
 
     <ImageView
         android:id="@+id/image_message_profile"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:src="@drawable/avatar"
-
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
-
-
-
-    <ImageView
-        android:id="@+id/iv_image"
-        android:visibility="gone"
-        android:src="@drawable/avatar"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         android:layout_marginLeft="8dp"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:src="@drawable/avatar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/text_message_body"
-        android:visibility="visible"
-        android:text="hi man, how are you?"
-        android:background="@drawable/rounded_rectangle_orange"
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxWidth="240dp"
-        android:padding="8dp"
-        android:textColor="#000000"
-        android:layout_marginLeft="10dp"
-         />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tranvanduong"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="10sp" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_message_body"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_rectangle_orange"
+                android:maxWidth="240dp"
+                android:padding="8dp"
+                android:text="hi man, how are you?"
+                android:textColor="#000000"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/iv_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+
+                android:src="@drawable/avatar"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/text_message_time"
-        android:text="11:40"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
-        app:layout_constraintLeft_toRightOf="@+id/text_message_body"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="20dp"
+        android:text="11:40"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/text_message_body"
 
-        app:layout_constraintBottom_toBottomOf="@+id/text_message_body" />
+        app:layout_constraintLeft_toRightOf="@+id/text_message_body" />
+
 
 </LinearLayout>

@@ -14,7 +14,7 @@ import com.duong.anyquestion.R;
 import com.duong.anyquestion.Tool.ToolSupport;
 
 public class ReceivedMessageHolder extends RecyclerView.ViewHolder {
-    private TextView messageText, timeText, nameText;
+    private TextView messageText, timeText, tv_account;
     ImageView profileImage,iv_image;
 
     ReceivedMessageHolder(View itemView) {
@@ -25,12 +25,15 @@ public class ReceivedMessageHolder extends RecyclerView.ViewHolder {
 
         // nameText =  itemView.findViewById(R.id.text_message_name);
         profileImage =  itemView.findViewById(R.id.image_message_profile);
+
+        tv_account = itemView.findViewById(R.id.tv_account);
     }
 
     void bind(Message message) {
         messageText.setText(message.getMessage());
         // Format the stored timestamp into a readable String using method.
         timeText.setText(message.getTime());
+        tv_account.setText(message.getFrom());
 
         if (message.isTypeImage()){
             iv_image.setVisibility(View.VISIBLE);
