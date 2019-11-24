@@ -2,7 +2,9 @@ package com.duong.anyquestion.classes;
 
 import android.app.Notification;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +13,10 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.duong.anyquestion.MessageHistoryActivity;
+import com.duong.anyquestion.MessageListActivity;
 import com.duong.anyquestion.R;
 
 import java.util.ArrayList;
@@ -56,6 +61,21 @@ public class HistoryAdapter extends BaseAdapter {
         String title = listHisory.get(i).title;
         String field = listHisory.get(i).name;
         int star = listHisory.get(i).star;
+        final int conversation_id = listHisory.get(i).conversation_id;
+
+
+        inflater.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, MessageHistoryActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("conversation_id", conversation_id);
+                ToastNew.showToast(context, conversation_id + "", Toast.LENGTH_LONG);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
+
+            }
+        });
 
 
         tv_tittle.setText(title);
