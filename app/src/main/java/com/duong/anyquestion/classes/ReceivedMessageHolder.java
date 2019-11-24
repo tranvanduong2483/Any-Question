@@ -50,7 +50,7 @@ public class ReceivedMessageHolder extends RecyclerView.ViewHolder {
         }
 
 
-       // nameText.setText(message.getSender().getAccount());
+        // nameText.setText(message.getSender().getAccount());
 
 //        if (bitmap_you!=null)
   //          profileImage.setImageBitmap(bitmap_you);

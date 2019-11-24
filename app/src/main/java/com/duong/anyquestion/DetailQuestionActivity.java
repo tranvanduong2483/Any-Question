@@ -26,7 +26,6 @@ public class DetailQuestionActivity extends AppCompatActivity {
         TextView tv_note = findViewById(R.id.tv_note);
         TextView tv_money = findViewById(R.id.tv_money);
 
-
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
 
