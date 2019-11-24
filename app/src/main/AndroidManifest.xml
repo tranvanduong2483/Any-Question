@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailQuestionActivity"></activity>
+        <activity
+            android:name=".DetailQuestionActivity"
+            android:label="Chi tiết câu hỏi"></activity>
         <activity android:name=".RatingForExpertActivity" />
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".EditInfomationActivity" />

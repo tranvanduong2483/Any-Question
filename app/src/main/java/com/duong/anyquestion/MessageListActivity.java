@@ -54,11 +54,14 @@ public class MessageListActivity extends AppCompatActivity {
     private Bundle bundle;
 
     private View mShadowView;
-    private FloatingActionButton btn_close;
+    private FloatingActionButton btn_close, btn_question;
+    private FloatingActionsMenu floatingMenu;
+    private int conversation_id;
 
 
     Bitmap bitmap_you;
     Bitmap bitmap_me;
+    String question_json;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +82,9 @@ public class MessageListActivity extends AppCompatActivity {
             String stringAvatar = bundle.getString("stringAvatar");
             if (stringAvatar != null)
                 bitmap_you = ToolSupport.convertStringBase64ToBitmap(stringAvatar);
+            question_json = bundle.getString("question");
+            conversation_id = bundle.getInt("conversation_id");
+            ToastNew.showToast(MessageListActivity.this, conversation_id + "", Toast.LENGTH_LONG);
         }
 
         mSocket.on("server-send-message", callback_nhantinnhan);
@@ -88,13 +94,14 @@ public class MessageListActivity extends AppCompatActivity {
         mMessageRecycler.setLayoutManager(new LinearLayoutManager(this));
         mMessageRecycler.setAdapter(mMessageAdapter);
 
+
         if (user != null) {
-            ToastNew.showToast(this, "Bạn và chuyên gia đã được kết nối với nhau!", Toast.LENGTH_LONG);
+            //  ToastNew.showToast(this, "Bạn và chuyên gia đã được kết nối với nhau!", Toast.LENGTH_LONG);
             mSocket.emit("user-ready-thao-luan");
         }
 
         if (expert != null) {
-            ToastNew.showToast(this, "Bạn và người đặt câu hỏi đã được kết nối với nhau!", Toast.LENGTH_LONG);
+            // ToastNew.showToast(this, "Bạn và người đặt câu hỏi đã được kết nối với nhau!", Toast.LENGTH_LONG);
             mSocket.emit("expert-ready-thao-luan");
         }
 
@@ -111,6 +118,7 @@ public class MessageListActivity extends AppCompatActivity {
         mMessageRecycler = findViewById(R.id.reyclerview_message_list);
         mShadowView=findViewById(R.id.shadowView);
         btn_close = findViewById(R.id.btn_close);
+        btn_question = findViewById(R.id.btn_question);
     }
 
 
@@ -128,7 +136,7 @@ public class MessageListActivity extends AppCompatActivity {
                 String message = edt_message.getText().toString();
                 if (message.isEmpty()) return;
 
-                Message message_new = new Message(user != null ? user.getAccount() : expert.getExpert_id(), message, false);
+                Message message_new = new Message(conversation_id, user != null ? user.getAccount() : expert.getExpert_id(), message, false);
                 sendMessage(message_new);
                 edt_message.setText("");
             }
@@ -144,13 +152,13 @@ public class MessageListActivity extends AppCompatActivity {
         btn_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                floatingMenu.collapseImmediately();
                 onBackPressed();
             }
         });
 
 
-
-        FloatingActionsMenu floatingMenu = findViewById(R.id.floatingMenu);
+        floatingMenu = findViewById(R.id.floatingMenu);
 
         floatingMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
             @Override
@@ -161,7 +169,18 @@ public class MessageListActivity extends AppCompatActivity {
             @Override
             public void onMenuCollapsed() {
                 mShadowView.setVisibility(View.GONE);
+            }
+        });
 
+        btn_question.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MessageListActivity.this, DetailQuestionActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("question", question_json);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                floatingMenu.collapseImmediately();
             }
         });
     }
@@ -188,7 +207,7 @@ public class MessageListActivity extends AppCompatActivity {
 
 
                 String image_message = ToolSupport.convertBitmapToStringBase64(bm);
-                Message message_new = new Message(user != null ? user.getAccount() : expert.getExpert_id(), image_message, true);
+                Message message_new = new Message(conversation_id, user != null ? user.getAccount() : expert.getExpert_id(), image_message, true);
                 sendMessage(message_new);
 
             } catch (Exception e) {
@@ -201,7 +220,7 @@ public class MessageListActivity extends AppCompatActivity {
             Bitmap bm = (Bitmap) data.getExtras().get("data");
 
             String image_message = ToolSupport.convertBitmapToStringBase64(bm);
-            Message message_new = new Message(user != null ? user.getAccount() : expert.getExpert_id(), image_message, true);
+            Message message_new = new Message(conversation_id, user != null ? user.getAccount() : expert.getExpert_id(), image_message, true);
             sendMessage(message_new);
         }
     }
@@ -239,7 +258,7 @@ public class MessageListActivity extends AppCompatActivity {
                         if (bundle != null) {
                             String tinnhangioithieu = bundle.getString("tinnhangioithieu", "");
                             if (!tinnhangioithieu.isEmpty()) {
-                                Message message = new Message(expert.getExpert_id(), tinnhangioithieu);
+                                Message message = new Message(conversation_id, expert.getExpert_id(), tinnhangioithieu, false);
                                 messageList.add(message);
                                 mMessageAdapter.notifyDataSetChanged();
                                 mSocket.emit("client-send-message-to-other-people", message.toJSON());
@@ -262,16 +281,23 @@ public class MessageListActivity extends AppCompatActivity {
 
     public void ask() {
         try {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Bạn muốn kết thúc cuộc thảo luận này?")
                     .setCancelable(false)
                     .setPositiveButton("Vâng", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.dismiss();
 
-                            Intent intent = new Intent(MessageListActivity.this, RatingForExpertActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
+
+                            if (user != null) {
+                                Intent intent = new Intent(MessageListActivity.this, RatingForExpertActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("conversation_id", conversation_id);
+                                intent.putExtras(bundle);
+                                startActivity(intent);
+                            }
+
                             finish();
                         }
                     })

@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:paddingTop="17dp">
+    android:padding="10dp">
 
     <TextView
+        android:id="@+id/tv_tittle"
         android:text="Không hiểu về nguyên lý hoạt động của điện xoay chiều"
         android:textStyle="bold"
         android:textSize="20sp"
@@ -17,6 +17,7 @@
         android:layout_height="wrap_content" />
 
     <TextView
+        android:id="@+id/tv_field"
         android:text="Vật lý "
         android:textColor="@color/blue"
         android:textStyle="bold"
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content" />
 
     <RatingBar
+        android:id="@+id/rb_danhgia"
         style="?android:attr/ratingBarStyleSmall"
         android:numStars="5"
         android:rating="5"

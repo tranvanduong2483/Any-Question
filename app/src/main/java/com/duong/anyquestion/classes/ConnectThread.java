@@ -11,8 +11,7 @@ public class ConnectThread extends Thread {
     private static ConnectThread instance;
     // implementation part
     private Socket mSocket;
-    private String URL = "http://192.168.0.122:3000";
-
+    private String URL = "http://192.168.0.106:3000";
 
     public static ConnectThread getInstance(){
         return (instance == null) ? instance = new ConnectThread() : instance;
@@ -24,7 +23,6 @@ public class ConnectThread extends Thread {
             mSocket.connect();
         } catch (URISyntaxException e) { }
     }
-
 
     public Socket getSocket() {
         return mSocket;

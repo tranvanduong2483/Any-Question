@@ -10,18 +10,25 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.duong.anyquestion.Tool.ToolSupport;
+import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.ToastNew;
+import com.github.nkzawa.socketio.client.Socket;
 
 public class RatingForExpertActivity extends AppCompatActivity {
     RatingBar mRatingBar;
     TextView mRatingScale;
     Button mSendFeedback;
     EditText edt_feedback;
+    private Socket mSocket = ConnectThread.getInstance().getSocket();
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating_for_expert);
+
+        bundle = getIntent().getExtras();
 
 
         mRatingScale = findViewById(R.id.tvRatingScale);
@@ -59,10 +66,12 @@ public class RatingForExpertActivity extends AppCompatActivity {
         mSendFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (edt_feedback.getText().toString().isEmpty())
-                    ToastNew.showToast(RatingForExpertActivity.this, "Vui lòng điền vào cảm nhận của bạn để phản hồi!", Toast.LENGTH_SHORT);
-                else
-                    ToastNew.showToast(RatingForExpertActivity.this, "Cảm ơn bạn đã phản hồi!", Toast.LENGTH_LONG);
+                if (bundle != null) {
+                    int conversation_id = bundle.getInt("conversation_id");
+                    mSocket.emit("rating-converstation", conversation_id, mRatingBar.getRating());
+                }
+                ToastNew.showToast(RatingForExpertActivity.this, "Cảm ơn bạn đã phản hồi!", Toast.LENGTH_LONG);
+
                 finish();
             }
         });

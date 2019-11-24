@@ -7,10 +7,13 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
+import com.duong.anyquestion.classes.PhanHoiYeuCauGiaiDap;
 import com.duong.anyquestion.classes.Question;
+import com.duong.anyquestion.classes.ToastNew;
 import com.duong.anyquestion.classes.User;
 import com.duong.anyquestion.ui_expert.*;
 import com.github.nkzawa.emitter.Emitter;
@@ -34,6 +37,7 @@ public class ExpertMainActivity extends AppCompatActivity {
     final Fragment fragment3 = new HistoryFragment();
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = fragment1;
+    Question question_nhan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,41 @@ public class ExpertMainActivity extends AppCompatActivity {
     }
 
 
+    private Emitter.Listener callback_thaoluan = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mSocket.off("bat dau cuoc thao luan");
+
+                    try {
+                        int conversation_id = (int) args[0];
+
+                        String gioithieu = "Xin chào, tôi là chuyên gia của bạn! ";
+                        Bundle bundle = new Bundle();
+                        bundle.putString("tinnhangioithieu", gioithieu);
+                        bundle.putString("question", question_nhan.toJSON());
+                        bundle.putInt("conversation_id", conversation_id);
+
+                        Intent intent_loading_search_expert = new Intent(ExpertMainActivity.this, MessageListActivity.class);
+                        intent_loading_search_expert.putExtras(bundle);
+                        startActivity(intent_loading_search_expert);
+
+
+                    } catch (Exception e) {
+
+                        ToastNew.showToast(getApplication(), "Lỗi", Toast.LENGTH_LONG);
+                    }
+                }
+            });
+        }
+    };
+
+
+
+
+
     private Emitter.Listener callback_question = new Emitter.Listener() {
         @Override
         public void call(final Object... args) {
@@ -63,39 +102,44 @@ public class ExpertMainActivity extends AppCompatActivity {
                     final String noidung, account;
                     try {
                         noidung = data.getString("question");
-
                         Gson gson = new Gson();
-                        Question question = gson.fromJson(noidung, Question.class);
+                        question_nhan = gson.fromJson(noidung, Question.class);
 
-                        Bitmap question_bitmap = ToolSupport.convertStringBase64ToBitmap(question.getImageString());
+                        Bitmap question_bitmap = ToolSupport.convertStringBase64ToBitmap(question_nhan.getImageString());
 
-                        account = data.getString("id");
                         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(ExpertMainActivity.this);
-                        builder.setMessage(question.getTittle())
-                                .setTitle("Câu hỏi: " + question.getMoney() + " VND")
+                        builder.setMessage(question_nhan.getTittle())
+                                .setTitle("Câu hỏi: " + question_nhan.getMoney() + " VND")
                                 .setCancelable(false)
                                 .setIcon(new BitmapDrawable(getResources(), question_bitmap))
                                 .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
-                                        mSocket.emit("expert-phanhoi", account + "-true");
+
+                                        PhanHoiYeuCauGiaiDap phanHoiYeuCauGiaiDap = new PhanHoiYeuCauGiaiDap(question_nhan.getId(), question_nhan.getFrom(), question_nhan.getMoney(), true);
+
+
+                                        mSocket.emit("expert-phanhoi", phanHoiYeuCauGiaiDap.toJSON());
+                                        mSocket.on("bat dau cuoc thao luan", callback_thaoluan);
                                         dialog.cancel();
-                                        String gioithieu = "Xin chào, tôi là chuyên gia của bạn! ";
-                                        Bundle bundle = new Bundle();
-                                        bundle.putString("tinnhangioithieu", gioithieu);
-                                        Intent intent_loading_search_expert = new Intent(ExpertMainActivity.this, MessageListActivity.class);
-                                        intent_loading_search_expert.putExtras(bundle);
-                                        startActivity(intent_loading_search_expert);
+
+
                                     }
                                 })
                                 .setNegativeButton("Từ chối", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
-                                        mSocket.emit("expert-phanhoi", account + "-false");
+                                        PhanHoiYeuCauGiaiDap phanHoiYeuCauGiaiDap = new PhanHoiYeuCauGiaiDap(question_nhan.getId(), question_nhan.getFrom(), question_nhan.getMoney(), false);
+                                        mSocket.emit("expert-phanhoi", phanHoiYeuCauGiaiDap.toJSON());
+                                        mSocket.off("bat dau cuoc thao luan");
+
+                                        mSocket.connect();
                                         dialog.cancel();
                                     }
                                 });
                         androidx.appcompat.app.AlertDialog alert = builder.create();
                         alert.show();
                     } catch (Exception e) {
+
+                        ToastNew.showToast(getApplication(), "Lỗi", Toast.LENGTH_LONG);
                     }
                 }
             });
@@ -129,4 +173,6 @@ public class ExpertMainActivity extends AppCompatActivity {
             return false;
         }
     };
+
+
 }

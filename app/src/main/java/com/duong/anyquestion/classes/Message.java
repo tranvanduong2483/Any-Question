@@ -8,51 +8,37 @@ import org.json.JSONObject;
 public class Message {
 
     private int message_id;
-    private String sender;
+    private int conversation_id;
+    private String from;
     private String message;
     private boolean typeImage;
     private String time;
 
+    public Message() {
+    }
+
     public int getMessage_id() {
         return message_id;
-    }
-
-    public Message( String sender, String message, boolean typeImage) {
-        this.sender = sender;
-        this.message = message;
-        this.typeImage = typeImage;
-        SetTimeNow();
-    }
-
-    public Message(String sender, String message) {
-        this.message = message;
-        this.sender = sender;
-        this.typeImage = false;
-        SetTimeNow();
     }
 
     public void setMessage_id(int message_id) {
         this.message_id = message_id;
     }
 
-    public void setSender(String sender) {
-        this.sender = sender;
+    public int getConversation_id() {
+        return conversation_id;
     }
 
-    public boolean isTypeImage() {
-        return typeImage;
+    public void setConversation_id(int conversation_id) {
+        this.conversation_id = conversation_id;
     }
 
-    public void setTypeImage(boolean typeImage) {
-        this.typeImage = typeImage;
+    public String getFrom() {
+        return from;
     }
 
-
-
-    private void SetTimeNow(){
-        Time today = new Time(Time.getCurrentTimezone());
-        today.setToNow();
-        this.time = today.format("%H:%M");
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     public String getMessage() {
@@ -63,12 +49,12 @@ public class Message {
         this.message = message;
     }
 
-    public String getSender() {
-        return sender;
+    public boolean isTypeImage() {
+        return typeImage;
     }
 
-    public void setSender(User sender) {
-        this.sender = sender.getAccount();
+    public void setTypeImage(boolean typeImage) {
+        this.typeImage = typeImage;
     }
 
     public String getTime() {
@@ -79,12 +65,26 @@ public class Message {
         this.time = time;
     }
 
+    public Message(int conversation_id, String from, String message, boolean typeImage) {
+        this.conversation_id = conversation_id;
+        this.from = from;
+        this.message = message;
+        this.typeImage = typeImage;
+        SetTimeNow();
+    }
+
+
+    private void SetTimeNow() {
+        Time today = new Time(Time.getCurrentTimezone());
+        today.setToNow();
+        this.time = today.format("%H:%M");
+    }
 
     public String toJSON(){
         JSONObject jsonObject= new JSONObject();
         try {
-            jsonObject.put("message_id", getMessage_id());
-            jsonObject.put("sender", getSender());
+            jsonObject.put("conversation_id", getConversation_id());
+            jsonObject.put("from", getFrom());
             jsonObject.put("message", getMessage());
             jsonObject.put("typeImage", isTypeImage());
             jsonObject.put("time", getTime());

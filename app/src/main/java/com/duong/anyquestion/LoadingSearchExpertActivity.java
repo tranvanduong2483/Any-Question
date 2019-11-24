@@ -30,6 +30,8 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
     TextView tv_tittle, tv_money, tv_note;
     private String queston_json;
 
+    private int count = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,16 +65,52 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                ToastNew.showToast(LoadingSearchExpertActivity.this, "Không tìm thấy!", Toast.LENGTH_LONG);
+                ToastNew.showToast(LoadingSearchExpertActivity.this, "Hủy do quá lâu!", Toast.LENGTH_LONG);
                 finish();
             }
-        }, 15000);
-        mSocket.on("ket-qua-tim-kiem-chuyen-gia", callback_kqtkcg);
+        }, 60000);
+        mSocket.on("tim kiemn chuyen gia that bai", timkiemthabai);
+        mSocket.on("bat dau cuoc thao luan", callback_kqtkcg);
+
+        mSocket.on("disconnect", new Emitter.Listener() {
+            @Override
+            public void call(final Object... args) {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ToastNew.showToast(LoadingSearchExpertActivity.this, "Máy chủ ngắt kết nối!", Toast.LENGTH_LONG);
+                        finish();
+                    }
+                });
+            }
+        });
+
     }
 
     public void btn_cancel(View view) {
         finish();
     }
+
+
+    private Emitter.Listener timkiemthabai = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    count++;
+
+                    if (count >= 3) {
+                        ToastNew.showToast(LoadingSearchExpertActivity.this, "Không tìm thấy chuyên gia thích hợp!", Toast.LENGTH_SHORT);
+                        finish();
+                    }
+
+                }
+
+            });
+        }
+    };
 
 
     private Emitter.Listener callback_kqtkcg = new Emitter.Listener() {
@@ -82,26 +120,19 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     try {
-                        JSONObject data = (JSONObject) args[0];
-                        if (data.getString("ketqua").equals("true")) {
+                        ToastNew.showToast(LoadingSearchExpertActivity.this, "Đây nè", Toast.LENGTH_SHORT);
+
+                        int conversation_id = (int) args[0];
                             Intent intent_nhantin = new Intent(LoadingSearchExpertActivity.this, MessageListActivity.class);
 
-                           // ToastNew.showToast(LoadingSearchExpertActivity.this, args[0] + "", Toast.LENGTH_SHORT);
-
-
-                           // String stringAvatar = data.getString("avatar");
-
-                            //Bundle bundle = new Bundle();
-                            //bundle.putString("stringAvatar", stringAvatar);
-                            //intent_nhantin.putExtras(bundle);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("question", queston_json);
+                        bundle.putInt("conversation_id", conversation_id);
+                        intent_nhantin.putExtras(bundle);
 
                             intent_nhantin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent_nhantin);
                             finish();
-                        } else {
-                            ToastNew.showToast(LoadingSearchExpertActivity.this, "Không tìm thấy chuyên gia thích hợp!", Toast.LENGTH_SHORT);
-                            finish();
-                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                         ToastNew.showToast(LoadingSearchExpertActivity.this, "Lỗi gì đó", Toast.LENGTH_SHORT);
@@ -111,8 +142,6 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
             });
         }
     };
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

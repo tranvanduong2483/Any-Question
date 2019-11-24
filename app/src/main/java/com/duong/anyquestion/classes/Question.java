@@ -10,14 +10,16 @@ public class Question {
     String imageString;
     String note;
     int money;
+    String from;
 
-    public Question(int id, String tittle, int field_id, String imageString, String note, int money) {
+    public Question(int id, String tittle, int field_id, String imageString, String note, int money, String from) {
         this.id = id;
         this.tittle = tittle;
         this.field_id = field_id;
         this.imageString = imageString;
         this.note = note;
         this.money = money;
+        this.from = from;
     }
 
     public Question() {
@@ -39,12 +41,12 @@ public class Question {
         this.tittle = tittle;
     }
 
-    public int getFieldID() {
+    public int getField_id() {
         return field_id;
     }
 
-    public void setFieldId(int field) {
-        this.field_id = field;
+    public void setField_id(int field_id) {
+        this.field_id = field_id;
     }
 
     public String getImageString() {
@@ -71,17 +73,24 @@ public class Question {
         this.money = money;
     }
 
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
 
     public String toJSON() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("id", getId());
-            jsonObject.put("tittle", getTittle());
-            jsonObject.put("field", getFieldID());
-            jsonObject.put("imageString", getImageString());
-            jsonObject.put("note", getNote());
-            jsonObject.put("money", getMoney());
-
+            jsonObject.put("id", id);
+            jsonObject.put("tittle", tittle);
+            jsonObject.put("field_id", field_id);
+            jsonObject.put("imageString", imageString);
+            jsonObject.put("note", note);
+            jsonObject.put("money", money);
+            jsonObject.put("from", from);
             return jsonObject.toString();
         } catch (JSONException e) {
             e.printStackTrace();

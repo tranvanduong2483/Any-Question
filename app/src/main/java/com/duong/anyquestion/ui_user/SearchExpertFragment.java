@@ -30,6 +30,7 @@ import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.Field;
 import com.duong.anyquestion.classes.Question;
+import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.classes.ToastNew;
 import com.duong.anyquestion.register.UserRegisterActivity;
 import com.github.nkzawa.emitter.Emitter;
@@ -54,8 +55,8 @@ public class SearchExpertFragment extends Fragment {
     private View view;
     private ImageView iv_image;
     private String avatarString = null;
-    private ArrayList<String> array_field ;
-    ArrayAdapter<String> adapter_field;
+    private ArrayList<Field> array_field;
+    ArrayAdapter<Field> adapter_field;
     Spinner spn_field;
 
 
@@ -82,12 +83,15 @@ public class SearchExpertFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 String tittle = edt_tille.getText() + "";
-                int field_id = 1;
+                int field_id = array_field.get(spn_field.getSelectedItemPosition()).getField_id();
                 String imageString = avatarString;
                 String note = edt_note.getText() + "";
-                int money = 10000;
+                int money = Integer.parseInt(tv_money.getText().toString());
 
-                Question question = new Question(1, tittle, field_id, imageString, note, money);
+
+                SessionManager sessionManager = new SessionManager(getActivity());
+
+                Question question = new Question(1, tittle, field_id, imageString, note, money, sessionManager.getAccount());
 
                 if (tittle.isEmpty()) {
                     ToastNew.showToast(getActivity(), "Thiếu thông tin", Toast.LENGTH_SHORT);
@@ -187,7 +191,9 @@ public class SearchExpertFragment extends Fragment {
                         Gson gson = new Gson();
                         for (int i=0; i<jsonArray.length(); i++){
                             Field field = gson.fromJson( jsonArray.get(i).toString(),Field.class);
-                            adapter_field.add(field.getField_id() +" - " + field.getName());
+
+
+                            adapter_field.add(field);
                         }
                         adapter_field.notifyDataSetChanged();
                     } catch (Exception ignored) { }
