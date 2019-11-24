@@ -82,7 +82,6 @@
         android:layout_marginTop="10dp"
         android:background="#e57373"
         android:text="Hủy bỏ"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         app:strokeColor="@color/colorPrimary" />
 
 

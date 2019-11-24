@@ -104,7 +104,6 @@
         android:id="@+id/btn_cancel"
         android:onClick="btn_cancel"
         android:layout_marginTop="20dp"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         app:strokeColor="@color/colorPrimary"
         android:layout_gravity="center_horizontal"
         android:text="Hủy bỏ"

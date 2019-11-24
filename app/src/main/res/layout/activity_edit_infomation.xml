@@ -71,7 +71,6 @@
             android:layout_marginRight="20dp"
             android:id="@+id/btn_cancel"
             android:text="Hủy bỏ"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:strokeColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

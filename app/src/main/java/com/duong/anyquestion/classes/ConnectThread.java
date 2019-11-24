@@ -11,7 +11,7 @@ public class ConnectThread extends Thread {
     private static ConnectThread instance;
     // implementation part
     private Socket mSocket;
-    private String URL = "http://192.168.0.106:3000";
+    private String URL = "http://172.20.10.11:3000";
 
     public static ConnectThread getInstance(){
         return (instance == null) ? instance = new ConnectThread() : instance;

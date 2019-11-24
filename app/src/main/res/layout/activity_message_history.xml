@@ -47,10 +47,8 @@
             android:text="Thoát"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_send"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="15dp"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:strokeColor="@color/colorPrimary"
             android:gravity="center" />
 
@@ -59,7 +57,6 @@
             android:text="Xem câu hỏi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_send"
             android:layout_gravity="center_vertical"
             android:gravity="center" />
 
