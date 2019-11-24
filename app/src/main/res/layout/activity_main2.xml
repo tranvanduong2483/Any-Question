@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient">
 
     <RelativeLayout
         android:padding="20dp"
@@ -54,7 +55,8 @@
                     android:layout_marginTop="1sp"
                     android:fontFamily="sans-serif-light"
                     android:text="Trần Văn Dương"
-                    android:textSize="32sp" />
+                    android:textSize="32sp"
+                    android:textColor="#FFFFFF"/>
 
                 <TextView
                     android:layout_gravity="center_horizontal"
@@ -66,7 +68,7 @@
                     android:fontFamily="sans-serif"
                     android:text="71 Đồng Kè, Hòa Khánh, Liên Chiểu, Đà Nẵng"
                     android:textAllCaps="true"
-                    android:textColor="@color/address"
+                    android:textColor="#CCC9BA"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -204,7 +206,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:text="Kỹ sư"
-                        android:textColor="#000000"
+                        android:textColor="#CCC9BA"
                         android:textSize="18sp" />
 
                     <View
@@ -234,7 +236,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:text="Công nghệ thông tin"
-                        android:textColor="#000000"
+                        android:textColor="#CCC9BA"
                         android:textSize="18sp" />
 
                     <View
@@ -265,7 +267,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="tranvanduong2483@gmail.com"
-                    android:textColor="#000000"
+                    android:textColor="#CCC9BA"
                     android:textSize="18sp" />
 
                 <View
@@ -295,7 +297,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="Số tiền tích lũy: 100.000 VNĐ"
-                    android:textColor="#000000"
+                    android:textColor="#CCC9BA"
                     android:textSize="18sp" />
 
                 <View
@@ -324,7 +326,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Sửa" />
+            android:text="Sửa"
+            android:background="@drawable/button2"/>
 
         <Button
             android:layout_margin="10dp"
@@ -332,15 +335,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Đổi mật khẩu" />
+            android:text="Đổi mật khẩu"
+            android:background="@drawable/button2"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_dangxuat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             app:strokeColor="@color/colorPrimary"
-            android:text="Thoát" />
+            android:text="Thoát"
+            android:background="@drawable/button1"/>
 
 
     </LinearLayout>
