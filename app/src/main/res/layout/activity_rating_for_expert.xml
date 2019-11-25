@@ -65,9 +65,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="#e57373"
+        android:background="@drawable/button"
         android:text="Gửi phản hồi"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/black"
+        />
 
 
 
@@ -80,7 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="#e57373"
+        android:background="@drawable/button"
         android:text="Hủy bỏ"
         app:strokeColor="@color/colorPrimary" />
 
