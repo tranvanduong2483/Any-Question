@@ -327,7 +327,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Sửa"
-            android:background="@drawable/button2"/>
+            android:background="@drawable/button1"/>
 
         <Button
             android:layout_margin="10dp"
@@ -336,7 +336,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Đổi mật khẩu"
-            android:background="@drawable/button2"/>
+            android:background="@drawable/button1"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_dangxuat"
