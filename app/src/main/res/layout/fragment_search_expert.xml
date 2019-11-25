@@ -51,14 +51,16 @@
                 <Button
                     android:id="@+id/btn_upload"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="Tải lên" />
+                    android:layout_height="25dp"
+                    android:text="Tải lên"
+                    android:background="@drawable/button3"/>
 
                 <Button
                     android:id="@+id/btn_camera"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:text="Chụp mới" />
+                    android:layout_height="25dp"
+                    android:text="Chụp mới"
+                    android:background="@drawable/buttonfix"/>
             </LinearLayout>
 
 
@@ -185,14 +187,16 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Nhập lại"
-                app:strokeColor="@color/colorPrimary" />
+                app:strokeColor="@color/colorPrimary"
+                android:background="@drawable/button3"/>
 
             <Button
                 android:id="@+id/btn_search_expert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Tìm chuyên gia" />
+                android:text="Tìm chuyên gia"
+                android:background="@drawable/button3"/>
         </LinearLayout>
     </LinearLayout>
 
