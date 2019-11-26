@@ -127,6 +127,7 @@ public class AccountFragment extends Fragment {
 
                     byte[] byte_image = ToolSupport.getByteArrayFromImagePath(bundle_update.getString("avatar"));
                     mSocket.emit("client-to-update-data", json_update.toString(), byte_image,sessionManager.getType());
+                    ToastNew.showToast(getActivity(), "Đang lưu trên máy chủ ....", Toast.LENGTH_LONG);
                 } catch (JSONException e) {
                     e.printStackTrace();
                     ToastNew.showToast(getActivity(), "Lỗi xuất hiện", Toast.LENGTH_LONG);
