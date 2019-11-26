@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +19,8 @@
             android:text="Thông tin câu hỏi"
             android:textAllCaps="true"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/cardview_dark_background"/>
 
         <TextView
             android:layout_width="wrap_content"

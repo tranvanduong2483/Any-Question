@@ -51,7 +51,7 @@
             android:layout_marginRight="15dp"
             app:strokeColor="@color/colorPrimary"
             android:gravity="center"
-        android:background="@drawable/button"/>
+        android:background="@drawable/button3"/>
 
         <Button
             android:id="@+id/btn_question"
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center"
-            android:background="@drawable/button"/>
+            android:background="@drawable/button3"/>
     </LinearLayout>
 
 

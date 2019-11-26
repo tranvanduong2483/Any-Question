@@ -15,14 +15,16 @@
             android:id="@+id/btn_myhistory"
             android:text="Lịch sử của tôi"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/button3"/>
 
         <Button
             android:id="@+id/btn_refesh"
             android:text="Làm mới"
             android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/button3"/>
 
     </LinearLayout>
 

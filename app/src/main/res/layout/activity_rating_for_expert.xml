@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".RatingForExpertActivity">
+    tools:context=".RatingForExpertActivity"
+    >
     <ImageView
         android:id="@+id/logo"
         android:layout_width="310dp"
@@ -65,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/button"
+        android:background="@drawable/button3"
         android:text="Gửi phản hồi"
         android:textColor="@android:color/black"
         />
@@ -81,7 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="@drawable/button"
+        android:background="@drawable/button3"
         android:text="Hủy bỏ"
         app:strokeColor="@color/colorPrimary" />
 
