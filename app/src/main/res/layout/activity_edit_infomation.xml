@@ -33,7 +33,8 @@
                 android:id="@+id/btn_chonanhtuthuvien"
                 android:text="Chọn"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                />
             <Button
                 android:id="@+id/btn_chupanh"
                 android:text="Chụp mới"
@@ -85,13 +86,13 @@
             app:strokeColor="@color/colorPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button"/>
+            android:background="@drawable/button1"/>
         <Button
             android:id="@+id/btn_save"
             android:text="Lưu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/button"/>
+            android:background="@drawable/button1"/>
 
 
 

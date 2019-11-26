@@ -32,7 +32,8 @@
         android:layout_centerHorizontal="true"
         android:textColorHint="#CCC9BA"
         android:background="@drawable/button3"
-        android:hint="  Tài Khoản" />
+        android:hint="  Tài Khoản"
+        android:textColor="@color/white"/>
 
     <EditText
         android:layout_marginTop="20dp"
@@ -45,7 +46,8 @@
         android:layout_centerHorizontal="true"
         android:textColorHint="#CCC9BA"
         android:background="@drawable/button3"
-        android:hint="  Mật Khẩu" />
+        android:hint="  Mật Khẩu"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/btn_login"
