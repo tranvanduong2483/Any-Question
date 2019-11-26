@@ -1,5 +1,5 @@
 package com.duong.anyquestion;
-
+//1235678999
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -53,7 +53,9 @@ public class EditInfomationActivity extends AppCompatActivity {
         if (bundle != null) {
             avatar = bundle.getString("avatar");
             Bitmap bitmap = ToolSupport.loadImageFromStorage(avatar);
-            im_avatar.setImageBitmap(bitmap);
+            if (bitmap != null) {
+                im_avatar.setImageBitmap(bitmap);
+            }
             edt_fullname.setText(bundle.getString("name", ""));
             edt_email.setText(bundle.getString("email", ""));
             edt_address.setText(bundle.getString("address", ""));

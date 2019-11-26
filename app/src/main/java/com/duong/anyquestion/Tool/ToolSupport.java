@@ -20,6 +20,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.zip.GZIPOutputStream;
 
 public class ToolSupport {
 
@@ -104,6 +105,7 @@ public class ToolSupport {
 
     public static String convertBitmapToStringBase64(Bitmap bitmap) {
         byte[] byteArray = convertBitmapToByteArray(bitmap);
+
         String encoded = Base64.encodeToString(byteArray, Base64.DEFAULT);
         return encoded;
     }

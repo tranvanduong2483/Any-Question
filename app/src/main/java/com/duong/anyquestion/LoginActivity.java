@@ -140,8 +140,12 @@ public class LoginActivity extends AppCompatActivity {
                                         intent_main = new Intent(LoginActivity.this, ExpertMainActivity.class);
                                     }
 
+
+                                    intent_main.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
                                     startActivity(intent_main);
                                     ToastNew.showToast(getApplication(), name + ", bạn đã đăng nhập thành công!", Toast.LENGTH_SHORT);
+                                    finish();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                     ToastNew.showToast(LoginActivity.this, "Xuất hiện lỗi!", Toast.LENGTH_LONG);

@@ -18,7 +18,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/test"
+            android:src="@drawable/avatar"
             app:civ_border_width="2dp"
             app:civ_border_color="#FF000000"/>
 

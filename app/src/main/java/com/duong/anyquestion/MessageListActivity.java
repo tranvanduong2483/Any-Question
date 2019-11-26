@@ -204,7 +204,6 @@ public class MessageListActivity extends AppCompatActivity {
                 Bitmap bm = BitmapFactory.decodeStream(is);
 
 
-
                 String image_message = ToolSupport.convertBitmapToStringBase64(bm);
                 Message message_new = new Message(conversation_id, user != null ? user.getAccount() : expert.getExpert_id(), image_message, true);
                 sendMessage(message_new);
