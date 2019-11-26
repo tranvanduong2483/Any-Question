@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient">
+    android:background="@drawable/grad1">
 
     <RelativeLayout
         android:padding="20dp"
@@ -47,16 +47,17 @@
 
                 <TextView
                     android:id="@+id/tv_fullname"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Trần Văn Dương"
+                    android:layout_below="@+id/imgUser"
+                    android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_below="@+id/imgUser"
-                    android:layout_centerHorizontal="true"
+                    android:textStyle="bold"
                     android:layout_marginTop="1sp"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Trần Văn Dương"
                     android:textSize="32sp"
-                    android:textColor="#FFFFFF"/>
+                    android:textColor="#000"/>
 
                 <TextView
                     android:layout_gravity="center_horizontal"
@@ -68,8 +69,10 @@
                     android:fontFamily="sans-serif"
                     android:text="71 Đồng Kè, Hòa Khánh, Liên Chiểu, Đà Nẵng"
                     android:textAllCaps="true"
-                    android:textColor="#CCC9BA"
-                    android:textSize="14sp" />
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="@dimen/dodai5"
+                    />
 
             </LinearLayout>
         </LinearLayout>
@@ -79,6 +82,7 @@
 
     <LinearLayout
         android:id="@+id/linlay1"
+        android:layout_marginLeft="@dimen/dodai15"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rellay1"
@@ -89,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/followersBg"
+            android:background="#6092A6"
             android:gravity="center"
             android:paddingBottom="5dp"
             android:paddingTop="5dp">
@@ -126,9 +130,10 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dodai15"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@color/followingBg"
+            android:background="#203959"
             android:gravity="center"
             android:paddingBottom="5dp"
             android:paddingTop="5dp">
@@ -197,7 +202,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Trình độ"
-                        android:textColor="@color/headings"
+                        android:textStyle="bold"
+                        android:textColor="#000"
                         android:textSize="13sp" />
 
                     <TextView
@@ -206,14 +212,14 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:text="Kỹ sư"
-                        android:textColor="#CCC9BA"
-                        android:textSize="18sp" />
+                        android:textColor="#274873"
+                        android:textSize="15sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="15dp"
-                        android:background="@color/grey" />
+                        android:background="#D98452" />
 
                 </LinearLayout>
 
@@ -227,7 +233,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Chuyên nghành"
-                        android:textColor="@color/headings"
+                        android:textStyle="bold"
+                        android:textColor="#000"
                         android:textSize="13sp" />
 
                     <TextView
@@ -236,14 +243,14 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
                         android:text="Công nghệ thông tin"
-                        android:textColor="#CCC9BA"
-                        android:textSize="18sp" />
+                        android:textColor="#274873"
+                        android:textSize="15sp" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="15dp"
-                        android:background="@color/grey" />
+                        android:background="#D98452" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -258,7 +265,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Email"
-                    android:textColor="@color/headings"
+                    android:textStyle="bold"
+                    android:textColor="#000"
                     android:textSize="13sp" />
 
                 <TextView
@@ -267,14 +275,14 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="tranvanduong2483@gmail.com"
-                    android:textColor="#CCC9BA"
-                    android:textSize="18sp" />
+                    android:textColor="#274873"
+                    android:textSize="15sp" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/grey" />
+                    android:background="#D98452" />
 
             </LinearLayout>
 
@@ -288,8 +296,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tích lũy"
-                    android:textColor="@color/headings"
-                    android:textSize="13sp" />
+                    android:textStyle="bold"
+                    android:textColor="#000"
+                    android:textSize="13sp"/>
 
                 <TextView
                     android:id="@+id/tv_money"
@@ -297,14 +306,14 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:text="Số tiền tích lũy: 100.000 VNĐ"
-                    android:textColor="#CCC9BA"
-                    android:textSize="18sp" />
+                    android:textColor="#274873"
+                    android:textSize="15sp" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/grey" />
+                    android:background="#D98452" />
 
             </LinearLayout>
 
@@ -315,7 +324,7 @@
 
 
     <LinearLayout
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/rlay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -323,29 +332,35 @@
 
         <Button
             android:id="@+id/btn_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_click"
             android:layout_gravity="center_horizontal"
             android:text="Sửa"
-            android:background="@drawable/button2"/>
+            />
 
         <Button
             android:layout_margin="10dp"
             android:id="@+id/btn_change_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:text="Đổi mật khẩu"
-            android:background="@drawable/button2"/>
+            android:textSize="10sp"
+            android:background="@drawable/button_click"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_dangxuat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:textSize="10sp"
             android:layout_gravity="center_horizontal"
             app:strokeColor="@color/colorPrimary"
             android:text="Thoát"
-            android:background="@drawable/button1"/>
+            android:background="@drawable/button_click"/>
 
 
     </LinearLayout>

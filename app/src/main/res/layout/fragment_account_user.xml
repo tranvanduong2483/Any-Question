@@ -3,11 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:padding="10dp"
+    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
     <LinearLayout
+        android:layout_marginTop="@dimen/dodai20"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -39,16 +41,19 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/dodai35"
+                android:layout_height="@dimen/dodai35"
                 android:background="@drawable/ic_email" />
 
             <TextView
                 android:id="@+id/tv_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dodai35"
                 android:layout_marginLeft="10dp"
+                android:gravity="center|left"
+                android:textSize="@dimen/cochu15"
+                android:textColor="#203959"
                 android:text="tranvanduong2483@gmail.com" />
 
         </LinearLayout>
@@ -60,16 +65,19 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/dodai35"
+                android:layout_height="@dimen/dodai35"
                 android:background="@drawable/ic_address" />
 
             <TextView
                 android:id="@+id/tv_address"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_height="@dimen/dodai35"
                 android:layout_marginLeft="10dp"
+                android:gravity="center|left"
+                android:textColor="#203959"
+                android:textSize="@dimen/cochu15"
+                android:layout_gravity="center_vertical"
                 android:text="71 Đồng Kè, Hòa Khánh, Liên Chiểu, Đà Nẵng" />
 
         </LinearLayout>
@@ -81,16 +89,19 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/dodai35"
+                android:layout_height="@dimen/dodai35"
                 android:background="@drawable/ic_money" />
 
             <TextView
                 android:id="@+id/tv_money"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_height="@dimen/dodai35"
                 android:layout_marginLeft="10dp"
+                android:gravity="center|left"
+                android:textColor="#203959"
+                android:textSize="@dimen/cochu15"
+                android:layout_gravity="center_vertical"
                 android:text="Số tiền dư: 100.000 VNĐ" />
 
         </LinearLayout>
@@ -103,22 +114,28 @@
 
             <Button
                 android:id="@+id/btn_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/button_click"
                 android:layout_gravity="center_horizontal"
                 android:text="Sửa" />
             <Button
                 android:layout_margin="10dp"
                 android:id="@+id/btn_change_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/button_click"
                 android:layout_gravity="center_horizontal"
                 android:text="Đổi mật khẩu" />
 
             <Button
                 android:id="@+id/btn_dangxuat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/button_click"
                 android:layout_gravity="center_horizontal"
                 app:strokeColor="@color/colorPrimary"
                 android:text="Thoát" />

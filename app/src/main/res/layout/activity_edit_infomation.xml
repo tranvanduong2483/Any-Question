@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="40dp"
     tools:context=".EditInfomationActivity"
-    android:background="@drawable/gradient">
+    android:background="@drawable/grad1">
 
     <LinearLayout
         android:gravity="center_horizontal"
@@ -32,13 +32,20 @@
             <Button
                 android:id="@+id/btn_chonanhtuthuvien"
                 android:text="Chọn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textColor="#000"
+                android:layout_marginTop="@dimen/dodai15"
+                android:background="@drawable/button_click1"
+                android:layout_width="100dp"
+                android:layout_height="40dp"/>
             <Button
                 android:id="@+id/btn_chupanh"
                 android:text="Chụp mới"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:textColor="#000"
+                android:layout_marginTop="@dimen/dodai10"
+                android:layout_marginBottom="@dimen/dodai15"
+                android:background="@drawable/button_click1"
+                android:layout_width="100dp"
+                android:layout_height="40dp"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -46,52 +53,63 @@
     <EditText
         android:id="@+id/edt_fullname"
         android:hint="Thay đổi tên của bạn"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
+        android:textColor="#000"
+        android:paddingLeft="@dimen/dodai15"
+        android:layout_marginTop="@dimen/dodai25"
+        android:layout_marginLeft="@dimen/dodai15"
+        android:layout_width="300dp"
         android:layout_height="40dp"
-        android:background="@drawable/button3"
-        android:textColorHint="#CCC9BA"
-        android:textSize="16dp"/>
+        android:background="@drawable/text_vien"
+        android:textColorHint="#000"
+        android:textSize="@dimen/cochu15"/>
     <EditText
         android:id="@+id/edt_email"
         android:hint="Thay đổi địa chỉ mail"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
+        android:textColor="#000"
+        android:paddingLeft="@dimen/dodai15"
+        android:layout_marginTop="@dimen/dodai15"
+        android:layout_marginLeft="@dimen/dodai15"
+        android:layout_width="300dp"
         android:layout_height="40dp"
-        android:background="@drawable/button3"
-        android:textColorHint="#CCC9BA"
-        android:textSize="16dp"/>
+        android:background="@drawable/text_vien"
+        android:textColorHint="#000"
+        android:textSize="@dimen/cochu15"/>
     <EditText
         android:id="@+id/edt_address"
         android:hint="Thay đổi địa chỉ nhà"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
+        android:textColor="#000"
+        android:paddingLeft="@dimen/dodai15"
+        android:layout_marginTop="@dimen/dodai15"
+        android:layout_marginLeft="@dimen/dodai15"
+        android:layout_width="300dp"
         android:layout_height="40dp"
-        android:background="@drawable/button3"
-        android:textColorHint="#CCC9BA"
-        android:textSize="16dp"/>
+        android:background="@drawable/text_vien"
+        android:textColorHint="#000"
+        android:textSize="@dimen/cochu15"/>
 
     <LinearLayout
         android:layout_margin="30dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="@dimen/dodai60">
         <Button
             android:layout_marginRight="20dp"
             android:id="@+id/btn_cancel"
             android:text="Hủy bỏ"
-
-            app:strokeColor="@color/colorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button"/>
+            android:textColor="#000"
+            android:layout_marginTop="@dimen/dodai10"
+            android:background="@drawable/button_click1"
+            android:layout_width="100dp"
+            android:layout_height="40dp"/>
         <Button
             android:id="@+id/btn_save"
             android:text="Lưu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button"/>
+            android:textColor="#000"
+            android:layout_marginTop="@dimen/dodai10"
+            android:background="@drawable/button_click1"
+            android:layout_width="100dp"
+            android:layout_height="40dp"/>
 
 
 

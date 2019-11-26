@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/grad1"
     android:padding="10dp">
 
     <LinearLayout
@@ -13,33 +14,55 @@
         <ImageView
             android:id="@+id/iv_image"
             android:src="@drawable/test"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_width="@dimen/dodai350"
+            android:layout_height="300dp"
+            android:layout_marginLeft="@dimen/dodai20"
+            />
 
         <TextView
             android:id="@+id/tv_tittle"
             android:text="Đây là tiêu đề"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:textSize="@dimen/cochu15"
+            android:layout_marginTop="@dimen/dodai15"
+            android:layout_marginLeft="@dimen/dodai35"
+            android:layout_width="@dimen/dodai200"
+            android:layout_height="@dimen/dodai20" />
 
         <TextView
             android:id="@+id/tv_note"
             android:text="Ghi chú về câu hỏi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:textSize="@dimen/cochu15"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/dodai35"
+            android:layout_width="@dimen/dodai200"
+            android:layout_height="@dimen/dodai20" />
 
         <TextView
             android:id="@+id/tv_field"
             android:text="Lĩnh vực câu hỏi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:textSize="@dimen/cochu15"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/dodai35"
+            android:layout_width="@dimen/dodai200"
+            android:layout_height="@dimen/dodai20" />
 
 
         <TextView
             android:id="@+id/tv_money"
             android:text="50 000 VND"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:textSize="@dimen/cochu15"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="@dimen/dodai35"
+            android:layout_width="@dimen/dodai200"
+            android:layout_height="@dimen/dodai20" />
 
     </LinearLayout>
 
