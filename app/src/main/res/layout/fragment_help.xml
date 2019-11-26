@@ -4,7 +4,8 @@
     android:padding="10dp"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient">
 
     <ImageView
         android:id="@+id/logo"
@@ -12,7 +13,8 @@
         android:layout_height="53dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/logo2" />
+        android:background="@drawable/logo2"
+        android:layout_marginTop="30dp"/>
 
     <Switch
         android:layout_gravity="center_horizontal"
@@ -21,17 +23,27 @@
         android:id="@+id/sw_expert_ready"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="false"/>
+        android:checked="false"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFFFFF"/>
     <EditText
         android:id="@+id/edt_keywords"
         android:hint="Những từ khóa liên quan hết lĩnh vực của bạn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button3"
+        android:textSize="16dp"
+        android:textColorHint="#CCC9BA"/>
     <EditText
         android:id="@+id/edt_gioithieu"
         android:hint="Tin nhắn giới thiệu mở đầu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button3"
+        android:textSize="16dp"
+        android:textColorHint="#CCC9BA"/>
 
 
 </LinearLayout>

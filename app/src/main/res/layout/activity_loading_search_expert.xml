@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="20"
-    android:padding="15dp"
+    android:padding="10dp"
     android:gravity="center"
-    tools:context=".LoadingSearchExpertActivity">
+    tools:context=".LoadingSearchExpertActivity"
+    android:background="@drawable/gradient">
 
     <ProgressBar
         android:id="@+id/performance_progress_bar"
@@ -38,14 +39,16 @@
                 android:text="Tiêu đề: "
                 android:textSize="20sp"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="#CCC9BA"/>
 
             <TextView
                 android:id="@+id/tv_tittle"
                 android:textSize="20sp"
                 android:text="Cách tính căn bậc hai"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="#CCC9BA"/>
         </LinearLayout>
 
         <LinearLayout
@@ -63,14 +66,16 @@
                 android:text="Ghi chú: "
                 android:textSize="20sp"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="#CCC9BA"/>
 
             <TextView
                 android:id="@+id/tv_note"
                 android:textSize="20sp"
                 android:text="(Không có)"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="#CCC9BA"/>
         </LinearLayout>
 
 
@@ -88,14 +93,16 @@
                 android:text="Mức tiền: "
                 android:textSize="20sp"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="#CCC9BA"/>
 
             <TextView
                 android:id="@+id/tv_money"
                 android:textSize="20sp"
                 android:text="20.000 VND"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="#CCC9BA"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -108,5 +115,6 @@
         android:layout_gravity="center_horizontal"
         android:text="Hủy bỏ"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"/>
 </LinearLayout>

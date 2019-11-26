@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".RatingForExpertActivity">
+    tools:context=".RatingForExpertActivity"
+    android:background="@drawable/gradient">
     <ImageView
         android:id="@+id/logo"
         android:layout_width="310dp"
@@ -23,7 +24,8 @@
         android:gravity="center_horizontal"
         android:text="Bạn có hài lòng về cuộc thảo luận này không?"
         android:textSize="20sp"
-        android:textStyle="italic" />
+        android:textStyle="italic"
+        android:textColor="#CCC9BA"/>
 
     <RatingBar
         android:layout_gravity="center_horizontal"
@@ -42,15 +44,17 @@
         android:layout_marginTop="10dp"
         android:text="Awesome. I love it"
         android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="#CCC9BA"/>
 
     <EditText
         android:id="@+id/edt_feedback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:lines="4"
         android:hint="Nhập cảm nhận của bạn"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:textColorHint="#CCC9BA"/>
 
     <CheckBox
         android:text="Gửi dưới dạng khiếu nại"
@@ -65,9 +69,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="#e57373"
+        android:background="@drawable/buttonvienxanh"
         android:text="Gửi phản hồi"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        />
 
 
 
@@ -80,7 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="#e57373"
+        android:background="@drawable/buttonvienxanh"
         android:text="Hủy bỏ"
         app:strokeColor="@color/colorPrimary" />
 

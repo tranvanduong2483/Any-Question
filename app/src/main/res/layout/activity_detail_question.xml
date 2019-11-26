@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:background="@drawable/gradient">
 
     <LinearLayout
         android:orientation="vertical"
@@ -12,34 +13,42 @@
 
         <ImageView
             android:id="@+id/iv_image"
-            android:src="@drawable/test"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:src="@drawable/test" />
 
         <TextView
             android:id="@+id/tv_tittle"
             android:text="Đây là tiêu đề"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/button3"
+            android:textColor="#CCC9BA" />
 
         <TextView
             android:id="@+id/tv_note"
             android:text="Ghi chú về câu hỏi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/button3"
+            android:textColor="#CCC9BA"/>
 
         <TextView
             android:id="@+id/tv_field"
             android:text="Lĩnh vực câu hỏi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/button3"
+            android:textColor="#CCC9BA"/>
 
 
         <TextView
             android:id="@+id/tv_money"
             android:text="50 000 VND"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/button3"
+            android:textColor="#CCC9BA"/>
 
     </LinearLayout>
 

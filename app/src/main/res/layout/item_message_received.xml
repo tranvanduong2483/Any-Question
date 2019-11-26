@@ -32,7 +32,8 @@
             android:text="tranvanduong"
             android:layout_marginBottom="2dp"
             android:layout_marginLeft="10dp"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:textColor="#000000"/>
 
 
         <RelativeLayout
@@ -43,12 +44,13 @@
                 android:id="@+id/text_message_body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_rectangle_orange"
+                android:background="@drawable/button4"
                 android:maxWidth="240dp"
                 android:padding="8dp"
                 android:text="hi man, how are you?"
                 android:textColor="#000000"
-                android:visibility="visible" />
+                android:visibility="visible"
+                android:textSize="16dp"/>
 
             <ImageView
                 android:id="@+id/iv_image"

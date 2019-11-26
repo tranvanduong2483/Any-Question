@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:paddingLeft="20dp"
     android:paddingTop="10dp"
-    android:paddingRight="20dp">
+    android:paddingRight="20dp"
+    android:background="@drawable/gradient">
 
 
     <LinearLayout
@@ -20,14 +21,16 @@
             android:text="Thông tin câu hỏi"
             android:textAllCaps="true"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Đính kèm ảnh"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -52,13 +55,15 @@
                     android:id="@+id/btn_upload"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:text="Tải lên" />
+                    android:text="Tải lên"
+                    android:background="@drawable/button"/>
 
                 <Button
                     android:id="@+id/btn_camera"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:text="Chụp mới" />
+                    android:text="Chụp mới"
+                    android:background="@drawable/button"/>
             </LinearLayout>
 
 
@@ -77,16 +82,21 @@
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tiêu đề"
-                android:textStyle="bold" />
-            <EditText
-                android:id="@+id/edt_tittle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Tiêu đề" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tiêu đề"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"/>
+                <EditText
+                    android:id="@+id/edt_tittle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:hint="Tiêu đề"
+                    android:textColorHint="#FFFFFF"
+                    android:background="@drawable/button3"
+                    android:textColor="#FFFFFF"/>
             </LinearLayout>
 
 
@@ -99,7 +109,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Lĩnh vực"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"/>
                 <Spinner
                     android:id="@+id/spn_field"
                     android:layout_width="match_parent"
@@ -119,13 +130,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ghi chú"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
 
         <EditText
             android:id="@+id/edt_note"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhập ghi chú của bạn (nếu có)" />
+            android:hint="Nhập ghi chú của bạn (nếu có)"
+            android:textColorHint="#FFFFFF"
+            android:background="@drawable/button3"
+            android:textColor="#FFFFFF"/>
 
 
         <LinearLayout
@@ -138,7 +153,8 @@
                 android:layout_height="wrap_content"
                 android:text="Giá tiền: "
                 android:textSize="15sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/tv_money"
@@ -148,7 +164,9 @@
                 android:text="15000"
                 android:textColor="#F44336"
                 android:textSize="15sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColorHint="#FFFFFF"
+                android:background="@drawable/button3"/>
         </LinearLayout>
 
         <LinearLayout
@@ -161,7 +179,8 @@
                 android:layout_height="wrap_content"
                 android:text="Còn lại: "
                 android:textSize="15sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -170,7 +189,9 @@
                 android:text="  85.000 VND"
                 android:textColor="#F44336"
                 android:textSize="15sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColorHint="#FFFFFF"
+                android:background="@drawable/button3"/>
         </LinearLayout>
 
 
@@ -185,14 +206,16 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Nhập lại"
-                app:strokeColor="@color/colorPrimary" />
+                app:strokeColor="@color/colorPrimary"
+                android:background="@drawable/buttonvienxanh"/>
 
             <Button
                 android:id="@+id/btn_search_expert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Tìm chuyên gia" />
+                android:text="Tìm chuyên gia"
+                android:background="@drawable/button1"/>
         </LinearLayout>
     </LinearLayout>
 
