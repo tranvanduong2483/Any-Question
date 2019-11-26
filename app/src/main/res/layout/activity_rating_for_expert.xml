@@ -44,8 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:text="Awesome. I love it"
-        android:textSize="16sp"
+        android:text="Awesome. I love it !!!"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
     <EditText
@@ -55,7 +55,7 @@
         android:lines="4"
         android:hint="Nhập cảm nhận của bạn"
         android:inputType="textMultiLine"
-        android:textColorHint="#4000FF"/>
+        android:textColorHint="@color/cardview_dark_background"/>
     <CheckBox
         android:text="Gửi dưới dạng khiếu nại"
         android:textSize="16sp"

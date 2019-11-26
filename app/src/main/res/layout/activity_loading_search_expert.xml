@@ -8,14 +8,16 @@
     android:weightSum="20"
     android:padding="15dp"
     android:gravity="center"
-    tools:context=".LoadingSearchExpertActivity">
+    tools:context=".LoadingSearchExpertActivity"
+    android:background="@drawable/search4_user"
+    >
 
     <ProgressBar
         android:id="@+id/performance_progress_bar"
-        android:layout_weight="9"
         android:layout_width="match_parent"
-        android:theme="@style/ProgressBarTheme"
-        android:layout_height="0dp" />
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:theme="@style/ProgressBarTheme" />
 
     <LinearLayout
         android:layout_marginTop="15dp"
@@ -108,5 +110,6 @@
         android:layout_gravity="center_horizontal"
         android:text="Hủy bỏ"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/button3"/>
 </LinearLayout>
