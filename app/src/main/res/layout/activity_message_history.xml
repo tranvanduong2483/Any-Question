@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ECEFF1"
+    android:background="@drawable/grad1"
     tools:context=".MessageListActivity">
 
     <!-- A horizontal line between the chatbox and RecyclerView -->
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginBottom="0dp"
-        android:background="#dfdfdf"
+        android:background="#EAE6DF"
         android:layout_above="@+id/layout_chatbox"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />

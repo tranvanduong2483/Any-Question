@@ -5,15 +5,17 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     tools:context=".LoginActivity"
-    android:background="@drawable/gradient">
+    android:background="@drawable/grad1">
 
     <LinearLayout
+        android:layout_marginTop="@dimen/dodai20"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/logo"
+            android:layout_marginTop="@dimen/dodai10"
             android:layout_width="310dp"
             android:layout_height="53dp"
             android:layout_gravity="center_horizontal"
@@ -25,11 +27,17 @@
             android:id="@+id/edt_fullname"
             android:inputType="textPersonName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dodai30"
             android:hint="Họ tên của bạn"
-            android:background="@drawable/button3"
-            android:textColorHint="#CCC9BA"
-            android:layout_marginTop="15dp"/>
+            android:textColor="#689EB8"
+            android:textSize="@dimen/cochu15"
+            android:background="@drawable/back_camnhan"
+            android:textColorHint="#689EB8"
+            android:paddingLeft="@dimen/dodai10"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="@dimen/dodai10"
+
+            />
 
 
         <LinearLayout
@@ -41,13 +49,16 @@
                 android:id="@+id/spn_education"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="@dimen/dodai30"
+                android:layout_marginRight="@dimen/dodai10"
+                />
 
             <Spinner
                 android:id="@+id/spn_field"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
+                android:layout_marginLeft="@dimen/dodai10"
+                android:layout_height="@dimen/dodai30"/>
         </LinearLayout>
 
 
@@ -55,39 +66,55 @@
             android:id="@+id/edt_introdution"
             android:inputType="textPersonName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dodai30"
             android:hint="Giới thiệu ngắn về bạn"
-            android:background="@drawable/button3"
-            android:textColorHint="#CCC9BA"
-            android:layout_marginTop="15dp"/>
+            android:textColor="#689EB8"
+            android:textSize="@dimen/cochu15"
+            android:background="@drawable/back_camnhan"
+            android:textColorHint="#689EB8"
+            android:paddingLeft="@dimen/dodai10"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="@dimen/dodai10"/>
 
         <EditText
             android:id="@+id/edt_email"
             android:inputType="textEmailAddress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dodai30"
             android:hint="Địa chỉ email"
-            android:background="@drawable/button3"
-            android:textColorHint="#CCC9BA"
-            android:layout_marginTop="15dp"/>
+            android:textColor="#689EB8"
+            android:textSize="@dimen/cochu15"
+            android:background="@drawable/back_camnhan"
+            android:textColorHint="#689EB8"
+            android:paddingLeft="@dimen/dodai10"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="@dimen/dodai10"/>
 
         <EditText
             android:id="@+id/edt_address"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dodai30"
             android:hint="Địa chỉ"
-            android:background="@drawable/button3"
-            android:textColorHint="#CCC9BA"
-            android:layout_marginTop="15dp"/>
+            android:textColor="#689EB8"
+            android:textSize="@dimen/cochu15"
+            android:background="@drawable/back_camnhan"
+            android:textColorHint="#689EB8"
+            android:paddingLeft="@dimen/dodai10"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="@dimen/dodai10"/>
 
         <EditText
             android:id="@+id/edt_account"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dodai30"
             android:hint="Tài khoản"
-            android:background="@drawable/button3"
-            android:textColorHint="#CCC9BA"
-            android:layout_marginTop="15dp"/>
+            android:textColor="#689EB8"
+            android:textSize="@dimen/cochu15"
+            android:background="@drawable/back_camnhan"
+            android:textColorHint="#689EB8"
+            android:paddingLeft="@dimen/dodai10"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="@dimen/dodai10"/>
 
 
 
@@ -102,23 +129,33 @@
                 android:inputType="textPassword"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dodai30"
                 android:hint="Tạo mật khẩu"
-                android:background="@drawable/button3"
-                android:textColorHint="#CCC9BA"
-                android:layout_marginTop="15dp"/>
+                android:textColor="#689EB8"
+                android:textSize="@dimen/cochu15"
+                android:background="@drawable/back_camnhan"
+                android:textColorHint="#689EB8"
+                android:paddingLeft="@dimen/dodai10"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="@dimen/dodai10"
+                android:layout_marginRight="@dimen/dodai10"/>
 
             <EditText
                 android:id="@+id/edt_password2"
                 android:inputType="textPassword"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dodai30"
                 android:layout_below="@id/edt_account"
                 android:hint="Nhập lại mật khẩu"
-                android:background="@drawable/button3"
-                android:textColorHint="#CCC9BA"
-                android:layout_marginTop="15dp"/>
+                android:textColor="#689EB8"
+                android:textSize="@dimen/cochu15"
+                android:background="@drawable/back_camnhan"
+                android:textColorHint="#689EB8"
+                android:paddingLeft="@dimen/dodai10"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="@dimen/dodai10"
+                android:layout_marginLeft="@dimen/dodai10"/>
         </LinearLayout>
 
 
@@ -130,21 +167,21 @@
             android:layout_marginTop="30dp">
             <Button
                 android:id="@+id/btn_register"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dodai130"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="Đăng ký"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/buttonvienxanh"/>
+                android:layout_marginRight="@dimen/dodai20"
+                android:background="@drawable/button_click"/>
 
             <Button
-                android:layout_margin="20dp"
                 android:id="@+id/btn_clear"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dodai130"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="Nhập lại"
-                android:background="@drawable/buttonvienxanh"/>
+                android:layout_marginLeft="@dimen/dodai20"
+                android:background="@drawable/button_click"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -163,17 +200,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/dodai10"
             android:text="Bạn đã có tài khoản? "
-            android:textColor="#CCC9BA"/>
+            android:textColor="#142E54"/>
 
         <Button
             android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dodai130"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Đăng nhập"
-            android:background="@drawable/buttonvienxanh"
-            android:textColor="#FFFFFF"/>
+            android:layout_marginLeft="@dimen/dodai10"
+            android:background="@drawable/button_click" />
 
     </LinearLayout>
 

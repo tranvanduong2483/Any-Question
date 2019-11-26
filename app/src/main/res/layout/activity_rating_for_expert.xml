@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
+    android:background="@drawable/grad1"
     tools:context=".RatingForExpertActivity">
     <ImageView
         android:id="@+id/logo"
         android:layout_width="310dp"
         android:layout_height="53dp"
+        android:layout_marginTop="@dimen/dodai20"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/logo2" />
 
@@ -19,10 +21,11 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
+        android:textColor="#A7967E"
         android:text="Bạn có hài lòng về cuộc thảo luận này không?"
-        android:textSize="20sp"
+        android:textSize="@dimen/cochu15"
         android:textStyle="italic" />
 
     <RatingBar
@@ -30,6 +33,7 @@
         android:id="@+id/rb_danhgia"
         android:rating="5"
         android:numStars="5"
+        android:layout_marginTop="@dimen/dodai15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -40,23 +44,30 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/dodai10"
+        android:textColor="#A7967E"
         android:text="Awesome. I love it"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
     <EditText
         android:id="@+id/edt_feedback"
+        android:background="@drawable/back_camnhan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dodai20"
         android:lines="4"
         android:hint="Nhập cảm nhận của bạn"
+        android:paddingLeft="@dimen/dodai15"
         android:inputType="textMultiLine" />
 
     <CheckBox
         android:text="Gửi dưới dạng khiếu nại"
-        android:textSize="16sp"
+        android:layout_marginTop="@dimen/dodai10"
+        android:paddingLeft="@dimen/dodai10"
+        android:textSize="15sp"
         android:textStyle="bold"
-        android:textColor="#F44336"
+        android:textColor="#000"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -65,7 +76,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="#e57373"
+        android:layout_marginBottom="@dimen/dodai10"
+        android:layout_marginRight="@dimen/dodai10"
+        android:layout_marginLeft="@dimen/dodai10"
+        android:background="@drawable/button_click"
         android:text="Gửi phản hồi"
         android:textColor="@android:color/white" />
 
@@ -79,9 +93,12 @@
         android:id="@+id/btn_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#e57373"
+        android:layout_marginRight="@dimen/dodai10"
+        android:layout_marginLeft="@dimen/dodai10"
+        android:layout_marginTop="@dimen/dodai10"
+        android:background="@drawable/button_click"
         android:text="Hủy bỏ"
+        android:textColor="#FFF"
         app:strokeColor="@color/colorPrimary" />
 
 

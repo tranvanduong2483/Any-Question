@@ -3,24 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="5dp"
+    android:background="@drawable/grad1"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-
+        android:layout_margin="@dimen/dodai15"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/btn_myhistory"
             android:text="Lịch sử của tôi"
-            android:layout_width="wrap_content"
+            android:background="@drawable/button3"
+            android:layout_marginLeft="@dimen/dodai15"
+            android:layout_width="@dimen/dodai130"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btn_refesh"
             android:text="Làm mới"
-            android:layout_marginLeft="20dp"
+            android:background="@drawable/button3"
+            android:layout_marginStart="@dimen/dodai120"
+            android:layout_marginRight="@dimen/dodai15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -29,8 +34,11 @@
     <EditText
         android:id="@+id/tv_search"
         android:hint="Tìm kiếm cuộc thảo luận"
+        android:layout_margin="@dimen/dodai30"
+        android:background="@drawable/text_vien"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:paddingLeft="@dimen/dodai10"
+        android:layout_height="@dimen/dodai60" />
 
     <ListView
         android:id="@+id/lv_history"

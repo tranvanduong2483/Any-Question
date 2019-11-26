@@ -40,8 +40,8 @@
             android:background="@drawable/buttonxanh"
             android:gravity="center"
             android:hint="Tài khoản"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
+            android:textColor="#FF5A60"
+            android:textColorHint="#FF5A60"
             android:textSize="20sp" />
 
         <EditText
@@ -55,8 +55,8 @@
             android:gravity="center"
             android:hint="Mật khẩu"
             android:inputType="textPassword"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
+            android:textColor="#FF5A60"
+            android:textColorHint="#FF5A60"
             android:textSize="20sp" />
 
         <Button

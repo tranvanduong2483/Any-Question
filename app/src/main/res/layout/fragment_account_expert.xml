@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
-
+    android:background="@drawable/grad1"
     android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,7 +10,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dodai20"
+        >
 
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -20,17 +22,19 @@
             android:layout_height="120dp"
             android:src="@drawable/avatar"
             app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
+            app:civ_border_color="#142E54"/>
 
         <TextView
             android:id="@+id/tv_fullname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:text="Trần Văn Dương"
             android:textAllCaps="true"
             android:textSize="20sp"
+            android:layout_marginTop="@dimen/dodai20"
+            android:layout_marginBottom="@dimen/dodai10"
+            android:textColor="#28783B"
             android:textStyle="bold" />
 
 
@@ -45,6 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="@dimen/dodai15"
                 android:background="@drawable/ic_education" />
 
             <TextView
@@ -52,7 +57,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-
+                android:textSize="@dimen/dodai15"
+                android:textColor="#28783B"
+                android:layout_marginRight="@dimen/dodai15"
+                android:layout_marginTop="@dimen/dodai10"
                 android:text="Trình độ: Kỹ sư" />
 
             <ImageView
@@ -60,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="@dimen/dodai15"
                 android:layout_toLeftOf="@+id/tv_field"
                 android:background="@drawable/ic_field" />
             <TextView
@@ -68,6 +77,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="2dp"
+                android:textSize="@dimen/dodai15"
+                android:textColor="#28783B"
+                android:layout_marginRight="@dimen/dodai15"
+                android:layout_marginTop="@dimen/dodai10"
                 android:text="Lĩnh vực: CNTT" />
 
 
@@ -92,6 +105,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
+                android:textSize="@dimen/dodai15"
+                android:textColor="#28783B"
+
                 android:text="tranvanduong2483@gmail.com" />
 
         </LinearLayout>
@@ -113,6 +129,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
+                android:textSize="@dimen/dodai15"
+                android:textColor="#28783B"
                 android:text="71 Đồng Kè, Hòa Khánh, Liên Chiểu, Đà Nẵng" />
 
         </LinearLayout>
@@ -134,6 +152,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
+                android:textSize="@dimen/dodai15"
+                android:textColor="#28783B"
                 android:text="Số tiền tích lũy: 100.000 VNĐ" />
 
         </LinearLayout>
@@ -142,27 +162,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dodai30"
             android:gravity="center_horizontal">
 
             <Button
                 android:id="@+id/btn_edit"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dodai100"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_click"
                 android:layout_gravity="center_horizontal"
                 android:text="Sửa" />
 
             <Button
                 android:layout_margin="10dp"
                 android:id="@+id/btn_change_password"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dodai130"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_click"
                 android:layout_gravity="center_horizontal"
                 android:text="Đổi mật khẩu" />
 
             <Button
                 android:id="@+id/btn_dangxuat"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dodai100"
                 android:layout_height="wrap_content"
+                android:background="@drawable/button_click"
                 android:layout_gravity="center_horizontal"
                 app:strokeColor="@color/colorPrimary"
                 android:text="Thoát" />

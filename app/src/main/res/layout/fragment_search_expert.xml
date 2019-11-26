@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/grad1"
     android:paddingLeft="20dp"
     android:paddingTop="10dp"
     android:paddingRight="20dp">
@@ -11,6 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dodai30"
         android:orientation="vertical">
 
         <TextView
@@ -19,14 +21,17 @@
             android:layout_gravity="center_horizontal"
             android:text="Thông tin câu hỏi"
             android:textAllCaps="true"
-            android:textSize="18sp"
+            android:textSize="25sp"
+            android:textColor="#142E54"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="@dimen/dodai10"
             android:text="Đính kèm ảnh"
+            android:textColor="#142E54"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -39,12 +44,13 @@
                 android:id="@+id/iv_image"
                 android:layout_width="120dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 app:srcCompat="@drawable/ic_image"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dodai10"
                 android:layout_gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -52,12 +58,15 @@
                     android:id="@+id/btn_upload"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:text="Tải lên" />
+                    android:text="Tải lên"
+                    android:background="@drawable/button_click1"
+                    android:layout_marginBottom="@dimen/dodai10"/>
 
                 <Button
                     android:id="@+id/btn_camera"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:background="@drawable/button_click1"
                     android:text="Chụp mới" />
             </LinearLayout>
 
@@ -69,7 +78,8 @@
             android:weightSum="2"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dodai15">
 
 
             <LinearLayout
@@ -86,7 +96,9 @@
                 android:id="@+id/edt_tittle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tiêu đề" />
+                android:hint="Tiêu đề"
+                android:textColor="#142E54"
+                android:textStyle="bold"/>
             </LinearLayout>
 
 
