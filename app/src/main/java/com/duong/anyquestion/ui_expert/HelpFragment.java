@@ -60,16 +60,13 @@ public class HelpFragment extends Fragment {
                 String data = sessionManager.getAccount()+"-"+isChecked + "-" + gioithieu + "-" + keywords;
                 if (!mSocket.connected()) sw_expert_ready.setChecked(false);
                 else mSocket.emit("expert-send-ready", data);
-
             }
         });
-
 
         mSocket.on("disconnect", new Emitter.Listener() {
             @Override
             public void call(final Object... args) {
                 if (getActivity() == null) return;
-
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

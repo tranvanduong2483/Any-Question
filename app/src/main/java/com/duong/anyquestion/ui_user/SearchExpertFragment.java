@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +46,8 @@ import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SearchExpertFragment extends Fragment {
 
@@ -56,8 +61,9 @@ public class SearchExpertFragment extends Fragment {
     private ImageView iv_image;
     private String avatarString = null;
     private ArrayList<Field> array_field;
-    ArrayAdapter<Field> adapter_field;
-    Spinner spn_field;
+    private ArrayAdapter<Field> adapter_field;
+    private Spinner spn_field;
+
 
 
 
@@ -71,9 +77,9 @@ public class SearchExpertFragment extends Fragment {
         spn_field =view.findViewById(R.id.spn_field);
 
         array_field=new ArrayList<>();
-
-        mSocket.emit("client-get-field","get");
         mSocket.on("server-sent-field",callback_get_field);
+        setGetFiled();
+
 
         adapter_field = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, array_field);
         spn_field.setAdapter(adapter_field);
@@ -141,6 +147,23 @@ public class SearchExpertFragment extends Fragment {
     }
 
 
+    private void setGetFiled() {
+        TimerTask timertaks = new TimerTask() {
+            @Override
+            public void run() {
+                if (array_field.isEmpty()) {
+                    mSocket.emit("client-get-field", "client-get-field *****");
+                }
+            }
+        };
+
+
+        long delay = 1000L;
+        Timer timer = new Timer("Timer");
+        timer.schedule(timertaks, 0, delay);
+
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -191,8 +214,6 @@ public class SearchExpertFragment extends Fragment {
                         Gson gson = new Gson();
                         for (int i=0; i<jsonArray.length(); i++){
                             Field field = gson.fromJson( jsonArray.get(i).toString(),Field.class);
-
-
                             adapter_field.add(field);
                         }
                         adapter_field.notifyDataSetChanged();
@@ -202,8 +223,5 @@ public class SearchExpertFragment extends Fragment {
             });
         }
     };
-
-
-
-
 }
+

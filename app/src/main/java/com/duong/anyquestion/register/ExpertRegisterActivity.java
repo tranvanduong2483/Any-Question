@@ -34,8 +34,12 @@ public class ExpertRegisterActivity extends AppCompatActivity {
     EditText edt_account,edt_mail, edt_address, edt_password1,edt_password2, edt_fullname;
     Spinner spn_education,spn_field;
 
-    ArrayAdapter<String> adapter_education,adapter_field;
-    private ArrayList<String> array_education,array_field ;
+    ArrayAdapter<Education> adapter_education;
+    private ArrayList<Education> array_education;
+
+    ArrayAdapter<Field> adapter_field;
+    private ArrayList<Field> array_field;
+
 
 
     @Override
@@ -95,6 +99,10 @@ public class ExpertRegisterActivity extends AppCompatActivity {
                 String Account = edt_account.getText() +"";
                 //String Education = edt_education.getText() + "";
                 //String Field = edt_field.getText() + "";
+
+                int field_id = array_field.get(spn_field.getSelectedItemPosition()).getField_id();
+                int education_id = array_education.get(spn_field.getSelectedItemPosition()).getEducation_id();
+
                 String FullName = edt_fullname.getText() +"";
                 String Password1 =  edt_password1.getText() +"";
                 String Password2 =  edt_password2.getText() +"";
@@ -112,7 +120,7 @@ public class ExpertRegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                    Expert expert = new Expert(Account,Password1,FullName,null, 1, 1,Address,Mail,0);
+                Expert expert = new Expert(Account, Password1, FullName, null, education_id, field_id, Address, Mail, 0);
                 mSocket.emit("client-dang-ki-expert",expert.toJSON());
             }
         });
@@ -157,10 +165,7 @@ public class ExpertRegisterActivity extends AppCompatActivity {
                         }else{
                             Toast.makeText(getApplicationContext(), "Đăng ký thất bại!",Toast.LENGTH_LONG).show();
                         }
-
-
-                    } catch (JSONException e) {
-                        return;
+                    } catch (JSONException ignored) {
                     }
 
                 }
@@ -184,7 +189,7 @@ public class ExpertRegisterActivity extends AppCompatActivity {
                         Gson gson = new Gson();
                         for (int i=0; i<jsonArray.length(); i++){
                             Education education = gson.fromJson( jsonArray.get(i).toString(),Education.class);
-                            array_education.add(education.getEducation_id() +" - " + education.getName());
+                            array_education.add(education);
                         }
                         adapter_education.notifyDataSetChanged();
                     } catch (Exception ignored) { }
@@ -201,15 +206,12 @@ public class ExpertRegisterActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-
                     try {
-
                         JSONArray jsonArray = (JSONArray) args[0];
-
                         Gson gson = new Gson();
                         for (int i=0; i<jsonArray.length(); i++){
                             Field field = gson.fromJson( jsonArray.get(i).toString(),Field.class);
-                            adapter_field.add(field.getField_id() +" - " + field.getName());
+                            adapter_field.add(field);
                         }
                         adapter_field.notifyDataSetChanged();
                     } catch (Exception ignored) { }

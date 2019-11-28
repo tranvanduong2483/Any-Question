@@ -19,7 +19,6 @@ public class DetailQuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_question);
 
-
         ImageView iv_image = findViewById(R.id.iv_image);
         TextView tv_tittle = findViewById(R.id.tv_tittle);
         TextView tv_field = findViewById(R.id.tv_field);
