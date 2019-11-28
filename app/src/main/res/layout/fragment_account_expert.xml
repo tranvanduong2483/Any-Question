@@ -159,7 +159,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Đổi mật khẩu" />
+                android:text="Đổi mật khẩu"
+                android:background="@drawable/button3"/>
 
             <Button
                 android:id="@+id/btn_dangxuat"
@@ -167,7 +168,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 app:strokeColor="@color/colorPrimary"
-                android:text="Thoát" />
+                android:text="Thoát"
+                android:background="@drawable/button3"/>
 
 
 

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:padding="15dp"
     tools:context=".RatingForExpertActivity"
-    android:background="@drawable/background_rating"
+    android:background="@drawable/background_rating3"
     >
     <ImageView
         android:id="@+id/logo"
