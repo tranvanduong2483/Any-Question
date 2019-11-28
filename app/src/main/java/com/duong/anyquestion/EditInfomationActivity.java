@@ -1,4 +1,5 @@
 package com.duong.anyquestion;
+//1235678999
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -71,7 +72,7 @@ public class EditInfomationActivity extends AppCompatActivity {
         btn_chonanhtuthuvien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ToolSupport.choosePicture(EditInfomationActivity.this,REQUEST_CHOOSE_PHOTO);
+                ToolSupport.choosePicture(EditInfomationActivity.this, REQUEST_CHOOSE_PHOTO);
             }
         });
 
@@ -91,7 +92,7 @@ public class EditInfomationActivity extends AppCompatActivity {
                 bundle.putString("avatar", avatar);
                 bundle.putString("name", edt_fullname.getText() + "");
                 bundle.putString("address", edt_address.getText() + "");
-                bundle.putString("email", edt_email.getText()+"");
+                bundle.putString("email", edt_email.getText() + "");
 
                 final Intent data = new Intent();
                 data.putExtras(bundle);
@@ -113,8 +114,6 @@ public class EditInfomationActivity extends AppCompatActivity {
     private final int REQUEST_CHOOSE_PHOTO = 132;
 
 
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -126,11 +125,11 @@ public class EditInfomationActivity extends AppCompatActivity {
                 Uri uri = data.getData();
                 InputStream is = getContentResolver().openInputStream(uri);
                 Bitmap avatar_bitmap = BitmapFactory.decodeStream(is);
-                avatar_bitmap = ToolSupport.resize(avatar_bitmap, 300,300);
+                avatar_bitmap = ToolSupport.resize(avatar_bitmap, 300, 300);
                 im_avatar.setImageBitmap(avatar_bitmap);
 
 
-                avatar = ToolSupport.saveToInternalStorage(avatar_bitmap,this);
+                avatar = ToolSupport.saveToInternalStorage(avatar_bitmap, this);
             } catch (Exception e) {
                 e.printStackTrace();
                 ToastNew.showToast(this, "Lỗi", Toast.LENGTH_SHORT);
@@ -138,10 +137,10 @@ public class EditInfomationActivity extends AppCompatActivity {
         } else if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             if (data.getExtras() == null) return;
             Bitmap avatar_bitmap = (Bitmap) data.getExtras().get("data");
-            avatar_bitmap = ToolSupport.resize(avatar_bitmap, 300,300);
+            avatar_bitmap = ToolSupport.resize(avatar_bitmap, 300, 300);
 
             im_avatar.setImageBitmap(avatar_bitmap);
-            avatar = ToolSupport.saveToInternalStorage(avatar_bitmap,this);
+            avatar = ToolSupport.saveToInternalStorage(avatar_bitmap, this);
         }
     }
 
