@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Thông tin câu hỏi"
+            android:fontFamily="@font/robotobold"
             android:textAllCaps="true"
             android:textSize="25sp"
             android:textColor="#142E54"
@@ -31,12 +32,15 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="@dimen/dodai10"
             android:text="Đính kèm ảnh"
+            android:fontFamily="@font/robotobold"
             android:textColor="#142E54"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dodai15"
+            android:layout_marginBottom="@dimen/dodai10"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
 
@@ -44,7 +48,7 @@
                 android:id="@+id/iv_image"
                 android:layout_width="120dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="40dp"
                 app:srcCompat="@drawable/ic_image"/>
 
             <LinearLayout
@@ -59,6 +63,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:text="Tải lên"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="#142E54"
                     android:background="@drawable/button_click1"
                     android:layout_marginBottom="@dimen/dodai10"/>
 
@@ -66,6 +72,8 @@
                     android:id="@+id/btn_camera"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="#142E54"
                     android:background="@drawable/button_click1"
                     android:text="Chụp mới" />
             </LinearLayout>
@@ -91,12 +99,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tiêu đề"
+                android:fontFamily="@font/robotobold"
+                android:textColor="#142E54"
                 android:textStyle="bold" />
             <EditText
                 android:id="@+id/edt_tittle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Tiêu đề"
+                android:fontFamily="@font/robotomedium"
                 android:textColor="#142E54"
                 android:textStyle="bold"/>
             </LinearLayout>
@@ -111,9 +122,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Lĩnh vực"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="#142E54"
                     android:textStyle="bold" />
                 <Spinner
                     android:id="@+id/spn_field"
+                    android:fontFamily="@font/robotobold"
+                    android:textColor="#142E54"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
@@ -123,20 +138,21 @@
         </LinearLayout>
 
 
-
-
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ghi chú"
+            android:layout_marginTop="@dimen/dodai15"
+            android:fontFamily="@font/robotobold"
+            android:textColor="#142E54"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edt_note"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/robotomedium"
+            android:textColor="#142E54"
             android:hint="Nhập ghi chú của bạn (nếu có)" />
 
 
@@ -148,6 +164,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/robotobold"
+                android:textColor="#142E54"
                 android:text="Giá tiền: "
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -172,6 +190,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Còn lại: "
+                android:fontFamily="@font/robotobold"
+                android:textColor="#142E54"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -189,21 +209,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dodai20"
             android:gravity="center">
 
             <Button
                 android:id="@+id/btn_clear"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dodai130"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Nhập lại"
+                android:fontFamily="@font/robotobold"
+                android:textColor="#142E54"
+                android:background="@drawable/button_click1"
                 app:strokeColor="@color/colorPrimary" />
 
             <Button
                 android:id="@+id/btn_search_expert"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dodai130"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:fontFamily="@font/robotobold"
+                android:textColor="#142E54"
+                android:background="@drawable/button_click1"
                 android:text="Tìm chuyên gia" />
         </LinearLayout>
     </LinearLayout>

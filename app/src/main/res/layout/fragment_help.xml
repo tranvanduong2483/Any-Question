@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:padding="10dp"
     android:orientation="vertical"
@@ -19,11 +20,13 @@
     <Switch
         android:layout_gravity="center_horizontal"
         android:textSize="20sp"
-        android:text="Sẳn sàng nhận câu hỏi "
+        android:text="Sẵn sàng nhận câu hỏi "
         android:id="@+id/sw_expert_ready"
         android:layout_width="300dp"
         android:layout_height="@dimen/dodai40"
-        android:checked="false"/>
+        android:checked="false"
+        android:fontFamily="@font/robotomedium"
+        android:textColor="#142e54"/>
     <EditText
         android:id="@+id/edt_keywords"
         android:hint="Những từ khóa liên quan hết lĩnh vực của bạn"
@@ -33,7 +36,10 @@
         android:background="@drawable/text_vien"
         android:layout_width="match_parent"
         android:paddingLeft="@dimen/dodai10"
-        android:layout_height="@dimen/dodai60"/>
+        android:layout_height="@dimen/dodai60"
+        android:fontFamily="@font/robotolight"
+        android:textColor="#142e54"
+        android:textColorHint="#142e54"/>
     <EditText
         android:id="@+id/edt_gioithieu"
         android:hint="Tin nhắn giới thiệu mở đầu"
@@ -43,7 +49,10 @@
         android:background="@drawable/text_vien"
         android:layout_width="match_parent"
         android:paddingLeft="@dimen/dodai10"
-        android:layout_height="@dimen/dodai60"/>
+        android:layout_height="@dimen/dodai60"
+        android:fontFamily="@font/robotolight"
+        android:textColor="#142e54"
+        android:textColorHint="#142e54"/>
 
 
 </LinearLayout>

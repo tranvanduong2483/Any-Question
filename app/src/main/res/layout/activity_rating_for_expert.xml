@@ -23,7 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        android:textColor="#A7967E"
+        android:textColor="#F28907"
+        android:fontFamily="@font/robotoitalic"
         android:text="Bạn có hài lòng về cuộc thảo luận này không?"
         android:textSize="@dimen/cochu15"
         android:textStyle="italic" />
@@ -45,7 +46,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="@dimen/dodai10"
-        android:textColor="#A7967E"
+        android:textColor="#F28907"
+        android:fontFamily="@font/robotomedium"
         android:text="Awesome. I love it"
         android:textSize="15sp"
         android:textStyle="bold" />
@@ -57,6 +59,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dodai20"
         android:lines="4"
+        android:fontFamily="@font/robotolight"
+        android:textColor="#142e54"
+        android:textColorHint="#142e54"
         android:hint="Nhập cảm nhận của bạn"
         android:paddingLeft="@dimen/dodai15"
         android:inputType="textMultiLine" />
@@ -64,10 +69,12 @@
     <CheckBox
         android:text="Gửi dưới dạng khiếu nại"
         android:layout_marginTop="@dimen/dodai10"
+        android:layout_marginBottom="@dimen/dodai10"
         android:paddingLeft="@dimen/dodai10"
-        android:textSize="15sp"
+        android:textSize="@dimen/cochu15"
         android:textStyle="bold"
-        android:textColor="#000"
+        android:fontFamily="@font/robotobold"
+        android:textColor="#142e54"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -81,6 +88,7 @@
         android:layout_marginLeft="@dimen/dodai10"
         android:background="@drawable/button_click"
         android:text="Gửi phản hồi"
+        android:fontFamily="@font/robotomedium"
         android:textColor="@android:color/white" />
 
 
@@ -98,8 +106,9 @@
         android:layout_marginTop="@dimen/dodai10"
         android:background="@drawable/button_click"
         android:text="Hủy bỏ"
+        android:fontFamily="@font/robotomedium"
         android:textColor="#FFF"
-        app:strokeColor="@color/colorPrimary" />
+         />
 
 
     </LinearLayout>

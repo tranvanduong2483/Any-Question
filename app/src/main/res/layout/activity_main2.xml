@@ -47,7 +47,6 @@
 
                 <TextView
                     android:id="@+id/tv_fullname"
-                    android:fontFamily="sans-serif-light"
                     android:text="Trần Văn Dương"
                     android:layout_below="@+id/imgUser"
                     android:layout_centerHorizontal="true"
@@ -57,7 +56,8 @@
                     android:textStyle="bold"
                     android:layout_marginTop="1sp"
                     android:textSize="32sp"
-                    android:textColor="#000"/>
+                    android:textColor="#142e54"
+                    android:fontFamily="@font/robotobold"/>
 
                 <TextView
                     android:layout_gravity="center_horizontal"
@@ -66,10 +66,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_fullname"
                     android:layout_centerHorizontal="true"
-                    android:fontFamily="sans-serif"
                     android:text="71 Đồng Kè, Hòa Khánh, Liên Chiểu, Đà Nẵng"
                     android:textAllCaps="true"
-                    android:textColor="#000"
+                    android:textColor="#142e54"
+                    android:fontFamily="@font/robotoregular"
                     android:textSize="14sp"
                     android:layout_marginLeft="@dimen/dodai5"
                     />
@@ -108,8 +108,8 @@
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
                     android:text="98"
+                    android:fontFamily="@font/robotobold"
                     android:textColor="@color/white"
                     android:textSize="25sp" />
 
@@ -117,7 +117,7 @@
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="@font/robotobold"
                     android:text="Giải đáp"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
@@ -149,7 +149,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="@font/robotobold"
                     android:text="5.00"
                     android:textColor="@color/white"
                     android:textSize="25sp" />
@@ -158,7 +158,7 @@
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="@font/robotobold"
                     android:text="Sao trung bình"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
@@ -203,14 +203,15 @@
                         android:layout_height="wrap_content"
                         android:text="Trình độ"
                         android:textStyle="bold"
-                        android:textColor="#000"
+                        android:textColor="#142e54"
+                        android:fontFamily="@font/robotobold"
                         android:textSize="13sp" />
 
                     <TextView
                         android:id="@+id/tv_education"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
+                        android:fontFamily="@font/robotoregular"
                         android:text="Kỹ sư"
                         android:textColor="#274873"
                         android:textSize="15sp" />
@@ -234,14 +235,15 @@
                         android:layout_height="wrap_content"
                         android:text="Chuyên nghành"
                         android:textStyle="bold"
-                        android:textColor="#000"
+                        android:textColor="#142e54"
+                        android:fontFamily="@font/robotobold"
                         android:textSize="13sp" />
 
                     <TextView
                         android:id="@+id/tv_field"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
+                        android:fontFamily="@font/robotoregular"
                         android:text="Công nghệ thông tin"
                         android:textColor="#274873"
                         android:textSize="15sp" />
@@ -266,14 +268,15 @@
                     android:layout_height="wrap_content"
                     android:text="Email"
                     android:textStyle="bold"
-                    android:textColor="#000"
+                    android:textColor="#142e54"
+                    android:fontFamily="@font/robotobold"
                     android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/tv_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="@font/robotoregular"
                     android:text="tranvanduong2483@gmail.com"
                     android:textColor="#274873"
                     android:textSize="15sp" />
@@ -297,14 +300,15 @@
                     android:layout_height="wrap_content"
                     android:text="Tích lũy"
                     android:textStyle="bold"
-                    android:textColor="#000"
+                    android:textColor="#142e54"
+                    android:fontFamily="@font/robotobold"
                     android:textSize="13sp"/>
 
                 <TextView
                     android:id="@+id/tv_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="@font/robotoregular"
                     android:text="Số tiền tích lũy: 100.000 VNĐ"
                     android:textColor="#274873"
                     android:textSize="15sp" />
@@ -335,6 +339,7 @@
             android:textColor="#fff"
             android:layout_width="100dp"
             android:layout_height="40dp"
+            android:fontFamily="@font/robotomedium"
             android:background="@drawable/button_click"
             android:layout_gravity="center_horizontal"
             android:text="Sửa"
@@ -349,6 +354,7 @@
             android:layout_gravity="center_horizontal"
             android:text="Đổi mật khẩu"
             android:textSize="10sp"
+            android:fontFamily="@font/robotomedium"
             android:background="@drawable/button_click"/>
 
         <com.google.android.material.button.MaterialButton
@@ -357,6 +363,7 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:textSize="10sp"
+            android:fontFamily="@font/robotomedium"
             android:layout_gravity="center_horizontal"
             app:strokeColor="@color/colorPrimary"
             android:text="Thoát"

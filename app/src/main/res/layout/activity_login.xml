@@ -40,8 +40,9 @@
             android:background="@drawable/buttonxanh"
             android:gravity="center"
             android:hint="Tài khoản"
-            android:textColor="#FF5A60"
-            android:textColorHint="#FF5A60"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="#142e54"
+            android:textColorHint="#142e54"
             android:textSize="20sp" />
 
         <EditText
@@ -55,8 +56,9 @@
             android:gravity="center"
             android:hint="Mật khẩu"
             android:inputType="textPassword"
-            android:textColor="#FF5A60"
-            android:textColorHint="#FF5A60"
+            android:fontFamily="@font/robotoregular"
+            android:textColor="#142e54"
+            android:textColorHint="#142e54"
             android:textSize="20sp" />
 
         <Button
@@ -70,6 +72,7 @@
             android:background="@drawable/button_click"
             android:text="Đăng nhập"
             android:textColor="#FFFFFF"
+            android:fontFamily="@font/robotomedium"
             android:textSize="15sp" />
 
     </LinearLayout>
@@ -91,6 +94,7 @@
             app:strokeColor="@color/colorPrimary"
             android:layout_gravity="center_horizontal"
             android:text="Đăng ký ngay"
+            android:fontFamily="@font/robotomedium"
             android:textColor="#FFFFFF"
             android:textAllCaps="false"
             android:textSize="@dimen/cochu15"/>
@@ -114,6 +118,7 @@
             android:textAllCaps="false"
             android:background="@drawable/button_click"
             android:textColor="#FFFFFF"
+            android:fontFamily="@font/robotomedium"
             android:text="Quên mật khẩu" />
 
     </LinearLayout>

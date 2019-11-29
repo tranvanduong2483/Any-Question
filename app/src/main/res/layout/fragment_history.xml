@@ -15,7 +15,9 @@
         <Button
             android:id="@+id/btn_myhistory"
             android:text="Lịch sử của tôi"
-            android:background="@drawable/button3"
+            android:fontFamily="@font/robotobold"
+            android:textColor="#142E54"
+            android:background="@drawable/button_click1"
             android:layout_marginLeft="@dimen/dodai15"
             android:layout_width="@dimen/dodai130"
             android:layout_height="wrap_content" />
@@ -23,7 +25,9 @@
         <Button
             android:id="@+id/btn_refesh"
             android:text="Làm mới"
-            android:background="@drawable/button3"
+            android:fontFamily="@font/robotobold"
+            android:textColor="#142E54"
+            android:background="@drawable/button_click1"
             android:layout_marginStart="@dimen/dodai120"
             android:layout_marginRight="@dimen/dodai15"
             android:layout_width="wrap_content"
@@ -34,14 +38,25 @@
     <EditText
         android:id="@+id/tv_search"
         android:hint="Tìm kiếm cuộc thảo luận"
-        android:layout_margin="@dimen/dodai30"
+        android:layout_marginTop="@dimen/dodai30"
+        android:layout_marginBottom="@dimen/dodai10"
+        android:layout_marginRight="@dimen/dodai30"
+        android:layout_marginLeft="@dimen/dodai30"
         android:background="@drawable/text_vien"
         android:layout_width="match_parent"
         android:paddingLeft="@dimen/dodai10"
-        android:layout_height="@dimen/dodai60" />
+        android:layout_height="@dimen/dodai60"
+        android:fontFamily="@font/robotolight"
+        android:textColor="#142e54"
+        android:textColorHint="#142e54"
+        />
 
     <ListView
         android:id="@+id/lv_history"
+        android:layout_marginTop="@dimen/dodai15"
+        android:layout_marginRight="@dimen/dodai30"
+        android:layout_marginLeft="@dimen/dodai30"
+        android:layout_marginBottom="@dimen/dodai15"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

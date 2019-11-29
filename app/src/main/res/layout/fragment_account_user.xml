@@ -25,13 +25,15 @@
 
         <TextView
             android:id="@+id/tv_fullname"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Trần Văn Dương"
             android:layout_marginTop="@dimen/dodai20"
             android:layout_marginBottom="@dimen/dodai10"
-            android:textColor="#28783B"
+            android:textColor="#142e54"
+            android:fontFamily="@font/robotobold"
             android:textAllCaps="true"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -55,7 +57,8 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="center|left"
                 android:textSize="@dimen/cochu15"
-                android:textColor="#28783B"
+                android:fontFamily="@font/robotoregular"
+                android:textColor="#142e54"
                 android:text="tranvanduong2483@gmail.com" />
 
         </LinearLayout>
@@ -77,7 +80,8 @@
                 android:layout_height="@dimen/dodai35"
                 android:layout_marginLeft="10dp"
                 android:gravity="center|left"
-                android:textColor="#28783B"
+                android:fontFamily="@font/robotoregular"
+                android:textColor="#142e54"
                 android:textSize="@dimen/cochu15"
                 android:layout_gravity="center_vertical"
                 android:text="71 Đồng Kè, Hòa Khánh, Liên Chiểu, Đà Nẵng" />
@@ -101,7 +105,8 @@
                 android:layout_height="@dimen/dodai35"
                 android:layout_marginLeft="10dp"
                 android:gravity="center|left"
-                android:textColor="#28783B"
+                android:fontFamily="@font/robotoregular"
+                android:textColor="#142e54"
                 android:textSize="@dimen/cochu15"
                 android:layout_gravity="center_vertical"
                 android:text="Số tiền dư: 100.000 VNĐ" />
@@ -121,7 +126,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_click"
                 android:layout_gravity="center_horizontal"
-                android:text="Sửa" />
+                android:text="Sửa"
+                android:textColor="#FFF"/>
 
             <Button
                 android:layout_margin="10dp"
@@ -130,7 +136,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_click"
                 android:layout_gravity="center_horizontal"
-                android:text="Đổi mật khẩu" />
+                android:text="Đổi mật khẩu"
+                android:textColor="#FFF"/>
 
             <Button
                 android:id="@+id/btn_dangxuat"
@@ -139,7 +146,8 @@
                 android:background="@drawable/button_click"
                 android:layout_gravity="center_horizontal"
                 app:strokeColor="@color/colorPrimary"
-                android:text="Thoát" />
+                android:text="Thoát"
+                android:textColor="#FFF"/>
 
 
         </LinearLayout>

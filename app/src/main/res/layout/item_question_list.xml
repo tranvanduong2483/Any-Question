@@ -3,23 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@drawable/grad1"
     android:padding="10dp">
 
     <TextView
+        android:layout_marginTop="@dimen/dodai30"
+        android:layout_marginBottom="@dimen/dodai10"
         android:id="@+id/tv_tittle"
         android:text="Không hiểu về nguyên lý hoạt động của điện xoay chiều"
         android:textStyle="bold"
+        android:fontFamily="@font/robotobold"
+        android:textColor="#142E54"
         android:textSize="20sp"
         android:maxLines="2"
-
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tv_field"
+        android:layout_marginBottom="@dimen/dodai10"
         android:text="Vật lý "
-        android:textColor="@color/blue"
+        android:fontFamily="@font/robotobold"
+        android:textColor="#8C0712"
         android:textStyle="bold"
         android:textSize="15sp"
         android:layout_width="wrap_content"

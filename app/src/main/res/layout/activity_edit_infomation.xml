@@ -21,7 +21,7 @@
             android:layout_height="120dp"
             android:src="@drawable/avatar"
             app:civ_border_width="2dp"
-            app:civ_border_color="#FF000000"/>
+            app:civ_border_color="#142e54"/>
 
 
         <LinearLayout
@@ -32,7 +32,8 @@
             <Button
                 android:id="@+id/btn_chonanhtuthuvien"
                 android:text="Chọn"
-                android:textColor="#000"
+                android:textColor="#142e54"
+                android:fontFamily="@font/robotomedium"
                 android:layout_marginTop="@dimen/dodai15"
                 android:background="@drawable/button_click1"
                 android:layout_width="100dp"
@@ -40,7 +41,8 @@
             <Button
                 android:id="@+id/btn_chupanh"
                 android:text="Chụp mới"
-                android:textColor="#000"
+                android:textColor="#142e54"
+                android:fontFamily="@font/robotomedium"
                 android:layout_marginTop="@dimen/dodai10"
                 android:layout_marginBottom="@dimen/dodai15"
                 android:background="@drawable/button_click1"
@@ -53,7 +55,8 @@
     <EditText
         android:id="@+id/edt_fullname"
         android:hint="Thay đổi tên của bạn"
-        android:textColor="#000"
+        android:textColor="#142e54"
+        android:fontFamily="@font/robotoregular"
         android:paddingLeft="@dimen/dodai15"
         android:layout_marginTop="@dimen/dodai25"
         android:layout_marginLeft="@dimen/dodai15"
@@ -65,7 +68,8 @@
     <EditText
         android:id="@+id/edt_email"
         android:hint="Thay đổi địa chỉ mail"
-        android:textColor="#000"
+        android:textColor="#142e54"
+        android:fontFamily="@font/robotoregular"
         android:paddingLeft="@dimen/dodai15"
         android:layout_marginTop="@dimen/dodai15"
         android:layout_marginLeft="@dimen/dodai15"
@@ -77,7 +81,8 @@
     <EditText
         android:id="@+id/edt_address"
         android:hint="Thay đổi địa chỉ nhà"
-        android:textColor="#000"
+        android:textColor="#142e54"
+        android:fontFamily="@font/robotoregular"
         android:paddingLeft="@dimen/dodai15"
         android:layout_marginTop="@dimen/dodai15"
         android:layout_marginLeft="@dimen/dodai15"
@@ -97,7 +102,8 @@
             android:layout_marginRight="20dp"
             android:id="@+id/btn_cancel"
             android:text="Hủy bỏ"
-            android:textColor="#000"
+            android:textColor="#142e54"
+            android:fontFamily="@font/robotomedium"
             android:layout_marginTop="@dimen/dodai10"
             android:background="@drawable/button_click1"
             android:layout_width="100dp"
@@ -105,7 +111,8 @@
         <Button
             android:id="@+id/btn_save"
             android:text="Lưu"
-            android:textColor="#000"
+            android:textColor="#142e54"
+            android:fontFamily="@font/robotomedium"
             android:layout_marginTop="@dimen/dodai10"
             android:background="@drawable/button_click1"
             android:layout_width="100dp"

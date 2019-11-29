@@ -9,11 +9,14 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dodai30">
 
         <ImageView
             android:id="@+id/iv_image"
             android:src="@drawable/test"
+            android:layout_marginTop="@dimen/dodai10"
+            android:layout_marginBottom="@dimen/dodai10"
             android:layout_width="@dimen/dodai350"
             android:layout_height="300dp"
             android:layout_marginLeft="@dimen/dodai20"
@@ -22,7 +25,8 @@
         <TextView
             android:id="@+id/tv_tittle"
             android:text="Đây là tiêu đề"
-            android:textColor="#000"
+            android:textColor="#142e54"
+            android:fontFamily="@font/robotobold"
             android:textStyle="bold"
             android:textSize="@dimen/cochu15"
             android:layout_marginTop="@dimen/dodai15"
@@ -33,7 +37,8 @@
         <TextView
             android:id="@+id/tv_note"
             android:text="Ghi chú về câu hỏi"
-            android:textColor="#000"
+            android:textColor="#142e54"
+            android:fontFamily="@font/robotobold"
             android:textStyle="bold"
             android:textSize="@dimen/cochu15"
             android:layout_marginTop="5dp"
@@ -44,7 +49,8 @@
         <TextView
             android:id="@+id/tv_field"
             android:text="Lĩnh vực câu hỏi"
-            android:textColor="#000"
+            android:textColor="#142e54"
+            android:fontFamily="@font/robotobold"
             android:textStyle="bold"
             android:textSize="@dimen/cochu15"
             android:layout_marginTop="5dp"
@@ -56,7 +62,8 @@
         <TextView
             android:id="@+id/tv_money"
             android:text="50 000 VND"
-            android:textColor="#000"
+            android:textColor="#142e54"
+            android:fontFamily="@font/robotobold"
             android:textStyle="bold"
             android:textSize="@dimen/cochu15"
             android:layout_marginTop="5dp"
