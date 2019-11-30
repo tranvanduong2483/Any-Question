@@ -34,14 +34,14 @@
                 android:id="@+id/btn_chonanhtuthuvien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button5"
+                android:background="@drawable/button1"
                 android:text="Chọn" />
 
             <Button
                 android:id="@+id/btn_chupanh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button5"
+                android:background="@drawable/button1"
                 android:text="Chụp mới" />
         </LinearLayout>
     </LinearLayout>
