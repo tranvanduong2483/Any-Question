@@ -9,46 +9,62 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp">
 
         <ImageView
             android:id="@+id/iv_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/test" />
+            android:layout_width="350dp"
+            android:layout_height="300dp"
+            android:src="@drawable/test"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
 
         <TextView
             android:id="@+id/tv_tittle"
             android:text="Đây là tiêu đề"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/button3"
-            android:textColor="#CCC9BA" />
+            android:textColor="#CCC9BA"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/tv_note"
             android:text="Ghi chú về câu hỏi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/button3"
-            android:textColor="#CCC9BA"/>
+            android:textColor="#CCC9BA"
+            android:gravity="center"
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/tv_field"
             android:text="Lĩnh vực câu hỏi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/button3"
-            android:textColor="#CCC9BA"/>
+            android:textColor="#CCC9BA"
+            android:gravity="center"
+            android:textSize="16sp"/>
 
 
         <TextView
             android:id="@+id/tv_money"
             android:text="50 000 VND"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/button3"
-            android:textColor="#CCC9BA"/>
+            android:textColor="#CCC9BA"
+            android:gravity="center"
+            android:textSize="16sp"/>
 
     </LinearLayout>
 

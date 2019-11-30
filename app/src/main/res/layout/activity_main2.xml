@@ -82,7 +82,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/rellay1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/dodai20">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -168,7 +169,7 @@
 
     <RelativeLayout
         android:id="@+id/rlay1"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linlay1">
@@ -315,7 +316,7 @@
 
 
     <LinearLayout
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/rlay1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

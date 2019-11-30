@@ -21,29 +21,33 @@
         android:textSize="20sp"
         android:text="Sẳn sàng nhận câu hỏi "
         android:id="@+id/sw_expert_ready"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:checked="false"
         android:layout_marginTop="20dp"
         android:textColor="#FFFFFF"/>
     <EditText
         android:id="@+id/edt_keywords"
         android:hint="Những từ khóa liên quan hết lĩnh vực của bạn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/button3"
         android:textSize="16dp"
-        android:textColorHint="#CCC9BA"/>
+        android:textColorHint="#CCC9BA"
+        android:textColor="#000000"
+        android:gravity="center|left"/>
     <EditText
         android:id="@+id/edt_gioithieu"
         android:hint="Tin nhắn giới thiệu mở đầu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/button3"
         android:textSize="16dp"
-        android:textColorHint="#CCC9BA"/>
+        android:textColorHint="#CCC9BA"
+        android:textColor="#000000"
+        android:gravity="center|left"/>
 
 
 </LinearLayout>

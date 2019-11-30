@@ -32,7 +32,8 @@
         android:layout_centerHorizontal="true"
         android:textColorHint="#CCC9BA"
         android:background="@drawable/button3"
-        android:hint="  Tài Khoản" />
+        android:hint="  Tài Khoản"
+        android:gravity="center|left"/>
 
     <EditText
         android:layout_marginTop="20dp"
@@ -45,7 +46,8 @@
         android:layout_centerHorizontal="true"
         android:textColorHint="#CCC9BA"
         android:background="@drawable/button3"
-        android:hint="  Mật Khẩu" />
+        android:hint="  Mật Khẩu"
+        android:gravity="center|left"/>
 
     <Button
         android:id="@+id/btn_login"
@@ -77,14 +79,14 @@
 
         <Button
             android:id="@+id/btn_register"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:strokeColor="@color/colorPrimary"
             android:layout_gravity="center_horizontal"
             android:text=" Đăng ký ngay "
             android:textSize="12dp"
-            android:background="@drawable/button4"/>
+            android:background="@drawable/button2"
+            android:textColor="#CCC9BA"/>
 
     </LinearLayout>
 
@@ -105,14 +107,14 @@
 
         <Button
             android:id="@+id/btn_forget"
-            android:layout_width="150dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:strokeColor="@color/colorPrimary"
             android:text="Quên mật khẩu"
             android:textSize="12dp"
-            android:background="@drawable/button4"/>
+            android:background="@drawable/button2"
+            android:textColor="#CCC9BA"/>
 
     </LinearLayout>
 

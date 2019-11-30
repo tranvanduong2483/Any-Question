@@ -13,17 +13,18 @@
         android:layout_width="310dp"
         android:layout_height="53dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/logo2" />
+        android:background="@drawable/logo2"
+        android:layout_marginTop="30dp"/>
 
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:text="Bạn có hài lòng về cuộc thảo luận này không?"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="italic"
         android:textColor="#CCC9BA"/>
 
@@ -33,7 +34,8 @@
         android:rating="5"
         android:numStars="5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"/>
 
 
     <TextView
@@ -41,10 +43,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
         android:text="Awesome. I love it"
         android:textSize="16sp"
-        android:textStyle="bold"
         android:textColor="#CCC9BA"/>
 
     <EditText
@@ -54,25 +54,25 @@
         android:hint="Nhập cảm nhận của bạn"
         android:inputType="textMultiLine"
         android:lines="4"
-        android:textColorHint="#CCC9BA"/>
+        android:textColorHint="#CCC9BA"
+        android:textColor="#ffffff"/>
 
     <CheckBox
         android:text="Gửi dưới dạng khiếu nại"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#F44336"
+        android:textColor="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/buttonvienxanh"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button"
         android:text="Gửi phản hồi"
-        android:textColor="@android:color/white"
-        />
+        android:textColor="#000000"
+        android:layout_marginLeft="40dp"/>
 
 
 
@@ -82,12 +82,13 @@
         android:layout_height="wrap_content">
     <Button
         android:id="@+id/btn_cancel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/buttonvienxanh"
+        android:background="@drawable/button"
         android:text="Hủy bỏ"
-        app:strokeColor="@color/colorPrimary" />
+        app:strokeColor="@color/colorPrimary"
+        android:layout_marginLeft="40dp"/>
 
 
     </LinearLayout>

@@ -12,7 +12,8 @@
     <LinearLayout
         android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/im_avatar"
@@ -46,36 +47,39 @@
     <EditText
         android:id="@+id/edt_fullname"
         android:hint="Thay đổi tên của bạn"
-        android:layout_margin="10dp"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/button3"
         android:textColorHint="#CCC9BA"
-        android:textSize="16dp"
-        android:textColor="#FFFFFF"/>
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center|left"/>
     <EditText
         android:id="@+id/edt_email"
         android:hint="Thay đổi địa chỉ mail"
-        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/button3"
         android:textColorHint="#CCC9BA"
-        android:textSize="16dp"
-        android:textColor="#FFFFFF"/>
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center|left"/>
     <EditText
         android:id="@+id/edt_address"
         android:hint="Thay đổi địa chỉ nhà"
-        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/button3"
         android:textColorHint="#CCC9BA"
-        android:textSize="16dp"
-        android:textColor="#FFFFFF"/>
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center|left"/>
 
     <LinearLayout
-        android:layout_margin="30dp"
+        android:layout_marginTop="60dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:layout_width="match_parent"

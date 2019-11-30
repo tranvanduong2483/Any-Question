@@ -18,18 +18,22 @@
             android:layout_height="53dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/logo2" />
+            android:background="@drawable/logo2"
+            android:layout_marginTop="30dp"/>
 
 
         <EditText
             android:id="@+id/edt_fullname"
             android:inputType="textPersonName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center|left"
+            android:textColor="#CCC9BA"
             android:hint="Họ tên của bạn"
             android:background="@drawable/button3"
             android:textColorHint="#CCC9BA"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp" />
 
 
         <LinearLayout
@@ -41,49 +45,60 @@
                 android:id="@+id/spn_education"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="30dp" />
 
             <Spinner
                 android:id="@+id/spn_field"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="30dp"/>
         </LinearLayout>
 
 
         <EditText
             android:id="@+id/edt_introdution"
             android:inputType="textPersonName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#CCC9BA"
             android:hint="Giới thiệu ngắn về bạn"
             android:background="@drawable/button3"
             android:textColorHint="#CCC9BA"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:gravity="center|left"/>
 
         <EditText
             android:id="@+id/edt_email"
             android:inputType="textEmailAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#CCC9BA"
             android:hint="Địa chỉ email"
             android:background="@drawable/button3"
             android:textColorHint="#CCC9BA"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:gravity="center|left"/>
 
         <EditText
             android:id="@+id/edt_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#CCC9BA"
             android:hint="Địa chỉ"
             android:background="@drawable/button3"
             android:textColorHint="#CCC9BA"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:gravity="center|left"/>
 
         <EditText
             android:id="@+id/edt_account"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#CCC9BA"
             android:hint="Tài khoản"
             android:background="@drawable/button3"
             android:textColorHint="#CCC9BA"
@@ -94,31 +109,36 @@
         <LinearLayout
             android:weightSum="2"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp">
 
             <EditText
                 android:id="@+id/edt_password1"
                 android:inputType="textPassword"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:hint="Tạo mật khẩu"
                 android:background="@drawable/button3"
                 android:textColorHint="#CCC9BA"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                android:gravity="center|left"
+                android:textColor="#CCC9BA"/>
 
             <EditText
                 android:id="@+id/edt_password2"
                 android:inputType="textPassword"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_below="@id/edt_account"
                 android:hint="Nhập lại mật khẩu"
                 android:background="@drawable/button3"
                 android:textColorHint="#CCC9BA"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                android:gravity="center|left"
+                android:textColor="#CCC9BA"/>
         </LinearLayout>
 
 

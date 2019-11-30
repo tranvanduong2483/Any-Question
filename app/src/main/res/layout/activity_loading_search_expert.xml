@@ -13,20 +13,21 @@
 
     <ProgressBar
         android:id="@+id/performance_progress_bar"
-        android:layout_weight="9"
+        android:layout_weight="7"
         android:layout_width="match_parent"
         android:theme="@style/ProgressBarTheme"
         android:layout_height="0dp" />
 
     <LinearLayout
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="35dp"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="350dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/dodai130">
 
             <ImageView
                 android:layout_marginRight="5dp"
@@ -39,7 +40,7 @@
                 android:text="Tiêu đề: "
                 android:textSize="20sp"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/cochu40"
                 android:textColor="#CCC9BA"/>
 
             <TextView
@@ -47,13 +48,13 @@
                 android:textSize="20sp"
                 android:text="Cách tính căn bậc hai"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/cochu40"
                 android:textColor="#CCC9BA"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="350dp"
+            android:layout_height="40dp">
 
             <ImageView
                 android:layout_marginRight="5dp"
@@ -66,7 +67,7 @@
                 android:text="Ghi chú: "
                 android:textSize="20sp"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/cochu40"
                 android:textColor="#CCC9BA"/>
 
             <TextView
@@ -80,8 +81,8 @@
 
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="350dp"
+            android:layout_height="40dp">
 
             <ImageView
                 android:layout_marginRight="5dp"
@@ -93,7 +94,7 @@
                 android:text="Mức tiền: "
                 android:textSize="20sp"
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/cochu40"
                 android:textColor="#CCC9BA"/>
 
             <TextView
@@ -101,7 +102,7 @@
                 android:textSize="20sp"
                 android:text="20.000 VND"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/cochu40"
                 android:textColor="#CCC9BA"/>
         </LinearLayout>
 
@@ -110,7 +111,7 @@
     <Button
         android:id="@+id/btn_cancel"
         android:onClick="btn_cancel"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         app:strokeColor="@color/colorPrimary"
         android:layout_gravity="center_horizontal"
         android:text="Hủy bỏ"
