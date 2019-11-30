@@ -33,7 +33,8 @@
         android:textColorHint="#CCC9BA"
         android:background="@drawable/button3"
         android:hint="  Tài Khoản"
-        android:gravity="center|left"/>
+        android:gravity="center|left"
+        android:textColor="#FFFFFF"/>
 
     <EditText
         android:layout_marginTop="20dp"
@@ -47,7 +48,8 @@
         android:textColorHint="#CCC9BA"
         android:background="@drawable/button3"
         android:hint="  Mật Khẩu"
-        android:gravity="center|left"/>
+        android:gravity="center|left"
+        android:textColor="#FFFFFF"/>
 
     <Button
         android:id="@+id/btn_login"
@@ -79,7 +81,7 @@
 
         <Button
             android:id="@+id/btn_register"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             app:strokeColor="@color/colorPrimary"
             android:layout_gravity="center_horizontal"
@@ -107,7 +109,7 @@
 
         <Button
             android:id="@+id/btn_forget"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             app:strokeColor="@color/colorPrimary"

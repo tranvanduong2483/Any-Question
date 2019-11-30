@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:padding="10dp"
+android:background="@drawable/grad1">
+
+<TextView
+    android:id="@+id/tv_tittle"
+    android:text="Không hiểu về nguyên lý hoạt động của điện xoay chiều"
+    android:textStyle="bold"
+    android:textSize="20sp"
+    android:maxLines="2"
+
+
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:background="@drawable/grad1">
+    android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/tv_tittle"
-        android:text="Không hiểu về nguyên lý hoạt động của điện xoay chiều"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:maxLines="2"
+<TextView
+    android:id="@+id/tv_field"
+    android:text="Vật lý "
+    android:textColor="@color/blue"
+    android:textStyle="bold"
+    android:textSize="15sp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
 
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/tv_field"
-        android:text="Vật lý "
-        android:textColor="@color/blue"
-        android:textStyle="bold"
-        android:textSize="15sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <RatingBar
-        android:id="@+id/rb_danhgia"
-        style="?android:attr/ratingBarStyleSmall"
-        android:numStars="5"
-        android:rating="5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+<RatingBar
+    android:id="@+id/rb_danhgia"
+    style="?android:attr/ratingBarStyleSmall"
+    android:numStars="5"
+    android:rating="5"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
 </LinearLayout>

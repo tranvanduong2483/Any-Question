@@ -73,7 +73,7 @@
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@+id/text_message_body"
 
-        app:layout_constraintLeft_toRightOf="@+id/text_message_body" />
+        app:layout_constraintLeft_toRightOf="@+id/text_message_body"/>
 
 
 </LinearLayout>

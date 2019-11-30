@@ -23,7 +23,8 @@
             android:textAllCaps="true"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#926D6D"/>
+            android:textColor="#926D6D"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -64,7 +65,8 @@
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:text="Chụp mới"
-                    android:background="@drawable/button4"/>
+                    android:background="@drawable/button4"
+                    android:layout_marginTop="5dp"/>
             </LinearLayout>
 
 
@@ -93,8 +95,7 @@
                 <EditText
                     android:id="@+id/edt_tittle"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_margintop="10dp"
+                    android:layout_height="wrap_content"
                     android:hint="Tiêu đề"
                     android:textColorHint="#FFFFFF"
                     android:background="@drawable/button3"
@@ -197,7 +198,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp">
 
             <Button
                 android:id="@+id/btn_clear"

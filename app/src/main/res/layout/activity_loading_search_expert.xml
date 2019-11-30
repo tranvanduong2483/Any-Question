@@ -41,7 +41,7 @@
                 android:textSize="20sp"
                 android:layout_width="100dp"
                 android:layout_height="@dimen/cochu40"
-                android:textColor="#CCC9BA"/>
+                android:textColor="#CCC9BA" />
 
             <TextView
                 android:id="@+id/tv_tittle"
