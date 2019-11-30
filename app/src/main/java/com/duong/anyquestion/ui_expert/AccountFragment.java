@@ -20,6 +20,7 @@ import com.duong.anyquestion.R;
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.Expert;
+import com.duong.anyquestion.classes.SecurityActivity;
 import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.EditInfomationActivity;
 import com.duong.anyquestion.classes.ToastNew;
@@ -100,6 +101,17 @@ public class AccountFragment extends Fragment {
                 Intent intent = new Intent(getContext(), EditInfomationActivity.class);
                 intent.putExtras(bundle);
                 startActivityForResult(intent, REQUEST_CODE_EDIT_INFORMATION);
+            }
+        });
+
+        Button btn_security =view.findViewById(R.id.btn_security);
+        btn_security.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getContext(), SecurityActivity.class);
+                startActivityForResult(intent, REQUEST_CODE_EDIT_INFORMATION);
+
             }
         });
 

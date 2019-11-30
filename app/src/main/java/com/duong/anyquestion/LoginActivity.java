@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import android.app.AlertDialog;
@@ -32,8 +33,9 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
     private Socket mSocket = ConnectThread.getInstance().getSocket();
-    private Button btn_register, btn_login;
+    private Button btn_register, btn_login, btn_forget;
     private EditText edt_username, edt_password;
+    private ProgressBar pb_loading_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,24 +43,33 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         AnhXa();
-        LangNgheServer();
         ButtonEvent();
+        LangNgheServer();
     }
 
     private void ButtonEvent() {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (!mSocket.connected()){
+                    ToastNew.showToast(getApplication(), "Máy chủ ngắt kết nối!", Toast.LENGTH_LONG);
+                    return;
+                }
+
                 String Username = edt_username.getText() + "";
                 String Password = edt_password.getText() + "";
 
                 if (Username.isEmpty() || Password.isEmpty()) {
-                    Toast.makeText(getApplication(), "Thiếu thông tin", Toast.LENGTH_LONG).show();
+                    ToastNew.showToast(getApplication(), "Thiếu thông tin", Toast.LENGTH_LONG);
                     return;
                 }
 
                 ThongTinDangNhap thongTinDangNhap = new ThongTinDangNhap(Username, Password);
+
                 mSocket.emit("client-dang-nhap", thongTinDangNhap.toJSON());
+                btn_login.setVisibility(View.GONE);
+                pb_loading_login.setVisibility(View.VISIBLE);
             }
         });
 
@@ -92,15 +103,35 @@ public class LoginActivity extends AppCompatActivity {
                 alert.show();
             }
         });
+
+
+        btn_forget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, ForgetPasswordctivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void LangNgheServer() {
+        mSocket.on("disconnect", new Emitter.Listener() {
+            @Override
+            public void call(final Object... args) {
+               btn_login.setVisibility(View.VISIBLE);
+               pb_loading_login.setVisibility(View.GONE);
+            }
+        });
+
+
         mSocket.on("ket-qua-dang-nhap", new Emitter.Listener() {
                     @Override
                     public void call(final Object... args) {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                btn_login.setVisibility(View.VISIBLE);
+                                pb_loading_login.setVisibility(View.GONE);
                                 try {
                                     JSONObject data = (JSONObject) args[0];
                                     String NoiDung = data.getString("ketqua");
@@ -151,6 +182,7 @@ public class LoginActivity extends AppCompatActivity {
                                     ToastNew.showToast(LoginActivity.this, "Xuất hiện lỗi!", Toast.LENGTH_LONG);
                                 }
 
+
                             }
                         });
                     }
@@ -163,6 +195,8 @@ public class LoginActivity extends AppCompatActivity {
         edt_password = findViewById(R.id.edt_password);
         btn_login = findViewById(R.id.btn_login);
         btn_register = findViewById(R.id.btn_register);
+        btn_forget = findViewById(R.id.btn_forget);
+        pb_loading_login = findViewById(R.id.pb_loading_login);
     }
 
 

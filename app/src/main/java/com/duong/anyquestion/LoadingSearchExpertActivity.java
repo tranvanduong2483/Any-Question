@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.Expert;
+import com.duong.anyquestion.classes.Question;
 import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.classes.ToastNew;
 import com.duong.anyquestion.classes.User;
@@ -47,10 +48,11 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
 
         if (getIntent().getExtras() != null) {
             queston_json = getIntent().getExtras().getString("question");
-
-            //tv_tittle.setText(tittle);
-            //tv_money.setText(money);
-            //tv_note.setText(note);
+            Gson gson = new Gson();
+            Question question = gson.fromJson(queston_json, Question.class);
+            tv_tittle.setText(question.getTittle());
+            tv_money.setText(question.getMoney() +"");
+            tv_note.setText(question.getNote().isEmpty()?"Không có": question.getNote());
         }
 
 

@@ -105,26 +105,30 @@
                 android:id="@+id/btn_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:text="Sửa" />
             <Button
-                android:layout_margin="10dp"
                 android:id="@+id/btn_change_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:text="Đổi mật khẩu" />
 
             <Button
-                android:id="@+id/btn_dangxuat"
+                android:id="@+id/btn_security"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 app:strokeColor="@color/colorPrimary"
-                android:text="Thoát" />
-
+                android:text="Bảo mật" />
 
         </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_dangxuat"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:strokeColor="@color/colorPrimary"
+            android:text="Thoát" />
 
 
     </LinearLayout>

@@ -21,7 +21,7 @@ import org.json.JSONObject;
 public class UserRegisterActivity extends AppCompatActivity {
 
 
-    Button btn_login, btn_register;
+    Button btn_login, btn_register, btn_clear;
     EditText edt_account,edt_mail, edt_address, edt_password1,edt_password2, edt_fullname;
     Socket mSocket;
 
@@ -76,6 +76,20 @@ public class UserRegisterActivity extends AppCompatActivity {
 
                 User user = new User(Account, Password1, FullName,Address,Mail);
                 mSocket.emit("client-dang-ki-user",user.toJSON());
+            }
+        });
+
+
+        btn_clear = findViewById(R.id.btn_clear);
+        btn_clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edt_address.setText("");
+                edt_fullname.setText("");
+                edt_mail.setText("");
+                edt_account.setText("");
+                edt_password1.setText("");
+                edt_password2.setText("");
             }
         });
 

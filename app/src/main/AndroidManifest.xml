@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MessageHistoryActivity"></activity>
+        <activity android:name=".ForgetPasswordctivity"></activity>
+        <activity android:name=".classes.SecurityActivity" />
+        <activity android:name=".MessageHistoryActivity" />
         <activity
             android:name=".DetailQuestionActivity"
             android:label="Chi tiết câu hỏi" />

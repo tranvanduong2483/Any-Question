@@ -100,10 +100,22 @@
                     android:layout_height="wrap_content"
                     android:text="Lĩnh vực"
                     android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
                 <Spinner
                     android:id="@+id/spn_field"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+
+                    <ProgressBar
+                        android:id="@+id/pb_loading_field"
+                        android:layout_centerInParent="true"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"/>
+                </RelativeLayout>
             </LinearLayout>
 
 

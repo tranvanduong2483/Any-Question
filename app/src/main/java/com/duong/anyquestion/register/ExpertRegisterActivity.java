@@ -30,8 +30,8 @@ import java.util.ArrayList;
 public class ExpertRegisterActivity extends AppCompatActivity {
 
     private Socket mSocket = ConnectThread.getInstance().getSocket();
-    Button btn_login, btn_register;
-    EditText edt_account,edt_mail, edt_address, edt_password1,edt_password2, edt_fullname;
+    Button btn_login, btn_register, btn_clear;
+    EditText edt_account,edt_mail, edt_address, edt_password1,edt_password2, edt_fullname,edt_introdution;
     Spinner spn_education,spn_field;
 
     ArrayAdapter<Education> adapter_education;
@@ -81,6 +81,7 @@ public class ExpertRegisterActivity extends AppCompatActivity {
         edt_password1=  findViewById(R.id.edt_password1);
         edt_password2 = findViewById(R.id.edt_password2);
         edt_mail = findViewById(R.id.edt_email);
+        edt_introdution = findViewById(R.id.edt_introdution);
 
         btn_login = findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +127,20 @@ public class ExpertRegisterActivity extends AppCompatActivity {
         });
 
 
+
+        btn_clear = findViewById(R.id.btn_clear);
+        btn_clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edt_address.setText("");
+                edt_fullname.setText("");
+                edt_mail.setText("");
+                edt_account.setText("");
+                edt_password1.setText("");
+                edt_password2.setText("");
+                edt_introdution.setText("");
+            }
+        });
 
 
 

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
@@ -17,10 +18,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -63,9 +66,8 @@ public class SearchExpertFragment extends Fragment {
     private ArrayList<Field> array_field;
     private ArrayAdapter<Field> adapter_field;
     private Spinner spn_field;
-
-
-
+    private ProgressBar pb_loading_field;
+    private   Button btn_search_expert;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_search_expert, container, false);
@@ -75,16 +77,42 @@ public class SearchExpertFragment extends Fragment {
         tv_money = view.findViewById(R.id.tv_money);
         iv_image = view.findViewById(R.id.iv_image);
         spn_field =view.findViewById(R.id.spn_field);
+        pb_loading_field= view.findViewById(R.id.pb_loading_field);
+        spn_field.setVisibility(View.GONE);
+
 
         array_field=new ArrayList<>();
-        mSocket.on("server-sent-field",callback_get_field);
-        setGetFiled();
+        array_field.add(new Field(-1, "Chọn lĩnh vực"));
 
+        adapter_field = new ArrayAdapter<Field>(view.getContext(), android.R.layout.simple_spinner_item, array_field){
+                @Override
+                public boolean isEnabled(int position) {
+                    if (position == 0) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
 
-        adapter_field = new ArrayAdapter<>(view.getContext(), android.R.layout.simple_spinner_item, array_field);
+            @Override
+            public View getDropDownView(int position, View convertView,
+                                        ViewGroup parent) {
+                View view = super.getDropDownView(position, convertView, parent);
+                TextView tv = (TextView) view;
+                if(position == 0){
+                    // Set the hint text color gray
+                    tv.setTextColor(Color.GRAY);
+                }
+                else {
+                    tv.setTextColor(Color.BLACK);
+                }
+                return view;
+            }
+        };
         spn_field.setAdapter(adapter_field);
 
-        Button btn_search_expert = view.findViewById(R.id.btn_search_expert);
+         btn_search_expert = view.findViewById(R.id.btn_search_expert);
+        btn_search_expert.setEnabled(false);
         btn_search_expert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,7 +127,11 @@ public class SearchExpertFragment extends Fragment {
 
                 Question question = new Question(1, tittle, field_id, imageString, note, money, sessionManager.getAccount());
 
-                if (tittle.isEmpty()) {
+                if ( avatarString ==null) {
+                    ToastNew.showToast(getActivity(), "Thiếu ảnh", Toast.LENGTH_SHORT);
+                    return;
+                }
+                if (tittle.isEmpty() ||spn_field.getSelectedItemPosition()==0 ) {
                     ToastNew.showToast(getActivity(), "Thiếu thông tin", Toast.LENGTH_SHORT);
                     return;
                 }
@@ -118,6 +150,9 @@ public class SearchExpertFragment extends Fragment {
             public void onClick(View view) {
                 edt_tille.setText("");
                 edt_note.setText("");
+                iv_image.setImageResource(R.drawable.ic_image);
+                avatarString = null;
+                spn_field.setSelection(0);
             }
         });
 
@@ -142,23 +177,26 @@ public class SearchExpertFragment extends Fragment {
             }
         });
 
-
+        mSocket.on("server-sent-field",callback_get_field);
+        setGetFiled();
         return view;
     }
 
 
     private void setGetFiled() {
+        mSocket.emit("client-get-field", "client-get-field *****");
+
         TimerTask timertaks = new TimerTask() {
             @Override
             public void run() {
-                if (array_field.isEmpty()) {
+                if (array_field.isEmpty() || array_field.size()==1) {
                     mSocket.emit("client-get-field", "client-get-field *****");
                 }
             }
         };
 
 
-        long delay = 1000L;
+        long delay = 3000L;
         Timer timer = new Timer("Timer");
         timer.schedule(timertaks, 0, delay);
 
@@ -210,13 +248,22 @@ public class SearchExpertFragment extends Fragment {
                 public void run() {
 
                     try {
+                        array_field.clear();
+                        array_field.add(new Field(-1, "Chọn lĩnh vực"));
                         JSONArray jsonArray = (JSONArray) args[0];
                         Gson gson = new Gson();
                         for (int i=0; i<jsonArray.length(); i++){
                             Field field = gson.fromJson( jsonArray.get(i).toString(),Field.class);
-                            adapter_field.add(field);
+                            array_field.add(field);
                         }
                         adapter_field.notifyDataSetChanged();
+
+                        if (array_field.size()!=1 && array_field.size()!=0){
+                            pb_loading_field.setVisibility(View.GONE);
+                            spn_field.setVisibility(View.VISIBLE);
+                            btn_search_expert.setEnabled(true);
+                        }
+
                     } catch (Exception ignored) { }
 
                 }

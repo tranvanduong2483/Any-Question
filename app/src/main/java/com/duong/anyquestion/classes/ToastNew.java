@@ -10,7 +10,7 @@ public class ToastNew {
     {
         if(m_currentToast != null)
             m_currentToast.cancel();
-        m_currentToast = Toast.makeText(context.getApplicationContext(), text, time);
+        m_currentToast = Toast.makeText(context, text, time);
         m_currentToast.show();
     }
 
@@ -21,4 +21,6 @@ public class ToastNew {
         m_currentToast = Toast.makeText(context.getApplicationContext(), text, time);
         m_currentToast.show();
     }
+
+
 }
