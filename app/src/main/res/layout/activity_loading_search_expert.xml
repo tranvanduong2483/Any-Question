@@ -9,7 +9,7 @@
     android:padding="15dp"
     android:gravity="center"
     tools:context=".LoadingSearchExpertActivity"
-    android:background="@drawable/search4_user"
+
     >
 
     <ProgressBar

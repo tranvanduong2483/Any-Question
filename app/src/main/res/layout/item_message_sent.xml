@@ -22,7 +22,7 @@
         android:id="@+id/text_message_body"
         android:visibility="visible"
         android:text="Xin chào bạn"
-        android:background="@drawable/rounded_rectangle_green"
+        android:background="#3399FF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxWidth="240dp"

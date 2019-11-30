@@ -29,17 +29,20 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <Button
                 android:id="@+id/btn_chonanhtuthuvien"
-                android:text="Chọn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                />
+                android:background="@drawable/button5"
+                android:text="Chọn" />
+
             <Button
                 android:id="@+id/btn_chupanh"
-                android:text="Chụp mới"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:background="@drawable/button5"
+                android:text="Chụp mới" />
         </LinearLayout>
     </LinearLayout>
 
