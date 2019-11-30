@@ -52,22 +52,22 @@
             android:layout_marginStart="10dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/ic_image"
-            android:layout_width="35dp"
-            android:layout_height="35dp"/>
+            android:layout_width="@dimen/dodai35"
+            android:layout_height="@dimen/dodai35"/>
 
 
 
         <EditText
             android:id="@+id/edt_message"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dodai35"
             android:layout_gravity="center"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_weight="1"
             android:background="@drawable/back_vien1"
             android:hint="Viết tin nhắn"
-            android:fontFamily="@font/robotolight"
+            android:fontFamily="@font/robotoregular"
             android:textColor="#142e54"
             android:textColorHint="#142e54"
             android:textSize="@dimen/cochu15"
@@ -76,8 +76,8 @@
 
         <ImageButton
             android:id="@+id/btn_send"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="@dimen/dodai35"
+            android:layout_height="@dimen/dodai35"
             android:layout_gravity="center_vertical"
             android:background="@drawable/ic_send"
             android:gravity="center" />

@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:paddingLeft="@dimen/dodai10"
         android:layout_height="@dimen/dodai60"
-        android:fontFamily="@font/robotolight"
+        android:fontFamily="@font/robotoregular"
         android:textColor="#142e54"
         android:textColorHint="#142e54"
         />

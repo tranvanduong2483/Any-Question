@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dodai20"
         android:lines="4"
-        android:fontFamily="@font/robotolight"
+        android:fontFamily="@font/robotoregular"
         android:textColor="#142e54"
         android:textColorHint="#142e54"
         android:hint="Nhập cảm nhận của bạn"
