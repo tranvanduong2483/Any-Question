@@ -1,74 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".LoginActivity"
+android:background="@color/register_bk_color"
+android:focusableInTouchMode="true"
+android:gravity="center"
+android:layout_gravity="center">
+
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
-    tools:context=".classes.SecurityActivity">
-
-
-    <TextView
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_margin="10dp"
-        android:text="Hãy cập nhật câu hỏi bảo mật của bạn để đề phòng khi quên mật khẩu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <Spinner
-        android:id="@+id/spn_security_question"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-        <ProgressBar
-            android:id="@+id/pb_loading_question"
-            android:layout_centerInParent="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-    </RelativeLayout>
-
-
-    <EditText
-        android:id="@+id/edt_answer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Nhập câu trả lời của bạn" />
-
-    <EditText
-        android:id="@+id/edt_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:inputType="textPassword"
-        android:hint="Nhập mật khẩu để thay đổi" />
-
+    android:layout_alignParentTop="true">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/btn_cancel"
-            android:layout_margin="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hủy bỏ" />
+        android:orientation="vertical"
+        android:padding="20dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                style="@style/viewParent.headerText.NoMode"
+                android:textColor="@color/whiteTextColor"
+                android:text="Help you\nimprove\nfelling\nwith \nAny \nQuestion!"/>
 
-        <Button
-            android:id="@+id/btn_save"
-            android:layout_margin="10dp"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="260dp"
+                android:layout_height="260dp"
+                android:src="@drawable/anyquestion"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <androidx.cardview.widget.CardView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Thay đổi" />
+            android:layout_marginTop="30dp"
+            app:cardBackgroundColor="@color/whiteTextColor"
+            app:cardCornerRadius="10dp"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="3dp"
+            >
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputName"
+                    style="@style/parent">
+                    <EditText
+                        android:id="@+id/edt_answer"
+                        style="@style/modifiedEditText"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:hint="Your answer"
+                        android:layout_margin="10dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Spinner
+                        android:id="@+id/spn_security_question"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <ProgressBar
+                        android:id="@+id/pb_loading_question"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputPassword"
+                    style="@style/parent">
+                    <EditText
+                        android:id="@+id/edt_password"
+                        style="@style/modifiedEditText"
+                        android:hint="Fill your password to change"
+                        android:maxLines="1"
+                        android:inputType="textPassword"
+                        android:layout_margin="10dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+                    <Button
+                        android:layout_height="35dp"
+                        android:id="@+id/btn_save"
+                        style="@style/loginButton1"
+                        android:text="Confirm"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_alignParentLeft="true"/>
+
+                    <Button
+                        android:id="@+id/btn_cancel"
+                        android:layout_height="35dp"
+                        style="@style/loginButton1"
+                        android:text="Cancel"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>
+</RelativeLayout>
