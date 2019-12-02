@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    android:background="@drawable/gradient"
-
-    tools:context=".LoginActivity">
+    android:background="@drawable/gradient">
 
     <ImageView
         android:id="@+id/logo"
@@ -91,7 +88,6 @@
             android:id="@+id/btn_register"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:strokeColor="@color/colorPrimary"
             android:layout_gravity="center_horizontal"
             android:text=" Đăng ký ngay "
@@ -103,7 +99,6 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             app:strokeColor="@color/colorPrimary"
             android:text="Quên mật khẩu"
             android:textSize="12dp"
