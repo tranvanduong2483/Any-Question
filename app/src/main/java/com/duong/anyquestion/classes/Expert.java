@@ -107,7 +107,7 @@ public class Expert {
             jsonObject.put("expert_id", getExpert_id());
             jsonObject.put("education_id", getEducation_id());
             jsonObject.put("avatar", getAvatar());
-            jsonObject.put("field_id", getExpert_id() );
+            jsonObject.put("field_id", getField_id());
             jsonObject.put("Password", getPassword());
             jsonObject.put("FullName", getFullName());
             jsonObject.put("Address", getAddress());

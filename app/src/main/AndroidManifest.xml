@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ForgetPasswordctivity"></activity>
-        <activity android:name=".classes.SecurityActivity" />
+        <activity android:name=".SecurityActivity" />
         <activity android:name=".MessageHistoryActivity" />
         <activity
             android:name=".DetailQuestionActivity"

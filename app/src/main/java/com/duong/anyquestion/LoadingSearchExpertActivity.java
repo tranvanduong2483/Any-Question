@@ -24,6 +24,9 @@ import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class LoadingSearchExpertActivity extends AppCompatActivity {
 
     private Socket mSocket = ConnectThread.getInstance().getSocket();
@@ -32,6 +35,7 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
     private String queston_json;
 
     private int count = 0;
+    private Runnable finnish_time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,24 +68,27 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
         }, 5000);
 
 
-        handler.postDelayed(new Runnable() {
+        finnish_time = new Runnable() {
             @Override
             public void run() {
                 ToastNew.showToast(LoadingSearchExpertActivity.this, "Hủy do quá lâu!", Toast.LENGTH_LONG);
+                mSocket.emit("cancel-search-expert", "Huy tim kiem chuyen gia do qua thoi gian");
                 finish();
             }
-        }, 60000);
-        mSocket.on("tim kiemn chuyen gia that bai", timkiemthabai);
-        mSocket.on("bat dau cuoc thao luan", callback_kqtkcg);
+        };
+
+        handler.postDelayed(finnish_time, 30000);
+
+        mSocket.once("tim kiem chuyen gia that bai", timkiemthabai);
+        mSocket.once("bat dau cuoc thao luan", callback_kqtkcg);
 
         mSocket.on("disconnect", new Emitter.Listener() {
             @Override
             public void call(final Object... args) {
-
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ToastNew.showToast(LoadingSearchExpertActivity.this, "Máy chủ ngắt kết nối!", Toast.LENGTH_LONG);
+                        ToastNew.showToast(getApplication(), "Máy chủ ngắt kết nối!", Toast.LENGTH_LONG);
                         finish();
                     }
                 });
@@ -90,7 +97,10 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
 
     }
 
+
     public void btn_cancel(View view) {
+        handler.removeCallbacks(finnish_time);
+        mSocket.emit("cancel-search-expert", "Tu tay huy tim kiem chuyen gia");
         finish();
     }
 
@@ -101,13 +111,10 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    count++;
-
-                    if (count >= 3) {
-                        ToastNew.showToast(LoadingSearchExpertActivity.this, "Không tìm thấy chuyên gia thích hợp!", Toast.LENGTH_SHORT);
-                        finish();
-                    }
-
+                    handler.removeCallbacks(finnish_time);
+                    ToastNew.showToast(LoadingSearchExpertActivity.this, args[0] + "", Toast.LENGTH_SHORT);
+                    mSocket.emit("cancel-search-expert", "Chuyen gia tu choi");
+                    finish();
                 }
 
             });
@@ -132,13 +139,14 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
                         bundle.putInt("conversation_id", conversation_id);
                         intent_nhantin.putExtras(bundle);
 
+                        handler.removeCallbacks(finnish_time);
+
                             intent_nhantin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent_nhantin);
                             finish();
                     } catch (Exception e) {
                         e.printStackTrace();
                         ToastNew.showToast(LoadingSearchExpertActivity.this, "Lỗi gì đó", Toast.LENGTH_SHORT);
-
                     }
                 }
             });
@@ -148,9 +156,13 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                handler.removeCallbacks(finnish_time);
+                mSocket.emit("cancel-search-expert", "Tu tay huy tim kiem chuyen gia");
                 this.finish();
                 return true;
             default:
+                handler.removeCallbacks(finnish_time);
+                mSocket.emit("cancel-search-expert", "Tu tay huy tim kiem chuyen gia");
                 this.finish();
                 return super.onOptionsItemSelected(item);
         }

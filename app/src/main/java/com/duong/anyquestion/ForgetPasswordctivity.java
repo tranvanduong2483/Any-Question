@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.duong.anyquestion.classes.ConnectThread;
-import com.duong.anyquestion.classes.SecurityActivity;
 import com.duong.anyquestion.classes.SecurityQuestion;
 import com.duong.anyquestion.classes.ToastNew;
 import com.github.nkzawa.emitter.Emitter;
@@ -223,7 +222,8 @@ public class ForgetPasswordctivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (array_security_question.isEmpty() || array_security_question.size()==1) {
-                    mSocket.emit("client-get-security-question","get_security_quesiton");
+                    if (mSocket.connected())
+                        mSocket.emit("client-get-security-question", "get_security_quesiton");
                 }
             }
         };

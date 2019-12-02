@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,11 +19,10 @@ import com.duong.anyquestion.R;
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.Expert;
-import com.duong.anyquestion.classes.SecurityActivity;
+import com.duong.anyquestion.SecurityActivity;
 import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.EditInfomationActivity;
 import com.duong.anyquestion.classes.ToastNew;
-import com.duong.anyquestion.classes.User;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
 
@@ -66,8 +64,8 @@ public class AccountFragment extends Fragment {
         }
 
         tv_fullname.setText(expert.getFullName());
-        tv_education.setText(expert.getEducation_id() +"123");
-        tv_field.setText(expert.getField_id()+"12345");
+        tv_education.setText(expert.getEducation_id() + "");
+        tv_field.setText(expert.getField_id() + "");
         tv_email.setText(expert.getEmail());
         tv_address.setText(expert.getAddress());
         tv_money.setText(expert.getMoney() + " VND");
@@ -76,7 +74,11 @@ public class AccountFragment extends Fragment {
         btn_dangxuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mSocket.emit("logout");
+                if (mSocket.connected()) {
+                    mSocket.emit("logout", "expert");
+                } else {
+                    ToastNew.showToast(getActivity(), "Máy chủ ngắt kết nối!", Toast.LENGTH_LONG);
+                }
             }
         });
 

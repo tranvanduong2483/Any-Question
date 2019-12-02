@@ -82,7 +82,8 @@ public class RatingFragment extends Fragment {
         TimerTask timertaks = new TimerTask() {
             @Override
             public void run() {
-                mSocket.emit("get-list-bxh", "get-list-bxh");
+                if (mSocket.connected())
+                    mSocket.emit("get-list-bxh", "get-list-bxh");
             }
         };
 

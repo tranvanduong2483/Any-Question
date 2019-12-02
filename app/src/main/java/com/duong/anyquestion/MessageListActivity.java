@@ -89,18 +89,48 @@ public class MessageListActivity extends AppCompatActivity {
         mSocket.on("server-send-message", callback_nhantinnhan);
         mSocket.on("user-ready-thao-luan", callback_gioithieu);
 
+        mSocket.on("server-bao-nguoi-kia-da-roi-cuoc-thao-luan", new Emitter.Listener() {
+            @Override
+            public void call(final Object... args) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if (conversation_id != (int) args[0]) return;
+
+                        if (user != null) {
+                            ToastNew.showToast(getApplication(), "Chuyên gia đã rời cuộc thảo luận!", Toast.LENGTH_LONG);
+                            Intent intent = new Intent(MessageListActivity.this, RatingForExpertActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("conversation_id", conversation_id);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        } else {
+                            ToastNew.showToast(getApplication(), "Người thắc mắc đã rời cuộc thảo luận!", Toast.LENGTH_LONG);
+                        }
+
+                        finish();
+
+                    }
+                });
+            }
+        });
+
+
+
         mMessageAdapter = new MessageListAdapter(this, messageList);
         mMessageRecycler.setLayoutManager(new LinearLayoutManager(this));
         mMessageRecycler.setAdapter(mMessageAdapter);
 
 
         if (user != null) {
-            //  ToastNew.showToast(this, "Bạn và chuyên gia đã được kết nối với nhau!", Toast.LENGTH_LONG);
+            ToastNew.showToast(this, "Bạn và chuyên gia đã được kết nối với nhau!", Toast.LENGTH_LONG);
             mSocket.emit("user-ready-thao-luan");
         }
 
         if (expert != null) {
-            // ToastNew.showToast(this, "Bạn và người đặt câu hỏi đã được kết nối với nhau!", Toast.LENGTH_LONG);
+            ToastNew.showToast(this, "Bạn và người đặt câu hỏi đã được kết nối với nhau!", Toast.LENGTH_LONG);
             mSocket.emit("expert-ready-thao-luan");
         }
 
@@ -295,6 +325,8 @@ public class MessageListActivity extends AppCompatActivity {
                                 intent.putExtras(bundle);
                                 startActivity(intent);
                             }
+
+                            mSocket.emit("client-roi-cuoc-thao-luan", conversation_id);
 
                             finish();
                         }

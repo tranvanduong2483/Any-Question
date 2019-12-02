@@ -63,6 +63,7 @@ public class UserRegisterActivity extends AppCompatActivity {
                 String Mail = edt_mail.getText() +"";
                 String Address = edt_address.getText() +"";
 
+
                 if (Account.isEmpty() || FullName.isEmpty() || Password1.isEmpty()
                     || Address.isEmpty() || Mail.isEmpty() || Password2.isEmpty()){
                     Toast.makeText(getApplication(),"Thiếu thông tin", Toast.LENGTH_LONG).show();

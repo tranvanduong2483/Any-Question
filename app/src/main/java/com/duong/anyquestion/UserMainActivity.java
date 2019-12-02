@@ -1,16 +1,26 @@
 package com.duong.anyquestion;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
+import com.duong.anyquestion.classes.Expert;
 import com.duong.anyquestion.classes.SessionManager;
+import com.duong.anyquestion.classes.ToastNew;
+import com.duong.anyquestion.classes.User;
 import com.duong.anyquestion.ui_user.AccountFragment;
 import com.duong.anyquestion.ui_user.HistoryFragment;
 import com.duong.anyquestion.ui_user.SearchExpertFragment;
+import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +30,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import org.json.JSONObject;
 
 public class UserMainActivity extends AppCompatActivity {
 
@@ -52,6 +64,20 @@ public class UserMainActivity extends AppCompatActivity {
         nav_view.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 
+        mSocket.on("server-request-logout-because-same-login", new Emitter.Listener() {
+            @Override
+            public void call(final Object... args) {
+                runOnUiThread(new Runnable() {
+                                  @Override
+                                  public void run() {
+                                      ToastNew.showToast(getApplication(), "Bị đăng xuất do người khác đăng nhập!", Toast.LENGTH_LONG);
+                                      mSocket.emit("logout", "user");
+                                  }
+                              }
+                );
+
+            }
+        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

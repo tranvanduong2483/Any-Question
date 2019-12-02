@@ -1,17 +1,13 @@
 package com.duong.anyquestion.ui_user;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +19,7 @@ import com.duong.anyquestion.R;
 import com.duong.anyquestion.EditInfomationActivity;
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
-import com.duong.anyquestion.classes.SecurityActivity;
+import com.duong.anyquestion.SecurityActivity;
 import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.classes.ToastNew;
 import com.duong.anyquestion.classes.User;
@@ -32,9 +28,6 @@ import com.github.nkzawa.socketio.client.Socket;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
-import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -100,7 +93,11 @@ public class AccountFragment extends Fragment {
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mSocket.emit("logout");
+                if (mSocket.connected()) {
+                    mSocket.emit("logout", "user");
+                } else {
+                    ToastNew.showToast(getActivity(), "Máy chủ ngắt kết nối!", Toast.LENGTH_LONG);
+                }
             }
         });
 

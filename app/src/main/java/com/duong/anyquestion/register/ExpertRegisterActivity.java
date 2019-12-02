@@ -127,7 +127,6 @@ public class ExpertRegisterActivity extends AppCompatActivity {
         });
 
 
-
         btn_clear = findViewById(R.id.btn_clear);
         btn_clear.setOnClickListener(new View.OnClickListener() {
             @Override

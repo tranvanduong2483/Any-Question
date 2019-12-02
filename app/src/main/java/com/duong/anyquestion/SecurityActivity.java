@@ -1,8 +1,7 @@
-package com.duong.anyquestion.classes;
+package com.duong.anyquestion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,7 +15,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.duong.anyquestion.R;
+import com.duong.anyquestion.classes.ConnectThread;
+import com.duong.anyquestion.classes.SecurityQuestion;
+import com.duong.anyquestion.classes.SessionManager;
+import com.duong.anyquestion.classes.ToastNew;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.gson.Gson;
@@ -224,7 +226,8 @@ public class SecurityActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (array_security_question.isEmpty() || array_security_question.size()==1) {
-                    mSocket.emit("client-get-security-question","get_security_quesiton");
+                    if (mSocket.connected())
+                        mSocket.emit("client-get-security-question", "get_security_quesiton");
                 }
             }
         };

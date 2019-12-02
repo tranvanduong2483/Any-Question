@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.duong.anyquestion.classes.ConnectThread;
-import com.duong.anyquestion.classes.SecurityActivity;
 import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.classes.ToastNew;
 import com.github.nkzawa.emitter.Emitter;

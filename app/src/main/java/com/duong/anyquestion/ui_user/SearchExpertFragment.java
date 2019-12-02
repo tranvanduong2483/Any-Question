@@ -190,7 +190,9 @@ public class SearchExpertFragment extends Fragment {
             @Override
             public void run() {
                 if (array_field.isEmpty() || array_field.size()==1) {
-                    mSocket.emit("client-get-field", "client-get-field *****");
+
+                    if (mSocket.connected())
+                        mSocket.emit("client-get-field", "client-get-field *****");
                 }
             }
         };
