@@ -7,14 +7,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import android.app.AlertDialog;
+
 
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
@@ -28,7 +29,6 @@ import com.duong.anyquestion.register.UserRegisterActivity;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.gson.Gson;
-
 import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
@@ -40,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.M){ getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR); }
         setContentView(R.layout.activity_login);
 
         AnhXa();
@@ -118,8 +119,8 @@ public class LoginActivity extends AppCompatActivity {
         mSocket.on("disconnect", new Emitter.Listener() {
             @Override
             public void call(final Object... args) {
-               btn_login.setVisibility(View.VISIBLE);
-               pb_loading_login.setVisibility(View.GONE);
+                btn_login.setVisibility(View.VISIBLE);
+                pb_loading_login.setVisibility(View.GONE);
             }
         });
 
