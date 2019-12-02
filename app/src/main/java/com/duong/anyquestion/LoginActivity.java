@@ -154,7 +154,6 @@ public class LoginActivity extends AppCompatActivity {
                                         }
                                     }
 
-
                                     SessionManager sessionManager = new SessionManager(LoginActivity.this);
 
                                     if (type.equals("user")) {

@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -14,14 +13,12 @@ import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.PhanHoiYeuCauGiaiDap;
 import com.duong.anyquestion.classes.Question;
 import com.duong.anyquestion.classes.ToastNew;
-import com.duong.anyquestion.classes.User;
 import com.duong.anyquestion.ui_expert.*;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -34,7 +31,7 @@ public class ExpertMainActivity extends AppCompatActivity {
 
     final Fragment fragment1 = new AccountFragment();
     final Fragment fragment2 = new HelpFragment();
-    final Fragment fragment3 = new HistoryFragment();
+    final Fragment fragment3 = new RatingFragment();
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = fragment1;
     Question question_nhan;

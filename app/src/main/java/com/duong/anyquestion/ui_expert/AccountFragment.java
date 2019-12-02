@@ -197,13 +197,13 @@ public class AccountFragment extends Fragment {
                             tv_email.setText(email);
                             tv_fullname.setText(fullname);
 
-                            User update_user = sessionManager.getUser();
-                            update_user.setFullName(fullname);
-                            update_user.setEmail(email);
-                            update_user.setAddress(address);
-                            update_user.setAvatar(avatar);
+                            Expert update_expert = sessionManager.getExpert();
+                            update_expert.setFullName(fullname);
+                            update_expert.setEmail(email);
+                            update_expert.setAddress(address);
+                            update_expert.setAvatar(avatar);
 
-                            sessionManager.createSession(update_user);
+                            sessionManager.createSession(update_expert);
                             ToastNew.showToast(view.getContext(), "Cập nhật thông tin thành công", Toast.LENGTH_LONG);
                         } else {
                             ToastNew.showToast(view.getContext(), "Cập nhật thông tin thất bại", Toast.LENGTH_LONG);

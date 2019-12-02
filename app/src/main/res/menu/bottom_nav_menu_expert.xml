@@ -11,9 +11,10 @@
         android:icon="@drawable/ic_make_money"
         android:title="Kiếm thu nhập" />
 
+
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_history_icon"
-        android:title="@string/title_notifications" />
+        android:icon="@drawable/ic_rating"
+        android:title="Xếp hạng" />
 
 </menu>
