@@ -88,21 +88,18 @@
             android:id="@+id/btn_register"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            app:strokeColor="@color/colorPrimary"
-            android:layout_gravity="center_horizontal"
             android:text=" Đăng ký ngay "
             android:textSize="12dp"
-            android:background="@drawable/button4"/>
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
         <Button
             android:id="@+id/btn_forget"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            app:strokeColor="@color/colorPrimary"
             android:text="Quên mật khẩu"
             android:textSize="12dp"
-            android:background="@drawable/button4"/>
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
     </LinearLayout>
 
