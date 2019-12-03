@@ -11,9 +11,9 @@ public class ConnectThread extends Thread {
     private static ConnectThread instance;
     // implementation part
     private Socket mSocket;
-    //private String URL = "https://server-any-question.herokuapp.com";///
+    private String URL = "https://server-any-question.herokuapp.com";///
 
-    private String URL = "http://172.20.10.11:26398";///
+    //private String URL = "http://172.20.10.11:26398";///
 
 
     public static ConnectThread getInstance(){
@@ -24,7 +24,6 @@ public class ConnectThread extends Thread {
         try {
             mSocket = IO.socket(URL);
             mSocket.connect();
-            mSocket.emit("thongtinketnoi", "12345");
         } catch (URISyntaxException e) { }
     }
 
@@ -37,8 +36,6 @@ public class ConnectThread extends Thread {
         try {
             mSocket = IO.socket(URL);
             mSocket.connect();
-            mSocket.emit("thongtinketnoi", "12345");
-
         } catch (URISyntaxException e) { }
     }
 }
