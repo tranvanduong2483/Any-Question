@@ -2,7 +2,6 @@ package com.duong.anyquestion;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.accounts.Account;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import android.app.AlertDialog;
@@ -33,10 +33,10 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
     private Socket mSocket = ConnectThread.getInstance().getSocket();
-    private Button btn_register, btn_login, btn_forget;
+    private Button btn_login;
     private EditText edt_username, edt_password;
     private ProgressBar pb_loading_login;
-
+    private TextView tv_forget_password, tv_register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (!mSocket.connected()){
                     ToastNew.showToast(getApplication(), "Máy chủ ngắt kết nối!", Toast.LENGTH_LONG);
                     return;
@@ -74,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        btn_register.setOnClickListener(new View.OnClickListener() {
+        tv_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder dialog = new AlertDialog.Builder(LoginActivity.this);
@@ -105,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        btn_forget.setOnClickListener(new View.OnClickListener() {
+        tv_forget_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, ForgetPasswordctivity.class);
@@ -190,11 +189,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void AnhXa() {
-        edt_username = findViewById(R.id.edt_account);
+        edt_username = findViewById(R.id.edt_username);
         edt_password = findViewById(R.id.edt_password);
         btn_login = findViewById(R.id.btn_login);
-        btn_register = findViewById(R.id.btn_register);
-        btn_forget = findViewById(R.id.btn_forget);
+        tv_register = findViewById(R.id.tv_register);
+        tv_forget_password = findViewById(R.id.tv_forget_password);
         pb_loading_login = findViewById(R.id.pb_loading_login);
     }
 

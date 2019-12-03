@@ -25,4 +25,17 @@
     <dimen name="cochu50">50sp</dimen>
     <dimen name="cochu40">40sp</dimen>
     <dimen name="cochu20">20sp</dimen>
+
+
+    <dimen name="loginCardRadius">20dp</dimen>
+
+
+    <dimen name="headerTextSize">28sp</dimen>
+    <dimen name="newsMoreTextSize">18sp</dimen>
+    <dimen name="newsMoreTextSize1">12sp</dimen>
+    <dimen name="loginViewsMargin">20dp</dimen>
+
+
+    <dimen name="dodai30">30dp</dimen>
+
 </resources>

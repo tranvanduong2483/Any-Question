@@ -30,6 +30,7 @@
             android:label="Tìm chuyên gia" />
         <activity android:name=".register.ExpertRegisterActivity" />
         <activity
+            android:theme="@style/generalnotitle2"
             android:name=".ExpertMainActivity"
             android:label="@string/title_activity_expert_main"
             android:launchMode="singleTop" />
@@ -43,12 +44,14 @@
             </intent-filter>
         </activity>
         <activity
+            android:theme="@style/generalnotitle"
             android:name=".UserMainActivity"
             android:launchMode="singleTop" />
         <activity
             android:name=".register.UserRegisterActivity"
             android:label="Đăng ký" />
         <activity
+            android:theme="@style/generalnotitle2"
             android:name=".LoginActivity"
             android:label="Đăng nhập" />
     </application>

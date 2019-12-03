@@ -53,7 +53,7 @@ public class BxhAdapter extends BaseAdapter {
         TextView tv_account = inflater.findViewById(R.id.tv_account);
         TextView tv_field = inflater.findViewById(R.id.tv_field);
         TextView tv_thaoluan = inflater.findViewById(R.id.tv_thaoluan);
-        TextView tv_star = inflater.findViewById(R.id.tv_star);
+        RatingBar rb_star = inflater.findViewById(R.id.rb_star);
         ImageView iv_huyhieu = inflater.findViewById(R.id.iv_huyhieu);
         TextView tv_thuhang = inflater.findViewById(R.id.tv_thuhang);
 
@@ -70,7 +70,7 @@ public class BxhAdapter extends BaseAdapter {
         tv_account.setText(listxephang.get(i).expert_id);
         tv_field.setText(listxephang.get(i).name);
         tv_thaoluan.setText(listxephang.get(i).conversation_number + " thảo luận");
-        tv_star.setText(listxephang.get(i).AverageStars + " sao");
+        rb_star.setRating(listxephang.get(i).AverageStars);
 
         tv_thuhang.setVisibility(View.GONE);
 

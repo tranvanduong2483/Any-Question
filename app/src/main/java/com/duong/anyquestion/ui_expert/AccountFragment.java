@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,7 +41,7 @@ public class AccountFragment extends Fragment {
     private View view;
     private Bundle bundle_update;
     private TextView tv_fullname, tv_education,tv_field,tv_email,tv_address,tv_money;
-    private CircleImageView im_avatar;
+    private ImageView im_avatar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -70,7 +72,7 @@ public class AccountFragment extends Fragment {
         tv_address.setText(expert.getAddress());
         tv_money.setText(expert.getMoney() + " VND");
 
-        Button btn_dangxuat = view.findViewById(R.id.btn_dangxuat);
+        ImageButton btn_dangxuat = view.findViewById(R.id.btn_dangxuat);
         btn_dangxuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

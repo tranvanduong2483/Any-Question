@@ -87,7 +87,6 @@ public class RatingFragment extends Fragment {
             }
         };
 
-
         long delay = 30000L;
         Timer timer = new Timer("Timer");
         timer.schedule(timertaks, 0, delay);
