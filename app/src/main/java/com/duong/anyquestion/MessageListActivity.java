@@ -118,6 +118,36 @@ public class MessageListActivity extends AppCompatActivity {
         });
 
 
+        mSocket.on("send-image-complete", new Emitter.Listener() {
+            @Override
+            public void call(final Object... args) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+
+                        try {
+                            int position = (int) args[0];
+                            boolean status = (args[1] + "").equals("ok");
+
+                            messageList.get(position).setStatus(status);
+
+                            mMessageAdapter.notifyDataSetChanged();
+
+
+                            ToastNew.showToast(getApplication(), position + "-" + args[1], Toast.LENGTH_LONG);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            ToastNew.showToast(getApplication(), "Lỗi rồi", Toast.LENGTH_LONG);
+
+                        }
+
+
+                    }
+                });
+            }
+        });
+
 
         mMessageAdapter = new MessageListAdapter(this, messageList);
         mMessageRecycler.setLayoutManager(new LinearLayoutManager(this));
@@ -216,41 +246,48 @@ public class MessageListActivity extends AppCompatActivity {
 
     private void sendMessage(Message message_new) {
         messageList.add(message_new);
-        mMessageAdapter.notifyDataSetChanged();
+        mMessageAdapter.notifyItemInserted(messageList.size() - 1);
         mMessageRecycler.smoothScrollToPosition(mMessageAdapter.getItemCount());
-        mSocket.emit("client-send-message-to-other-people", message_new.toJSON());
+        mSocket.emit("client-send-message-to-other-people", message_new.toJSON(), messageList.size() - 1);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(final int requestCode, final int resultCode, final @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (data == null) return;
 
-        if (requestCode == REQUEST_CHOOSE_PHOTO && resultCode == RESULT_OK) {
-            try {
-                Uri uri = data.getData();
-                InputStream is = getContentResolver().openInputStream(uri);
-                Bitmap bm = BitmapFactory.decodeStream(is);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (requestCode == REQUEST_CHOOSE_PHOTO && resultCode == RESULT_OK) {
+                    try {
+                        Uri uri = data.getData();
+                        InputStream is = getContentResolver().openInputStream(uri);
+                        Bitmap bm = BitmapFactory.decodeStream(is);
 
 
-                String image_message = ToolSupport.convertBitmapToStringBase64(bm);
-                Message message_new = new Message(conversation_id, user != null ? user.getAccount() : expert.getExpert_id(), image_message, true);
-                sendMessage(message_new);
+                        String image_message = ToolSupport.convertBitmapToStringBase64(bm);
+                        Message message_new = new Message(conversation_id, user != null ? user.getAccount() : expert.getExpert_id(), image_message, true, false);
+                        sendMessage(message_new);
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                ToastNew.showToast(this, "Xuất hiện lỗi nào đó!", Toast.LENGTH_LONG);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        ToastNew.showToast(getApplication(), "Xuất hiện lỗi nào đó!", Toast.LENGTH_LONG);
+                    }
+                } else if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
+                    if (data.getExtras() == null) return;
+
+                    Bitmap bm = (Bitmap) data.getExtras().get("data");
+
+                    String image_message = ToolSupport.convertBitmapToStringBase64(bm);
+                    Message message_new = new Message(conversation_id, user != null ? user.getAccount() : expert.getExpert_id(), image_message, true, false);
+                    sendMessage(message_new);
+                }
+
             }
-        } else if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-            if (data.getExtras() == null) return;
+        });
 
-            Bitmap bm = (Bitmap) data.getExtras().get("data");
-
-            String image_message = ToolSupport.convertBitmapToStringBase64(bm);
-            Message message_new = new Message(conversation_id, user != null ? user.getAccount() : expert.getExpert_id(), image_message, true);
-            sendMessage(message_new);
-        }
     }
 
     private Emitter.Listener callback_nhantinnhan = new Emitter.Listener() {

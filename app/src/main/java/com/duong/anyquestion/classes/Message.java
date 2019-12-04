@@ -19,6 +19,7 @@ public class Message {
     private String message;
     private boolean typeImage;
     private String time;
+    private boolean status;
 
     public Message() {
     }
@@ -77,8 +78,42 @@ public class Message {
         this.message = message;
         this.typeImage = typeImage;
         SetTimeNow();
+        this.status = true;
     }
 
+    public Message(int conversation_id, String sender, String message, boolean typeImage, boolean status) {
+        this.messages_id = messages_id;
+        this.conversation_id = conversation_id;
+        this.sender = sender;
+        this.message = message;
+        this.typeImage = typeImage;
+        SetTimeNow();
+        this.status = status;
+    }
+
+    public int getMessages_id() {
+        return messages_id;
+    }
+
+    public void setMessages_id(int messages_id) {
+        this.messages_id = messages_id;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
     private void SetTimeNow() {
         Time today = new Time(Time.getCurrentTimezone());
@@ -95,7 +130,13 @@ public class Message {
             format.setTimeZone(TimeZone.getTimeZone("UTC"));
 
             Date date = format.parse(getTime());
-            hour_min = date.getHours() + ":" + date.getMinutes();
+
+            int hour = date.getHours();
+            int min = date.getMinutes();
+
+
+            hour_min = (String.valueOf(hour).length() == 1 ? ("0" + hour) : hour) +
+                    ":" + (String.valueOf(min).length() == 1 ? ("0" + min) : min);
         } catch (Exception ignored) {
         }
 

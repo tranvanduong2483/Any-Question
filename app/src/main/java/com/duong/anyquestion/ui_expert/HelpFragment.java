@@ -144,7 +144,7 @@ public class HelpFragment extends Fragment {
             }
         });
 
-        mSocket.emit("get-introdution-expert", sessionManager.getAccount());
+        setGetFiled();
         return view;
     }
 

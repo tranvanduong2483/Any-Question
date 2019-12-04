@@ -2,6 +2,7 @@ package com.duong.anyquestion.classes;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.format.DateUtils;
 import android.text.format.Time;
@@ -9,6 +10,8 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +26,10 @@ import java.util.Date;
 
 public class SentMessageHolder extends RecyclerView.ViewHolder {
     TextView messageText, timeText, nameText;
-    ImageView profileImage, iv_image;
+    ImageView profileImage, iv_image, iv_image_loading;
+
+    RelativeLayout rl_image;
+    ProgressBar pb_loading_image;
 
 
     SentMessageHolder(View itemView) {
@@ -31,6 +37,8 @@ public class SentMessageHolder extends RecyclerView.ViewHolder {
         messageText = itemView.findViewById(R.id.text_message_body);
         timeText =  itemView.findViewById(R.id.text_message_time);
         iv_image = itemView.findViewById(R.id.iv_image);
+        //pb_loading_image = itemView.findViewById(R.id.pb_loading_image);
+        iv_image_loading = itemView.findViewById(R.id.iv_image_loading);
 
 
         //nameText =  itemView.findViewById(R.id.text_message_name);
@@ -55,8 +63,22 @@ public class SentMessageHolder extends RecyclerView.ViewHolder {
                 bitmap = BitmapFactory.decodeResource(itemView.getResources(), R.drawable.error_image);
             }
 
-            bitmap = ToolSupport.resize(bitmap, 500,500);
+            int p120dp = (int) itemView.getResources().getDimension(R.dimen.test_120dp_no_delete);
+            bitmap = ToolSupport.resize(bitmap, p120dp, p120dp);
             iv_image.setImageBitmap(ToolSupport.BitmapWithRoundedCorners(bitmap));
+
+
+            Drawable drawable = new BitmapDrawable(itemView.getResources(), bitmap);
+            iv_image_loading.setBackground(drawable);
+
+            if (message.isStatus()) {
+                iv_image_loading.setVisibility(View.GONE);
+                //pb_loading_image.setVisibility(View.GONE);
+            } else {
+                //pb_loading_image.setVisibility(View.VISIBLE);
+                iv_image_loading.setVisibility(View.VISIBLE);
+            }
+
         }else {
             iv_image.setVisibility(View.GONE);
             messageText.setVisibility(View.VISIBLE);

@@ -54,6 +54,7 @@ public class RatingFragment extends Fragment {
                                 try {
                                     JSONArray data = (JSONArray) args[0];
 
+                                    if (data.length() == 0) return;
                                     item_xepHangs.clear();
                                     for (int i = 0; i < data.length(); i++) {
 
@@ -86,6 +87,7 @@ public class RatingFragment extends Fragment {
                     mSocket.emit("get-list-bxh", "get-list-bxh");
             }
         };
+
 
         long delay = 30000L;
         Timer timer = new Timer("Timer");

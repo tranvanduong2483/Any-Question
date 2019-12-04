@@ -26,7 +26,6 @@ public class ReceivedMessageHolder extends RecyclerView.ViewHolder {
         timeText =  itemView.findViewById(R.id.text_message_time);
         iv_image = itemView.findViewById(R.id.iv_image);
 
-        // nameText =  itemView.findViewById(R.id.text_message_name);
         profileImage =  itemView.findViewById(R.id.image_message_profile);
 
         tv_account = itemView.findViewById(R.id.tv_account);
@@ -38,8 +37,7 @@ public class ReceivedMessageHolder extends RecyclerView.ViewHolder {
 
         // Format the stored timestamp into a readable String using method.
         timeText.setText(message.getHourMin());
-
-
+        tv_account.setText(message.getFrom());
 
         if (message.isTypeImage()){
             iv_image.setVisibility(View.VISIBLE);
@@ -52,7 +50,11 @@ public class ReceivedMessageHolder extends RecyclerView.ViewHolder {
                 bitmap = BitmapFactory.decodeResource(itemView.getResources(), R.drawable.error_image);
             }
 
-            bitmap = ToolSupport.resize(bitmap, 500,500);
+
+            int p120dp = (int) itemView.getResources().getDimension(R.dimen.test_120dp_no_delete);
+            bitmap = ToolSupport.resize(bitmap, p120dp, p120dp);
+
+
             iv_image.setImageBitmap(ToolSupport.BitmapWithRoundedCorners(bitmap));
         }else {
             iv_image.setVisibility(View.GONE);

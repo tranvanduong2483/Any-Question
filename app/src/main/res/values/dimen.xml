@@ -38,4 +38,6 @@
 
     <dimen name="dodai30">30dp</dimen>
 
+    <dimen name="test_120dp_no_delete">240dp</dimen>
+
 </resources>

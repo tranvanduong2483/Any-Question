@@ -60,7 +60,7 @@ public class HistoryAdapter extends BaseAdapter {
 
         String title = listHisory.get(i).title;
         String field = listHisory.get(i).name;
-        int star = listHisory.get(i).star;
+        float star = listHisory.get(i).star;
         final int conversation_id = listHisory.get(i).conversation_id;
         final String id_user = listHisory.get(i).id_user;
         final String id_expert = listHisory.get(i).id_expert;

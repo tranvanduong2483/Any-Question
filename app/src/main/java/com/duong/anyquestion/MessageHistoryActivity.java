@@ -86,6 +86,7 @@ public class MessageHistoryActivity extends AppCompatActivity {
                     String noidung = data.toString();
                     Gson gson = new Gson();
                     Message message = gson.fromJson(noidung, Message.class);
+                    message.setStatus(true);
                     messageList.add(message);
 
                     Collections.sort(messageList, new Comparator<Message>() {
@@ -98,7 +99,7 @@ public class MessageHistoryActivity extends AppCompatActivity {
                     });
 
 
-                    mMessageRecycler.smoothScrollToPosition(mMessageAdapter.getItemCount());
+                    mMessageRecycler.smoothScrollToPosition(0);
                     mMessageAdapter.notifyDataSetChanged();
 
                 } catch (Exception e) {

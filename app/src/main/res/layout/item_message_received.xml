@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingBottom="17dp"
     android:paddingTop="17dp">
 
     <ImageView
@@ -57,17 +56,14 @@
                     android:paddingBottom="8dp"
                     android:text="Wikipedia tiếng Việt là phiên bản tiếng Việt của dự án Wikipedia. Website được kích hoạt lần đầu tiên vào tháng 11 năm 2002, lúc đó chỉ có bài viết đầu tiên của dự án là bài Internet Society.[1] Vì dự án không có đủ người đóng góp, Wikipedia tiếng Việt không có thêm bài viết nào cho đến tháng 10 năm 2003 khi Trang Chính được viết,[2] và dự án Wikipedia tiếng Việt được xem như khởi động lại lần nữa. Tiếp theo đó là bài Alexandre De Rhodes được khởi đầu,[3] và sau đó là các bài Hà Nội, Sài Gòn và Nha Trang...[4]"
                     android:textColor="#000000"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
 
                 <ImageView
                     android:id="@+id/iv_image"
-                    android:layout_centerHorizontal="true"
-
-                    android:layout_width="240dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:src="@drawable/avatar"
-                    android:visibility="gone" />
+                    android:src="@drawable/test"
+                    android:visibility="visible" />
             </RelativeLayout>
 
             <TextView
