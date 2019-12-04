@@ -7,13 +7,18 @@ public class History {
     String title;
     String name;
     int star;
+    String id_user;
+    String id_expert;
 
-    public History(int conversation_id, String tittle, String field, int star) {
+    public History(int conversation_id, String title, String name, int star, String id_user, String id_expert) {
         this.conversation_id = conversation_id;
-        this.title = tittle;
-        this.name = field;
+        this.title = title;
+        this.name = name;
         this.star = star;
+        this.id_user = id_user;
+        this.id_expert = id_expert;
     }
+
 
     public History() {
 

@@ -197,11 +197,9 @@ public class SearchExpertFragment extends Fragment {
             }
         };
 
-
         long delay = 3000L;
         Timer timer = new Timer("Timer");
         timer.schedule(timertaks, 0, delay);
-
     }
 
     @Override

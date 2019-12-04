@@ -1,4 +1,4 @@
-package com.duong.anyquestion;
+package com.duong.anyquestion.ui_expert;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -7,18 +7,17 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.duong.anyquestion.MessageListActivity;
+import com.duong.anyquestion.R;
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.PhanHoiYeuCauGiaiDap;
 import com.duong.anyquestion.classes.Question;
 import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.classes.ToastNew;
-import com.duong.anyquestion.ui_expert.*;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -193,11 +192,15 @@ public class ExpertMainActivity extends AppCompatActivity {
                 case R.id.navigation_dashboard:
                     fm.beginTransaction().hide(active).show(fragment2).commit();
                     active = fragment2;
+                    if (mSocket.connected())
+                        mSocket.emit("get-introdution-expert", sessionManager.getAccount());
                     return true;
 
                 case R.id.navigation_notifications:
                     fm.beginTransaction().hide(active).show(fragment3).commit();
                     active = fragment3;
+                    if (mSocket.connected())
+                        mSocket.emit("get-list-bxh", "get-list-bxh");
                     return true;
             }
             return false;

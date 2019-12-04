@@ -62,6 +62,9 @@ public class HistoryAdapter extends BaseAdapter {
         String field = listHisory.get(i).name;
         int star = listHisory.get(i).star;
         final int conversation_id = listHisory.get(i).conversation_id;
+        final String id_user = listHisory.get(i).id_user;
+        final String id_expert = listHisory.get(i).id_expert;
+
 
 
         inflater.setOnClickListener(new View.OnClickListener() {
@@ -70,10 +73,12 @@ public class HistoryAdapter extends BaseAdapter {
                 Intent intent = new Intent(context, MessageHistoryActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putInt("conversation_id", conversation_id);
+                bundle.putString("id_expert", id_expert);
+                bundle.putString("id_user", id_user);
+
                 ToastNew.showToast(context, conversation_id + "", Toast.LENGTH_LONG);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
-
             }
         });
 

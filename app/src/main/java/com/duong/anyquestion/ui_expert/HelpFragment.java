@@ -1,15 +1,10 @@
 package com.duong.anyquestion.ui_expert;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -18,32 +13,26 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.duong.anyquestion.ExpertMainActivity;
-import com.duong.anyquestion.MessageListActivity;
 import com.duong.anyquestion.R;
-import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.Introduction;
-import com.duong.anyquestion.classes.PhanHoiYeuCauGiaiDap;
-import com.duong.anyquestion.classes.Question;
 import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.classes.ToastNew;
-import com.duong.anyquestion.classes.User;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.gson.Gson;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class HelpFragment extends Fragment {
-
-
-
     private SessionManager sessionManager;
     private Socket mSocket = ConnectThread.getInstance().getSocket();
     private EditText edt_keywords, edt_gioithieu;
     private TextView tv_note;
+
 
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -117,7 +106,7 @@ public class HelpFragment extends Fragment {
         });
 
 
-        mSocket.on("server-sent-introdution-expert", new Emitter.Listener() {
+        mSocket.once("server-sent-introdution-expert", new Emitter.Listener() {
             @Override
             public void call(final Object... args) {
                 if (getActivity() == null) return;
@@ -141,7 +130,6 @@ public class HelpFragment extends Fragment {
                             if (edt_gioithieu.getText().toString().isEmpty()) {
                                 edt_gioithieu.setText(introduction.getIntroduction_message());
                             }
-                            mSocket.off("server-sent-introdution-expert");
 
                         } catch (Exception e) {
                             // ToastNew.showToast(getActivity(), "Lỗi", Toast.LENGTH_SHORT);
@@ -150,17 +138,35 @@ public class HelpFragment extends Fragment {
 
                         edt_keywords.setEnabled(true);
                         edt_gioithieu.setEnabled(true);
-
-
+                        off_get_introduce = true;
                     }
                 });
             }
         });
 
         mSocket.emit("get-introdution-expert", sessionManager.getAccount());
-
-
         return view;
+    }
+
+
+    private boolean off_get_introduce = false;
+
+    private void setGetFiled() {
+        mSocket.emit("get-introdution-expert", sessionManager.getAccount());
+
+        TimerTask timertaks = new TimerTask() {
+            @Override
+            public void run() {
+                if (!off_get_introduce) {
+                    if (mSocket.connected())
+                        mSocket.emit("get-introdution-expert", sessionManager.getAccount());
+                }
+            }
+        };
+
+        long delay = 3000L;
+        Timer timer = new Timer("Timer");
+        timer.schedule(timertaks, 0, delay);
     }
 
 

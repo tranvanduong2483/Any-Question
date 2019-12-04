@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.duong.anyquestion.ChangePasswordActivity;
 import com.duong.anyquestion.R;
+import com.duong.anyquestion.RutTienActivity;
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.Expert;
@@ -116,6 +117,22 @@ public class AccountFragment extends Fragment {
                 Intent intent = new Intent(getContext(), SecurityActivity.class);
                 startActivityForResult(intent, REQUEST_CODE_EDIT_INFORMATION);
 
+            }
+        });
+
+
+        Button btn_rut_tien = view.findViewById(R.id.btn_rut_tien);
+        btn_rut_tien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString("avatar", sessionManager.getAvatar());
+                bundle.putString("name", tv_fullname.getText() + "");
+                bundle.putString("email", tv_email.getText() + "");
+                bundle.putString("address", tv_address.getText() + "");
+                Intent intent = new Intent(getContext(), RutTienActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
 

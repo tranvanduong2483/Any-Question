@@ -249,6 +249,7 @@
                         android:textSize="13sp" />
 
                     <TextView
+
                         android:id="@+id/tv_field"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -280,6 +281,7 @@
                     android:textSize="13sp" />
 
                 <TextView
+                    android:layout_gravity="center_horizontal"
                     android:id="@+id/tv_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -309,14 +311,31 @@
                     android:textColor="@color/white"
                     android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/tv_money"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Số tiền tích lũy: 100.000 VNĐ"
-                    android:textColor="#CCC9BA"
-                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="100.000 VNĐ"
+                        android:textColor="#CCC9BA"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/btn_rut_tien"
+                        android:layout_marginStart="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:text="Rút tiền"
+                        android:background="@drawable/button2" />
+
+
+                </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"

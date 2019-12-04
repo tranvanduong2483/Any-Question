@@ -24,6 +24,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MessageHistoryActivity extends AppCompatActivity {
     Button btn_cancel;
@@ -38,12 +41,21 @@ public class MessageHistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_history);
 
+        int conversation_id = 1;
+        String id_expert = "", id_user = "";
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            conversation_id = bundle.getInt("conversation_id");
+            id_user = bundle.getString("id_user");
+            id_expert = bundle.getString("id_expert");
+        }
 
         messageList = new ArrayList<>();
 
         mMessageRecycler = findViewById(R.id.reyclerview_message_list);
-        mMessageAdapter = new MessageListAdapter(this, messageList);
+        mMessageAdapter = new MessageListAdapter(this, messageList, id_user, id_expert);
 
+        ToastNew.showToast(this, id_expert + "-" + id_user, Toast.LENGTH_LONG);
 
         mMessageRecycler.setLayoutManager(new LinearLayoutManager(this));
         mMessageRecycler.setAdapter(mMessageAdapter);
@@ -58,11 +70,7 @@ public class MessageHistoryActivity extends AppCompatActivity {
         });
 
 
-        int conversation_id = 1;
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            conversation_id = bundle.getInt("conversation_id");
-        }
+
 
 
         if (getSupportActionBar() != null) getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -79,6 +87,17 @@ public class MessageHistoryActivity extends AppCompatActivity {
                     Gson gson = new Gson();
                     Message message = gson.fromJson(noidung, Message.class);
                     messageList.add(message);
+
+                    Collections.sort(messageList, new Comparator<Message>() {
+                        @Override
+                        public int compare(Message message1, Message message2) {
+                            int time1 = message1.getMessage_id();
+                            int time2 = message2.getMessage_id();
+                            return time1 - time2;
+                        }
+                    });
+
+
                     mMessageRecycler.smoothScrollToPosition(mMessageAdapter.getItemCount());
                     mMessageAdapter.notifyDataSetChanged();
 

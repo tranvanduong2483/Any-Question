@@ -1,3 +1,4 @@
+
 package com.duong.anyquestion.ui_user;
 
 import android.os.Bundle;
@@ -28,6 +29,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class HistoryFragment extends Fragment {
 
@@ -43,7 +46,6 @@ public class HistoryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_history, container, false);
-
 
         list_history = new ArrayList<>();
         lv_history = view.findViewById(R.id.lv_history);
@@ -93,8 +95,27 @@ public class HistoryFragment extends Fragment {
         );
 
 
-        mSocket.emit("get-list-history");
+        setGetHistory();
 
         return view;
+    }
+
+
+    private void setGetHistory() {
+        mSocket.emit("get-list-history");
+
+        TimerTask timertaks = new TimerTask() {
+            @Override
+            public void run() {
+                if (list_history.isEmpty()) {
+                    if (mSocket.connected())
+                        mSocket.emit("get-list-history");
+                }
+            }
+        };
+
+        long delay = 3000L;
+        Timer timer = new Timer("Timer");
+        timer.schedule(timertaks, 0, delay);
     }
 }

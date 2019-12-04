@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.duong.anyquestion.ChangePasswordActivity;
+import com.duong.anyquestion.NapTienActivity;
 import com.duong.anyquestion.R;
 import com.duong.anyquestion.EditInfomationActivity;
 import com.duong.anyquestion.Tool.ToolSupport;
@@ -112,6 +113,17 @@ public class AccountFragment extends Fragment {
 
             }
         });
+
+
+        Button btn_nap_tien = view.findViewById(R.id.btn_nap_tien);
+        btn_nap_tien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), NapTienActivity.class);
+                startActivityForResult(intent, REQUEST_CODE_EDIT_INFORMATION);
+            }
+        });
+
 
         mSocket.on("ketqua-logout", callback_logout);
         mSocket.on("server-to-update-status", callback_update_information);

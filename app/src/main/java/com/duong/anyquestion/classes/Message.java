@@ -5,9 +5,15 @@ import android.text.format.Time;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
+
 public class Message {
 
-    private int message_id;
+    private int messages_id;
     private int conversation_id;
     private String sender;
     private String message;
@@ -18,11 +24,11 @@ public class Message {
     }
 
     public int getMessage_id() {
-        return message_id;
+        return messages_id;
     }
 
     public void setMessage_id(int message_id) {
-        this.message_id = message_id;
+        this.messages_id = message_id;
     }
 
     public int getConversation_id() {
@@ -80,6 +86,22 @@ public class Message {
         this.time = today.format("%H:%M");
     }
 
+
+    public String getHourMin() {
+        String hour_min = getTime();
+        try {
+            SimpleDateFormat format = new SimpleDateFormat(
+                    "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
+            format.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+            Date date = format.parse(getTime());
+            hour_min = date.getHours() + ":" + date.getMinutes();
+        } catch (Exception ignored) {
+        }
+
+        return hour_min;
+    }
+
     public String toJSON(){
         JSONObject jsonObject= new JSONObject();
         try {
@@ -95,5 +117,6 @@ public class Message {
             return "";
         }
     }
+
 
 }

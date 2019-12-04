@@ -13,27 +13,47 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ForgetPasswordctivity"></activity>
-        <activity android:name=".SecurityActivity" />
-        <activity android:name=".MessageHistoryActivity" />
+        <activity
+            android:label="Nạp tiền"
+            android:name=".NapTienActivity"></activity>
+        <activity
+            android:name=".RutTienActivity"
+            android:label="Rút tiền" />
+        <activity
+            android:label="Tìm mật khẩu"
+            android:name=".ForgetPasswordctivity" />
+        <activity
+            android:label="Bảo mật tài khoản"
+            android:name=".SecurityActivity" />
+        <activity
+            android:label="Cuộc thảo luận"
+            android:name=".MessageHistoryActivity" />
         <activity
             android:name=".DetailQuestionActivity"
             android:label="Chi tiết câu hỏi" />
-        <activity android:name=".RatingForExpertActivity" />
-        <activity android:name=".ChangePasswordActivity" />
-        <activity android:name=".EditInfomationActivity" />
+        <activity
+            android:label="Phản hồi"
+            android:name=".RatingForExpertActivity" />
+        <activity
+            android:label="Đổi mật khẩu"
+            android:name=".ChangePasswordActivity" />
+        <activity
+            android:label="Cập nhật thông tin"
+            android:name=".EditInfomationActivity" />
         <activity
             android:name=".MessageListActivity"
             android:label="Cuộc thảo luận" />
         <activity
             android:name=".LoadingSearchExpertActivity"
             android:label="Tìm chuyên gia" />
-        <activity android:name=".register.ExpertRegisterActivity" />
         <activity
-            android:theme="@style/generalnotitle3"
-            android:name=".ExpertMainActivity"
+            android:label="Đăng ký chuyên gia"
+            android:name=".register.ExpertRegisterActivity" />
+        <activity
+            android:name=".ui_expert.ExpertMainActivity"
             android:label="@string/title_activity_expert_main"
-            android:launchMode="singleTop" />
+            android:launchMode="singleTop"
+            android:theme="@style/generalnotitle3" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/SplashTheme">
@@ -44,16 +64,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:theme="@style/generalnotitle"
-            android:name=".UserMainActivity"
-            android:launchMode="singleTop" />
+            android:name=".ui_user.UserMainActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/generalnotitle" />
         <activity
             android:name=".register.UserRegisterActivity"
             android:label="Đăng ký" />
         <activity
-            android:theme="@style/generalnotitle2"
             android:name=".LoginActivity"
-            android:label="Đăng nhập" />
+            android:label="Đăng nhập"
+            android:theme="@style/generalnotitle2" />
     </application>
 
 </manifest>

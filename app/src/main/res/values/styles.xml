@@ -87,7 +87,6 @@
 
 
     <style name="generalnotitle3" parent="@style/Theme.AppCompat.Light.NoActionBar">
-
         <item name="windowNoTitle">true</item>
         <item name="android:windowNoTitle">true</item>
     </style>

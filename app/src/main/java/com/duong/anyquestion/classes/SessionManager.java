@@ -2,15 +2,13 @@ package com.duong.anyquestion.classes;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.duong.anyquestion.ExpertMainActivity;
+import com.duong.anyquestion.ui_expert.ExpertMainActivity;
 import com.duong.anyquestion.LoginActivity;
-import com.duong.anyquestion.SplashActivity;
-import com.duong.anyquestion.UserMainActivity;
+import com.duong.anyquestion.ui_user.UserMainActivity;
 
 import java.util.HashMap;
 

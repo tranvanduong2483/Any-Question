@@ -1,4 +1,4 @@
-package com.duong.anyquestion;
+package com.duong.anyquestion.ui_user;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.duong.anyquestion.R;
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.Expert;
@@ -89,16 +90,22 @@ public class UserMainActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     fm.beginTransaction().hide(active).show(fragment1).commit();
                     active = fragment1;
+
                     return true;
 
                 case R.id.navigation_dashboard:
                     fm.beginTransaction().hide(active).show(fragment2).commit();
                     active = fragment2;
+                    if (mSocket.connected())
+                        mSocket.emit("client-get-field", "client-get-field *****");
                     return true;
 
                 case R.id.navigation_notifications:
                     fm.beginTransaction().hide(active).show(fragment3).commit();
                     active = fragment3;
+
+                    if (mSocket.connected())
+                        mSocket.emit("get-list-history");
                     return true;
             }
             return false;
