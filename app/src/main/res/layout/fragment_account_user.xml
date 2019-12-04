@@ -140,6 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:paddingBottom="10dp"
             android:gravity="center_horizontal">
 
             <Button
@@ -173,7 +174,6 @@
             style="@style/loginButton2"
             android:layout_width="100dp"
             android:layout_height="35dp"
-            android:layout_margin="10dp"
             android:text="Thoát" />
     </LinearLayout>
 </RelativeLayout>

@@ -122,7 +122,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
         mSocket.on("ket-qua-dang-nhap", new Emitter.Listener() {
                     @Override
                     public void call(final Object... args) {

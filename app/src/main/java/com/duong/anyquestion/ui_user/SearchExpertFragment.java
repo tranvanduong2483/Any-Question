@@ -150,7 +150,7 @@ public class SearchExpertFragment extends Fragment {
             public void onClick(View view) {
                 edt_tille.setText("");
                 edt_note.setText("");
-                iv_image.setImageResource(R.drawable.ic_image);
+                iv_image.setImageResource(R.drawable.math_example);
                 avatarString = null;
                 spn_field.setSelection(0);
             }

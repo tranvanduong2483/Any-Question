@@ -24,7 +24,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:text="Change your password for your security! "
-                android:textColor="@color/colorAccent1" />
+                android:textColor="@color/colorPrimary" />
 
             <ImageView
                 android:layout_width="0dp"
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            app:cardBackgroundColor="#E0F7FA"
+            app:cardBackgroundColor="#E1F5FE"
             app:cardCornerRadius="10dp"
             app:cardElevation="3dp"
             app:cardUseCompatPadding="true">
@@ -48,18 +48,6 @@
                 android:layout_margin="20dp"
                 android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputName"
-                    style="@style/parent">
-
-                    <EditText
-                        android:id="@+id/edt_answer"
-                        style="@style/modifiedEditText"
-                        android:layout_margin="10dp"
-                        android:hint="Your answer"
-                        android:inputType="textPersonName"
-                        android:maxLines="1" />
-                </com.google.android.material.textfield.TextInputLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -78,6 +66,20 @@
                         android:layout_centerInParent="true" />
 
                 </RelativeLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputName"
+                    style="@style/parent">
+
+                    <EditText
+                        android:id="@+id/edt_answer"
+                        style="@style/modifiedEditText"
+                        android:layout_margin="10dp"
+                        android:hint="Your answer"
+                        android:inputType="textPersonName"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textInputPassword"

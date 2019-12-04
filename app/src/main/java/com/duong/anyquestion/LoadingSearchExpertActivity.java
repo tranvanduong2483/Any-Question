@@ -73,6 +73,7 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
             public void run() {
                 ToastNew.showToast(LoadingSearchExpertActivity.this, "Hủy do quá lâu!", Toast.LENGTH_LONG);
                 mSocket.emit("cancel-search-expert", "Huy tim kiem chuyen gia do qua thoi gian");
+                cancel_all();
                 finish();
             }
         };
@@ -89,6 +90,7 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         ToastNew.showToast(getApplication(), "Máy chủ ngắt kết nối!", Toast.LENGTH_LONG);
+                        cancel_all();
                         finish();
                     }
                 });
@@ -99,8 +101,8 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
 
 
     public void btn_cancel(View view) {
-        handler.removeCallbacks(finnish_time);
         mSocket.emit("cancel-search-expert", "Tu tay huy tim kiem chuyen gia");
+        cancel_all();
         finish();
     }
 
@@ -111,7 +113,7 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    handler.removeCallbacks(finnish_time);
+                    cancel_all();
                     ToastNew.showToast(LoadingSearchExpertActivity.this, args[0] + "", Toast.LENGTH_SHORT);
                     mSocket.emit("cancel-search-expert", "Chuyen gia tu choi");
                     finish();
@@ -139,8 +141,7 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
                         bundle.putInt("conversation_id", conversation_id);
                         intent_nhantin.putExtras(bundle);
 
-                        handler.removeCallbacks(finnish_time);
-
+                        cancel_all();
                             intent_nhantin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent_nhantin);
                             finish();
@@ -156,15 +157,22 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                handler.removeCallbacks(finnish_time);
                 mSocket.emit("cancel-search-expert", "Tu tay huy tim kiem chuyen gia");
+                cancel_all();
                 this.finish();
                 return true;
             default:
-                handler.removeCallbacks(finnish_time);
                 mSocket.emit("cancel-search-expert", "Tu tay huy tim kiem chuyen gia");
+                cancel_all();
                 this.finish();
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+
+    private void cancel_all() {
+        mSocket.off("tim kiem chuyen gia that bai");
+        mSocket.off("bat dau cuoc thao luan");
+        handler.removeCallbacks(finnish_time);
     }
 }

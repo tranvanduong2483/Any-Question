@@ -30,7 +30,7 @@
             android:label="Tìm chuyên gia" />
         <activity android:name=".register.ExpertRegisterActivity" />
         <activity
-            android:theme="@style/generalnotitle2"
+            android:theme="@style/generalnotitle3"
             android:name=".ExpertMainActivity"
             android:label="@string/title_activity_expert_main"
             android:launchMode="singleTop" />

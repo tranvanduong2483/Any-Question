@@ -25,7 +25,6 @@
             android:layout_marginTop="@dimen/loginViewsMargin" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_username"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin">
 
