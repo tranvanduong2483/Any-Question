@@ -130,12 +130,12 @@
                         android:layout_toRightOf="@id/emailImageView"
                         android:text="Money in Account" />
 
-                    <TextView
+                    <com.duong.anyquestion.classes.RialTextView
                         android:id="@+id/tv_money"
                         style="@style/profileDetailsMiniText"
                         android:layout_below="@id/moneyImageView"
                         android:layout_toRightOf="@id/emailImageView"
-                        android:text="Số tiền dư: 100.000 VNĐ" />
+                        android:text="100000" />
 
                 </RelativeLayout>
 

@@ -14,10 +14,13 @@ import com.duong.anyquestion.MessageListActivity;
 import com.duong.anyquestion.R;
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
+import com.duong.anyquestion.classes.Expert;
 import com.duong.anyquestion.classes.PhanHoiYeuCauGiaiDap;
 import com.duong.anyquestion.classes.Question;
 import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.classes.ToastNew;
+import com.duong.anyquestion.classes.User;
+import com.duong.anyquestion.ui_user.SearchExpertFragment;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -85,6 +88,35 @@ public class ExpertMainActivity extends AppCompatActivity {
                 });
             }
         });
+
+
+        mSocket.on("server-sent-expert-balance", new Emitter.Listener() {
+            @Override
+            public void call(final Object... args) {
+                runOnUiThread(new Runnable() {
+                                  @Override
+                                  public void run() {
+                                      try {
+                                          String expert_id = args[0] + "";
+                                          int balance = (int) args[1];
+                                          if (!expert_id.equals(sessionManager.getAccount())) return;
+                                          Expert update_expert = sessionManager.getExpert();
+                                          update_expert.setMoney(balance);
+                                          sessionManager.createSession(update_expert);
+
+
+                                          ((AccountFragment) fragment1).UpdateMoney(balance);
+                                      } catch (Exception ignored) {
+                                          ToastNew.showToast(getApplication(), ignored + "", Toast.LENGTH_LONG);
+                                          ignored.printStackTrace();
+                                      }
+                                  }
+                              }
+                );
+
+            }
+        });
+
     }
 
 
@@ -187,6 +219,10 @@ public class ExpertMainActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     fm.beginTransaction().hide(active).show(fragment1).commit();
                     active = fragment1;
+
+                    if (mSocket.connected()) {
+                        mSocket.emit("expert-refresh-information", sessionManager.getAccount());
+                    }
                     return true;
 
                 case R.id.navigation_dashboard:

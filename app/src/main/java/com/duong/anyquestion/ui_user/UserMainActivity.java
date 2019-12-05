@@ -104,6 +104,7 @@ public class UserMainActivity extends AppCompatActivity {
 
                                       } catch (Exception ignored) {
                                           ToastNew.showToast(getApplication(), ignored + "", Toast.LENGTH_LONG);
+                                          ignored.printStackTrace();
                                       }
                                   }
                               }

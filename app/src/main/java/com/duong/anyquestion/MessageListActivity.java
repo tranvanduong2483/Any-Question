@@ -393,4 +393,18 @@ public class MessageListActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (!mSocket.connected()) return;
+
+        if (expert != null)
+            mSocket.emit("expert-refresh-information", sessionManager.getAccount());
+        else if (user != null) {
+            mSocket.emit("user-refresh-information", sessionManager.getAccount());
+        }
+    }
+
+
 }

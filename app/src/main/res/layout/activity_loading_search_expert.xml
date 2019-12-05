@@ -90,10 +90,10 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <com.duong.anyquestion.classes.RialTextView
                 android:id="@+id/tv_money"
                 android:textSize="20sp"
-                android:text="20.000 VND"
+                android:text="15000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>

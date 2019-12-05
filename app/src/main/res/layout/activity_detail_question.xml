@@ -35,7 +35,7 @@
             android:layout_height="wrap_content" />
 
 
-        <TextView
+        <com.duong.anyquestion.classes.RialTextView
             android:id="@+id/tv_money"
             android:text="50 000 VND"
             android:layout_width="match_parent"

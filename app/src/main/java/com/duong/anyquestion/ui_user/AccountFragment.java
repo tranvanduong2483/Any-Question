@@ -63,7 +63,7 @@ public class AccountFragment extends Fragment {
         tv_fullname.setText(user.getFullName());
         tv_email.setText(user.getEmail());
         tv_address.setText(user.getAddress());
-        tv_money.setText(user.getMoney() + " VND");
+        tv_money.setText(user.getMoney() + "");
 
         Button btn_edit = view.findViewById(R.id.btn_edit);
         btn_edit.setOnClickListener(new View.OnClickListener() {
@@ -232,8 +232,7 @@ public class AccountFragment extends Fragment {
 
 
     public void UpdateMoney(int balance) {
-        tv_money.setText(balance + " VND");
-
+        tv_money.setText(balance + "");
     }
 
 

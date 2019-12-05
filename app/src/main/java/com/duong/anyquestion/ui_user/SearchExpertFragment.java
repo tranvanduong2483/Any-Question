@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
@@ -36,6 +38,7 @@ import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.Field;
 import com.duong.anyquestion.classes.Question;
+import com.duong.anyquestion.classes.RialTextView;
 import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.classes.ToastNew;
 import com.duong.anyquestion.register.UserRegisterActivity;
@@ -87,9 +90,13 @@ public class SearchExpertFragment extends Fragment {
         spn_field.setVisibility(View.GONE);
 
         int cost = 15000;
-        int blance = sessionManager.getUser().getMoney();
         tv_cost.setText(cost + "");
-        tv_money_du.setText((blance - cost) + "");
+        int blance = sessionManager.getUser().getMoney();
+        UpdateMoney(blance);
+
+        Bitmap avatar_bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.math_example);
+        avatar_bitmap = ToolSupport.resize(avatar_bitmap, 300, 300);
+        iv_image.setImageBitmap(ToolSupport.BitmapWithRoundedCorners(avatar_bitmap));
 
 
 
@@ -195,9 +202,25 @@ public class SearchExpertFragment extends Fragment {
             }
         });
 
+
+        tv_cost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeCost();
+            }
+        });
+
         mSocket.on("server-sent-field",callback_get_field);
         setGetFiled();
         return view;
+    }
+
+    private void changeCost() {
+        int cost = Integer.parseInt(tv_cost.getText().toString());
+        cost += 5000;
+        if (cost > 100000) cost = 15000;
+        tv_cost.setText(cost + "");
+        UpdateMoney(sessionManager.getUser().getMoney());
     }
 
 
@@ -234,7 +257,7 @@ public class SearchExpertFragment extends Fragment {
                 Bitmap avatar_bitmap = BitmapFactory.decodeStream(is);
                 avatar_bitmap = ToolSupport.resize(avatar_bitmap, 300, 300);
 
-                iv_image.setImageBitmap(avatar_bitmap);
+                iv_image.setImageBitmap(ToolSupport.BitmapWithRoundedCorners(avatar_bitmap));
                 avatarString = ToolSupport.convertBitmapToStringBase64(avatar_bitmap);
 
             } catch (Exception e) {
@@ -294,5 +317,7 @@ public class SearchExpertFragment extends Fragment {
         int cost = Integer.parseInt(tv_cost.getText().toString());
         tv_money_du.setText((balance - cost) + "");
     }
+
+
 }
 

@@ -37,8 +37,7 @@
                 <ImageView
                     android:id="@+id/iv_image"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:src="@drawable/math_example" />
+                    android:layout_height="120dp" />
 
 
             </LinearLayout>
@@ -189,22 +188,15 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="1dp">
 
-                <TextView
+
+                <com.duong.anyquestion.classes.RialTextView
                     android:id="@+id/tv_cost"
                     android:layout_centerHorizontal="true"
                     style="@style/textMoneySearchExpert"
+                    android:layout_alignParentBottom="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
                     android:text="15000" />
-
-                <TextView
-                    style="@style/textMoneySearchExpert"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toRightOf="@+id/tv_cost"
-                    android:text=" VNĐ" />
 
             </RelativeLayout>
         </LinearLayout>
@@ -225,7 +217,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="1dp">
 
-                <TextView
+                <com.duong.anyquestion.classes.RialTextView
                     android:id="@+id/tv_money_du"
                     android:layout_centerHorizontal="true"
                     style="@style/textMoneySearchExpert"
@@ -234,13 +226,6 @@
                     android:layout_alignParentBottom="true"
                     android:text="85000" />
 
-                <TextView
-                    style="@style/textMoneySearchExpert"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_toRightOf="@+id/tv_money_du"
-                    android:text=" VNĐ" />
 
             </RelativeLayout>
         </LinearLayout>

@@ -68,7 +68,7 @@ public class SentMessageHolder extends RecyclerView.ViewHolder {
             iv_image.setImageBitmap(ToolSupport.BitmapWithRoundedCorners(bitmap));
 
 
-            Drawable drawable = new BitmapDrawable(itemView.getResources(), bitmap);
+            Drawable drawable = new BitmapDrawable(itemView.getResources(), ToolSupport.BitmapWithRoundedCorners(bitmap));
             iv_image_loading.setBackground(drawable);
 
             if (message.isStatus()) {

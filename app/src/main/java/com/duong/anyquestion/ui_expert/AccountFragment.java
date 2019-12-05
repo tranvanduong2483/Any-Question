@@ -71,7 +71,7 @@ public class AccountFragment extends Fragment {
         tv_field.setText(expert.getField_id() + "");
         tv_email.setText(expert.getEmail());
         tv_address.setText(expert.getAddress());
-        tv_money.setText(expert.getMoney() + " VND");
+        tv_money.setText(expert.getMoney() + "");
 
         ImageButton btn_dangxuat = view.findViewById(R.id.btn_dangxuat);
         btn_dangxuat.setOnClickListener(new View.OnClickListener() {
@@ -238,5 +238,8 @@ public class AccountFragment extends Fragment {
     };
 
 
+    public void UpdateMoney(int balance) {
+        tv_money.setText(balance + "");
+    }
 
 }
