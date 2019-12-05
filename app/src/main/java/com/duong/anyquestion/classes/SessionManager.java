@@ -42,7 +42,7 @@ public class SessionManager {
 
     public void createSession(User user) {
         editor.putBoolean(LOGIN, true);
-        editor.putString(ACCOUNT, user.getAccount());
+        editor.putString(ACCOUNT, user.getUser_id());
         editor.putString(FULLNAME, user.getFullName());
         editor.putString(ADDRESS, user.getAddress());
         editor.putString(EMAIL, user.getEmail());
@@ -115,7 +115,7 @@ public class SessionManager {
 
     public User getUser() {
         User user = new User();
-        user.setAccount(sharedPreferences.getString(ACCOUNT, null));
+        user.setUser_id(sharedPreferences.getString(ACCOUNT, null));
         user.setFullName( sharedPreferences.getString(FULLNAME, null));
         user.setAddress( sharedPreferences.getString(ADDRESS, null));
         user.setEmail( sharedPreferences.getString(EMAIL, null));

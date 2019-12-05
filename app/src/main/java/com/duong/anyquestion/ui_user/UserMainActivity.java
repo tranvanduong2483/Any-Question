@@ -1,5 +1,6 @@
 package com.duong.anyquestion.ui_user;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.duong.anyquestion.LoadingSearchExpertActivity;
 import com.duong.anyquestion.R;
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
@@ -40,7 +42,7 @@ public class UserMainActivity extends AppCompatActivity {
     SessionManager sessionManager;
     private Socket mSocket = ConnectThread.getInstance().getSocket();
 
-    final Fragment fragment1 = new AccountFragment();
+    public Fragment fragment1 = new AccountFragment();
     final Fragment fragment2 = new SearchExpertFragment();
     final Fragment fragment3 = new HistoryFragment();
     final FragmentManager fm = getSupportFragmentManager();
@@ -79,6 +81,37 @@ public class UserMainActivity extends AppCompatActivity {
 
             }
         });
+
+
+        mSocket.on("server-sent-balance", new Emitter.Listener() {
+            @Override
+            public void call(final Object... args) {
+                runOnUiThread(new Runnable() {
+                                  @Override
+                                  public void run() {
+                                      try {
+                                          String user_id = args[0] + "";
+                                          int balance = (int) args[1];
+                                          if (!user_id.equals(sessionManager.getAccount())) return;
+                                          User update_user = sessionManager.getUser();
+                                          update_user.setMoney(balance);
+                                          sessionManager.createSession(update_user);
+
+
+                                          ((AccountFragment) fragment1).UpdateMoney(balance);
+
+                                          ((SearchExpertFragment) fragment2).UpdateMoney(balance);
+
+                                      } catch (Exception ignored) {
+                                          ToastNew.showToast(getApplication(), ignored + "", Toast.LENGTH_LONG);
+                                      }
+                                  }
+                              }
+                );
+
+            }
+        });
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -90,14 +123,17 @@ public class UserMainActivity extends AppCompatActivity {
                 case R.id.navigation_home:
                     fm.beginTransaction().hide(active).show(fragment1).commit();
                     active = fragment1;
-
+                    if (mSocket.connected())
+                        mSocket.emit("user-refresh-information", sessionManager.getAccount());
                     return true;
 
                 case R.id.navigation_dashboard:
                     fm.beginTransaction().hide(active).show(fragment2).commit();
                     active = fragment2;
-                    if (mSocket.connected())
+                    if (mSocket.connected()) {
                         mSocket.emit("client-get-field", "client-get-field *****");
+                        mSocket.emit("user-refresh-information", sessionManager.getAccount());
+                    }
                     return true;
 
                 case R.id.navigation_notifications:

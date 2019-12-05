@@ -23,53 +23,7 @@ public class User {
     }
 
 
-    public int getMoney() {
-        return money;
-    }
 
-    public void setMoney(int money) {
-        this.money = money;
-    }
-
-    public void setAccount(String account) {
-        user_id = account;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
-    }
-
-    public void setFullName(String fullName) {
-        FullName = fullName;
-    }
-
-    public void setAddress(String address) {
-        Address = address;
-    }
-
-    public void setEmail(String email) {
-        Email = email;
-    }
-
-    public String getAccount() {
-        return user_id;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public String getFullName() {
-        return FullName;
-    }
-
-    public String getAddress() {
-        return Address;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
 
     public User(String account, String password, String fullName, String address, String email) {
         user_id = account;
@@ -83,13 +37,28 @@ public class User {
     public User() {
     }
 
-
     public String getUser_id() {
         return user_id;
     }
 
     public void setUser_id(String user_id) {
         this.user_id = user_id;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
+    public String getFullName() {
+        return FullName;
+    }
+
+    public void setFullName(String fullName) {
+        FullName = fullName;
     }
 
     public String getAvatar() {
@@ -100,11 +69,35 @@ public class User {
         this.avatar = avatar;
     }
 
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
     public String toJSON() {
 
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("user_id", getAccount());
+            jsonObject.put("user_id", getUser_id());
             jsonObject.put("Password", getPassword());
             jsonObject.put("FullName", getFullName());
             jsonObject.put("Address", getAddress());

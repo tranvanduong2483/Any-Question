@@ -7,8 +7,7 @@
     android:background="@color/login_bk_color"
     android:paddingStart="20dp"
     android:paddingEnd="20dp"
-    android:paddingTop="10dp"
-    tools:context=".LoginActivity">
+    android:paddingTop="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,20 +49,21 @@
                 android:layout_margin="20dp"
                 android:orientation="vertical">
 
-                <com.google.android.material.textfield.TextInputLayout style="@style/parent">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputSerial"
+                    style="@style/parent">
 
                     <EditText
                         android:id="@+id/edt_serial"
                         style="@style/modifiedEditText"
                         android:layout_margin="10dp"
-                        android:hint="Nhập số serial"
-                        android:textAllCaps="true"
+                        android:hint="Nhập serial"
                         android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/textInputName"
+                    android:id="@+id/textInputCodeCard"
                     style="@style/parent">
 
                     <EditText

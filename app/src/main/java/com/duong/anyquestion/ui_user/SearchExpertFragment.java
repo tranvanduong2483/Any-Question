@@ -57,7 +57,7 @@ public class SearchExpertFragment extends Fragment {
 
     private Socket mSocket = ConnectThread.getInstance().getSocket();
     private EditText edt_tille, edt_note;
-    private TextView tv_money;
+    private TextView tv_money_du, tv_cost;
     private final int REQUEST_TAKE_PHOTO = 123;
     private final int REQUEST_CHOOSE_PHOTO = 132;
     private View view;
@@ -68,17 +68,29 @@ public class SearchExpertFragment extends Fragment {
     private Spinner spn_field;
     private ProgressBar pb_loading_field;
     private   Button btn_search_expert;
+    private SessionManager sessionManager;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_search_expert, container, false);
 
+        sessionManager = new SessionManager(getActivity());
+
+
         edt_tille = view.findViewById(R.id.edt_tittle);
         edt_note = view.findViewById(R.id.edt_note);
-        tv_money = view.findViewById(R.id.tv_money);
+        tv_money_du = view.findViewById(R.id.tv_money_du);
+        tv_cost = view.findViewById(R.id.tv_cost);
+
         iv_image = view.findViewById(R.id.iv_image);
         spn_field =view.findViewById(R.id.spn_field);
         pb_loading_field= view.findViewById(R.id.pb_loading_field);
         spn_field.setVisibility(View.GONE);
+
+        int cost = 15000;
+        int blance = sessionManager.getUser().getMoney();
+        tv_cost.setText(cost + "");
+        tv_money_du.setText((blance - cost) + "");
+
 
 
         array_field=new ArrayList<>();
@@ -120,12 +132,18 @@ public class SearchExpertFragment extends Fragment {
                 int field_id = array_field.get(spn_field.getSelectedItemPosition()).getField_id();
                 String imageString = avatarString;
                 String note = edt_note.getText() + "";
-                int money = Integer.parseInt(tv_money.getText().toString());
+                int money = Integer.parseInt(tv_money_du.getText().toString());
+                int cost = Integer.parseInt(tv_cost.getText().toString());
 
 
                 SessionManager sessionManager = new SessionManager(getActivity());
 
-                Question question = new Question(1, tittle, field_id, imageString, note, money, sessionManager.getAccount());
+                Question question = new Question(1, tittle, field_id, imageString, note, cost, sessionManager.getAccount());
+
+                if (money < 0) {
+                    ToastNew.showToast(getActivity(), "Số dư còn lại không đủ!", Toast.LENGTH_SHORT);
+                    return;
+                }
 
                 if ( avatarString ==null) {
                     ToastNew.showToast(getActivity(), "Thiếu ảnh", Toast.LENGTH_SHORT);
@@ -270,5 +288,11 @@ public class SearchExpertFragment extends Fragment {
             });
         }
     };
+
+
+    public void UpdateMoney(int balance) {
+        int cost = Integer.parseInt(tv_cost.getText().toString());
+        tv_money_du.setText((balance - cost) + "");
+    }
 }
 

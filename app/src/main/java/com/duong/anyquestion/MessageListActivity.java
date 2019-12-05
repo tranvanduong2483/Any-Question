@@ -155,13 +155,13 @@ public class MessageListActivity extends AppCompatActivity {
 
 
         if (user != null) {
-            ToastNew.showToast(this, "Bạn và chuyên gia đã được kết nối với nhau!", Toast.LENGTH_LONG);
-            mSocket.emit("user-ready-thao-luan");
+            ToastNew.showToast(this, "Bạn và chuyên gia đã được kết nối với nhau! " + user.getUser_id(), Toast.LENGTH_LONG);
+            mSocket.emit("user-ready-thao-luan", sessionManager.getAccount());
         }
 
         if (expert != null) {
-            ToastNew.showToast(this, "Bạn và người đặt câu hỏi đã được kết nối với nhau!", Toast.LENGTH_LONG);
-            mSocket.emit("expert-ready-thao-luan");
+            ToastNew.showToast(this, "Bạn và người đặt câu hỏi đã được kết nối với nhau! " + expert.getExpert_id(), Toast.LENGTH_LONG);
+            mSocket.emit("expert-ready-thao-luan", sessionManager.getAccount());
         }
 
 
@@ -195,7 +195,7 @@ public class MessageListActivity extends AppCompatActivity {
                 String message = edt_message.getText().toString();
                 if (message.isEmpty()) return;
 
-                Message message_new = new Message(conversation_id, user != null ? user.getAccount() : expert.getExpert_id(), message, false);
+                Message message_new = new Message(conversation_id, user != null ? user.getUser_id() : expert.getExpert_id(), message, false);
                 sendMessage(message_new);
                 edt_message.setText("");
             }
@@ -268,7 +268,7 @@ public class MessageListActivity extends AppCompatActivity {
 
 
                         String image_message = ToolSupport.convertBitmapToStringBase64(bm);
-                        Message message_new = new Message(conversation_id, user != null ? user.getAccount() : expert.getExpert_id(), image_message, true, false);
+                        Message message_new = new Message(conversation_id, user != null ? user.getUser_id() : expert.getExpert_id(), image_message, true, false);
                         sendMessage(message_new);
 
                     } catch (Exception e) {
@@ -281,7 +281,7 @@ public class MessageListActivity extends AppCompatActivity {
                     Bitmap bm = (Bitmap) data.getExtras().get("data");
 
                     String image_message = ToolSupport.convertBitmapToStringBase64(bm);
-                    Message message_new = new Message(conversation_id, user != null ? user.getAccount() : expert.getExpert_id(), image_message, true, false);
+                    Message message_new = new Message(conversation_id, user != null ? user.getUser_id() : expert.getExpert_id(), image_message, true, false);
                     sendMessage(message_new);
                 }
 

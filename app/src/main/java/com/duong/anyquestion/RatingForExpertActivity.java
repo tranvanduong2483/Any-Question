@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
+import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.classes.ToastNew;
 import com.github.nkzawa.socketio.client.Socket;
 
@@ -20,6 +21,7 @@ public class RatingForExpertActivity extends AppCompatActivity {
     TextView mRatingScale;
     Button mSendFeedback;
     EditText edt_feedback;
+    SessionManager sessionManager;
     private Socket mSocket = ConnectThread.getInstance().getSocket();
     Bundle bundle;
 
@@ -29,6 +31,7 @@ public class RatingForExpertActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rating_for_expert);
 
         bundle = getIntent().getExtras();
+        sessionManager = new SessionManager(this);
 
 
         mRatingScale = findViewById(R.id.tvRatingScale);
@@ -79,5 +82,9 @@ public class RatingForExpertActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSocket.emit("user-refresh-information", sessionManager.getAccount());
+    }
 }

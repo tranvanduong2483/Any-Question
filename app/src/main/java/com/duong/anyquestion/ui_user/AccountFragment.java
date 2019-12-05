@@ -127,6 +127,7 @@ public class AccountFragment extends Fragment {
 
         mSocket.on("ketqua-logout", callback_logout);
         mSocket.on("server-to-update-status", callback_update_information);
+
         return view;
     }
 
@@ -229,6 +230,11 @@ public class AccountFragment extends Fragment {
         }
     };
 
+
+    public void UpdateMoney(int balance) {
+        tv_money.setText(balance + " VND");
+
+    }
 
 
 }
