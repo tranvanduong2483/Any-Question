@@ -11,7 +11,7 @@ public class ConnectThread extends Thread {
     private static ConnectThread instance;
     // implementation part
     private Socket mSocket;
-    private String URL = "https://server-any-question.herokuapp.com";///
+    private String URL = "https://server-anyquestion-3.herokuapp.com";///
 
     //private String URL = "http://172.20.10.11:26398";///
 
