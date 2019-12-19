@@ -2,6 +2,7 @@ package com.duong.anyquestion.classes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ public class BxhAdapter extends BaseAdapter {
     Context context;
     int layout;
     ArrayList<Item_XepHang> listxephang;
+    RelativeLayout relative_layout_bg;
 
 
     public BxhAdapter(Context context, int layout, ArrayList<Item_XepHang> listxephang) {
@@ -54,6 +57,7 @@ public class BxhAdapter extends BaseAdapter {
         TextView tv_field = inflater.findViewById(R.id.tv_field);
         TextView tv_thaoluan = inflater.findViewById(R.id.tv_thaoluan);
         RatingBar rb_star = inflater.findViewById(R.id.rb_star);
+        relative_layout_bg = inflater.findViewById(R.id.relative_layout_bg);
         ImageView iv_huyhieu = inflater.findViewById(R.id.iv_huyhieu);
         TextView tv_thuhang = inflater.findViewById(R.id.tv_thuhang);
 
@@ -74,6 +78,17 @@ public class BxhAdapter extends BaseAdapter {
 
         tv_thuhang.setVisibility(View.GONE);
 
+        ArrayList<Drawable> arrayList = new ArrayList();
+        arrayList.add(inflater.getResources().getDrawable(R.drawable.rating_expert_1));
+        arrayList.add(inflater.getResources().getDrawable(R.drawable.rating_expert_2));
+        arrayList.add(inflater.getResources().getDrawable(R.drawable.rating_expert_3));
+        arrayList.add(inflater.getResources().getDrawable(R.drawable.rating_expert_4_));
+        arrayList.add(inflater.getResources().getDrawable(R.drawable.rating_expert_5));
+
+
+        int possible = i % 5;
+
+        relative_layout_bg.setBackgroundDrawable(arrayList.get(possible));
 
         if (i == 0) {
             iv_huyhieu.setImageResource(R.drawable.top1st);

@@ -201,4 +201,56 @@
 
     </style>
 
+
+    <style name="thankYouRatingExpert">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">#304FFE</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorActive</item>
+        <item name="colorControlActivated">@color/colorStand</item>
+    </style>
+
+    <style name="discussionText">
+        <item name="android:textSize">@dimen/discussionTextSize</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="expertRatingNumber">
+        <item name="android:textSize">@dimen/expertRatingNumberTextSize</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+    <style name="nameExpertRating">
+        <item name="android:textSize">@dimen/nameExpertRatingTextSize</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="loginButton4" parent="viewParent">
+        <item name="android:background">@drawable/button_vien_xanh_3</item>
+        <item name="android:textColor">#303F9F</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="loginButton5" parent="viewParent">
+        <item name="android:background">@drawable/button_vien_xanh_4</item>
+        <item name="android:textColor">#303F9F</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="loginButton6" parent="viewParent">
+        <item name="android:background">@drawable/button_vien_xanh_5</item>
+        <item name="android:textColor">#303F9F</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
 </resources>

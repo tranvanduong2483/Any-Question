@@ -55,5 +55,8 @@
 
     <color name="defaultColor">#707070</color>
 
+    <color name="colorActive">#212121</color>
+    <color name="colorStand">#212121</color>
+
 
 </resources>

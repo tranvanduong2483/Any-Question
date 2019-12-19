@@ -56,6 +56,7 @@ public class HistoryAdapter extends BaseAdapter {
         TextView tv_tittle = inflater.findViewById(R.id.tv_tittle);
         TextView tv_field = inflater.findViewById(R.id.tv_field);
         RatingBar rb_danhgia = inflater.findViewById(R.id.rb_danhgia);
+        TextView tv_fromid = inflater.findViewById(R.id.tv_fromid);
 
 
         String title = listHisory.get(i).title;
@@ -64,6 +65,8 @@ public class HistoryAdapter extends BaseAdapter {
         final int conversation_id = listHisory.get(i).conversation_id;
         final String id_user = listHisory.get(i).id_user;
         final String id_expert = listHisory.get(i).id_expert;
+        final String from = listHisory.get(i).id_user;
+
 
 
 
@@ -86,6 +89,7 @@ public class HistoryAdapter extends BaseAdapter {
         tv_tittle.setText(title);
         tv_field.setText(field);
         rb_danhgia.setRating(star);
+        tv_fromid.setText(from);
 
 
         return inflater;

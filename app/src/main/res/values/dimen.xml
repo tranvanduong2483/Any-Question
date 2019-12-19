@@ -40,4 +40,10 @@
 
     <dimen name="test_120dp_no_delete">240dp</dimen>
 
+
+    \
+    <dimen name="nameExpertRatingTextSize">22dp</dimen>
+    <dimen name="expertRatingNumberTextSize">22dp</dimen>
+    <dimen name="discussionTextSize">18dp</dimen>
+
 </resources>

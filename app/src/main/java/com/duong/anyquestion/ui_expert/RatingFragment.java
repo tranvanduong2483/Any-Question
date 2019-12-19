@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -32,6 +33,7 @@ public class RatingFragment extends Fragment {
     ListView lv_list_bxh;
     BxhAdapter bxhAdapter;
     ArrayList<Item_XepHang> item_xepHangs;
+    ProgressBar pb_loading;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class RatingFragment extends Fragment {
 
         item_xepHangs = new ArrayList<>();
         lv_list_bxh = view.findViewById(R.id.lv_list_bxh);
+        pb_loading = view.findViewById(R.id.pd_loading);
         bxhAdapter = new BxhAdapter(view.getContext(), R.layout.item_expert_rating, item_xepHangs);
         lv_list_bxh.setAdapter(bxhAdapter);
 
@@ -52,6 +55,8 @@ public class RatingFragment extends Fragment {
                             @Override
                             public void run() {
                                 try {
+
+
                                     JSONArray data = (JSONArray) args[0];
 
                                     if (data.length() == 0) return;
@@ -64,6 +69,8 @@ public class RatingFragment extends Fragment {
                                         item_xepHangs.add(0, item_xepHang);
                                     }
                                     bxhAdapter.notifyDataSetChanged();
+                                    pb_loading.setVisibility(View.GONE);
+                                    lv_list_bxh.setVisibility(View.VISIBLE);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                     //  ToastNew.showToast(getActivity(), "Xuất hiện lỗi nào đó!", Toast.LENGTH_LONG);
