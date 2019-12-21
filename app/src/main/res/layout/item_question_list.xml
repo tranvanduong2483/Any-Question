@@ -5,25 +5,23 @@
     android:alignmentMode="alignMargins"
     android:columnCount="2"
     android:columnOrderPreserved="false"
-    android:padding="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
     android:rowCount="3">
 
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        style="@style/loginCard"
-        android:layout_gravity="center"
-        android:background="@color/whiteCardColor"
-        android:elevation="5dp"
-        app:cardCornerRadius="@dimen/loginCardRadius">
+
 
         <LinearLayout
+            android:background="@color/whiteCardColor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="@dimen/dodai15">
+            android:paddingTop="10dp">
 
             <LinearLayout
                 android:id="@+id/relative_layout_id1"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -49,18 +47,17 @@
                         android:maxLines="2"
                         android:text="Nguyễn Thái Minh"
                         android:textSize="20sp"
+                        android:textColor="@color/blackTextColor"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tv_field"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dodai5"
-                        android:layout_marginBottom="@dimen/dodai5"
                         android:text="Vật lý "
-                        android:textColor="@color/blue"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:textSize="15sp" />
 
                     <RatingBar
                         android:id="@+id/rb_danhgia"
@@ -68,7 +65,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:numStars="5"
-                        android:progressTint="#283593"
+                        android:progressTint="#EF6C00"
                         android:rating="5" />
                 </LinearLayout>
             </LinearLayout>
@@ -80,13 +77,15 @@
                 android:layout_marginTop="@dimen/dodai10"
                 android:maxLines="2"
                 android:text="Cách không học mà vẫn giỏi"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="15sp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/blackTextColor" />
 
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_height="300dp"
                 android:layout_below="@id/relative_layout_id1"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="@dimen/dodai10"
@@ -96,7 +95,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dodai10"
                 android:orientation="horizontal">
 
                 <Button
@@ -110,7 +108,7 @@
                     android:text="Xem câu hỏi" />
 
                 <Button
-                    style="@style/loginButton5"
+                    style="@style/loginButton4"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
@@ -120,5 +118,4 @@
                     android:text="Chi tiết" />
             </LinearLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
 </GridLayout>

@@ -196,7 +196,7 @@
 
     <style name="textMoneySearchExpert">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">#4527A0</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
         <item name="android:textStyle">bold</item>
 
     </style>
@@ -235,7 +235,7 @@
 
     <style name="loginButton4" parent="viewParent">
         <item name="android:background">@drawable/button_vien_xanh_3</item>
-        <item name="android:textColor">#303F9F</item>
+        <item name="android:textColor">@color/primaryTextColor</item>
         <item name="android:textStyle">bold</item>
     </style>
 
