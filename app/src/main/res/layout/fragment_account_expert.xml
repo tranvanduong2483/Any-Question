@@ -46,14 +46,13 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/circle_border">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/im_avatar"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_margin="9dp"
-                    android:adjustViewBounds="true"
                     android:padding="3dp"
-                    android:scaleType="centerInside"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/avatar" />
             </RelativeLayout>
 
@@ -121,11 +120,12 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_socuocthaoluan"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="98"
+                    android:text="*"
                     android:textColor="@color/white"
                     android:textSize="22sp" />
 
@@ -160,12 +160,13 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_saoTB"
                     android:textStyle="bold"
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="5.00"
+                    android:text="*"
                     android:textColor="@color/white"
                     android:textSize="22sp" />
 

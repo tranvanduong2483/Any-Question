@@ -1,11 +1,5 @@
 package com.duong.anyquestion;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,11 +12,19 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.Expert;
-import com.duong.anyquestion.classes.MessageListAdapter;
 import com.duong.anyquestion.classes.Message;
+import com.duong.anyquestion.classes.MessageListAdapter;
+import com.duong.anyquestion.classes.Question;
 import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.classes.ToastNew;
 import com.duong.anyquestion.classes.User;
@@ -30,12 +32,20 @@ import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class MessageListActivity extends AppCompatActivity {
@@ -61,43 +71,42 @@ public class MessageListActivity extends AppCompatActivity {
 
     Bitmap bitmap_you;
     Bitmap bitmap_me;
-    String question_json;
+    Question question;
+    private StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_list);
-        sessionManager = new SessionManager(this);
 
+        sessionManager = new SessionManager(this);
         AnhXa();
         initEventButton();
 
         if (sessionManager.isUser()) user = sessionManager.getUser();
         else expert = sessionManager.getExpert();
 
-
         bundle = getIntent().getExtras();
         if (bundle != null) {
             String stringAvatar = bundle.getString("stringAvatar");
             if (stringAvatar != null)
                 bitmap_you = ToolSupport.convertStringBase64ToBitmap(stringAvatar);
-            question_json = bundle.getString("question");
+            question = (Question) bundle.getSerializable("question");
+            dowloadImage(question.getImage());
+
             conversation_id = bundle.getInt("conversation_id");
             ToastNew.showToast(MessageListActivity.this, conversation_id + "", Toast.LENGTH_LONG);
         }
 
         mSocket.on("server-send-message", callback_nhantinnhan);
         mSocket.on("user-ready-thao-luan", callback_gioithieu);
-
         mSocket.on("server-bao-nguoi-kia-da-roi-cuoc-thao-luan", new Emitter.Listener() {
             @Override
             public void call(final Object... args) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
                         if (conversation_id != (int) args[0]) return;
-
                         if (user != null) {
                             ToastNew.showToast(getApplication(), "Chuyên gia đã rời cuộc thảo luận!", Toast.LENGTH_LONG);
                             Intent intent = new Intent(MessageListActivity.this, RatingForExpertActivity.class);
@@ -109,40 +118,7 @@ public class MessageListActivity extends AppCompatActivity {
                         } else {
                             ToastNew.showToast(getApplication(), "Người thắc mắc đã rời cuộc thảo luận!", Toast.LENGTH_LONG);
                         }
-
                         finish();
-
-                    }
-                });
-            }
-        });
-
-
-        mSocket.on("send-image-complete", new Emitter.Listener() {
-            @Override
-            public void call(final Object... args) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-
-
-                        try {
-                            int position = (int) args[0];
-                            boolean status = (args[1] + "").equals("ok");
-
-                            messageList.get(position).setStatus(status);
-
-                            mMessageAdapter.notifyDataSetChanged();
-
-
-                            ToastNew.showToast(getApplication(), position + "-" + args[1], Toast.LENGTH_LONG);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            ToastNew.showToast(getApplication(), "Lỗi rồi", Toast.LENGTH_LONG);
-
-                        }
-
-
                     }
                 });
             }
@@ -152,7 +128,6 @@ public class MessageListActivity extends AppCompatActivity {
         mMessageAdapter = new MessageListAdapter(this, messageList);
         mMessageRecycler.setLayoutManager(new LinearLayoutManager(this));
         mMessageRecycler.setAdapter(mMessageAdapter);
-
 
         if (user != null) {
             ToastNew.showToast(this, "Bạn và chuyên gia đã được kết nối với nhau! " + user.getUser_id(), Toast.LENGTH_LONG);
@@ -194,8 +169,10 @@ public class MessageListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String message = edt_message.getText().toString();
                 if (message.isEmpty()) return;
-
                 Message message_new = new Message(conversation_id, user != null ? user.getUser_id() : expert.getExpert_id(), message, false);
+                messageList.add(message_new);
+                mMessageAdapter.notifyItemInserted(messageList.size() - 1);
+                mMessageRecycler.smoothScrollToPosition(mMessageAdapter.getItemCount());
                 sendMessage(message_new);
                 edt_message.setText("");
             }
@@ -216,7 +193,6 @@ public class MessageListActivity extends AppCompatActivity {
             }
         });
 
-
         floatingMenu = findViewById(R.id.floatingMenu);
 
         floatingMenu.setOnFloatingActionsMenuUpdateListener(new FloatingActionsMenu.OnFloatingActionsMenuUpdateListener() {
@@ -231,12 +207,15 @@ public class MessageListActivity extends AppCompatActivity {
             }
         });
 
+
+        btn_question.setEnabled(false);
         btn_question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MessageListActivity.this, DetailQuestionActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("question", question_json);
+                bundle.putSerializable("question", question);
+                bundle.putBoolean("local", true);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 floatingMenu.collapseImmediately();
@@ -245,9 +224,6 @@ public class MessageListActivity extends AppCompatActivity {
     }
 
     private void sendMessage(Message message_new) {
-        messageList.add(message_new);
-        mMessageAdapter.notifyItemInserted(messageList.size() - 1);
-        mMessageRecycler.smoothScrollToPosition(mMessageAdapter.getItemCount());
         mSocket.emit("client-send-message-to-other-people", message_new.toJSON(), messageList.size() - 1);
     }
 
@@ -266,28 +242,59 @@ public class MessageListActivity extends AppCompatActivity {
                         InputStream is = getContentResolver().openInputStream(uri);
                         Bitmap bm = BitmapFactory.decodeStream(is);
 
-
-                        String image_message = ToolSupport.convertBitmapToStringBase64(bm);
-                        Message message_new = new Message(conversation_id, user != null ? user.getUser_id() : expert.getExpert_id(), image_message, true, false);
-                        sendMessage(message_new);
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        ToastNew.showToast(getApplication(), "Xuất hiện lỗi nào đó!", Toast.LENGTH_LONG);
+                        Message message_new = new Message(conversation_id, user != null ? user.getUser_id() : expert.getExpert_id(), "", true, false, bm);
+                        messageList.add(message_new);
+                        mMessageAdapter.notifyItemInserted(messageList.size() - 1);
+                        mMessageRecycler.smoothScrollToPosition(mMessageAdapter.getItemCount());
+                        upload(message_new);
+                    } catch (Exception ignored) {
                     }
                 } else if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
                     if (data.getExtras() == null) return;
 
                     Bitmap bm = (Bitmap) data.getExtras().get("data");
-
-                    String image_message = ToolSupport.convertBitmapToStringBase64(bm);
-                    Message message_new = new Message(conversation_id, user != null ? user.getUser_id() : expert.getExpert_id(), image_message, true, false);
-                    sendMessage(message_new);
+                    Message message_new = new Message(conversation_id, user != null ? user.getUser_id() : expert.getExpert_id(), "", true, false, bm);
+                    messageList.add(message_new);
+                    mMessageAdapter.notifyItemInserted(messageList.size() - 1);
+                    mMessageRecycler.smoothScrollToPosition(mMessageAdapter.getItemCount());
+                    upload(message_new);
                 }
-
             }
         });
 
+    }
+
+    private void upload(final Message message_new) {
+        Calendar calendar = Calendar.getInstance();
+        final String filename = "images" + calendar.getTimeInMillis() + ".png";
+        final StorageReference mountainsRef = mStorageRef.child(filename);
+        // Get the data from an ImageView as bytes
+        //iv_upload_image.setDrawingCacheEnabled(true);
+        //iv_upload_image.buildDrawingCache();
+        //Bitmap bitmap = ((BitmapDrawable) iv_upload_image.getDrawable()).getBitmap();
+        Bitmap bitmap = message_new.getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] data = baos.toByteArray();
+        UploadTask uploadTask = mountainsRef.putBytes(data);
+
+
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                ToastNew.showToast(getApplicationContext(), "Lỗi", Toast.LENGTH_LONG);
+                messageList.remove(message_new);
+                mMessageAdapter.notifyDataSetChanged();
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                message_new.setStatus(true);
+                message_new.setMessage(filename);
+                mMessageAdapter.notifyDataSetChanged();
+                sendMessage(message_new);
+            }
+        });
     }
 
     private Emitter.Listener callback_nhantinnhan = new Emitter.Listener() {
@@ -304,14 +311,12 @@ public class MessageListActivity extends AppCompatActivity {
                         messageList.add(message_new);
                         mMessageAdapter.notifyDataSetChanged();
                         mMessageRecycler.smoothScrollToPosition(mMessageAdapter.getItemCount());
-                    } catch (Exception e) {
-                        ToastNew.showToast(MessageListActivity.this, "Xuất hiện lỗi nào đó!", Toast.LENGTH_LONG);
+                    } catch (Exception ignored) {
                     }
                 }
             });
         }
     };
-
 
     private Emitter.Listener callback_gioithieu = new Emitter.Listener() {
         @Override
@@ -332,7 +337,6 @@ public class MessageListActivity extends AppCompatActivity {
                         }
                     } catch (Exception ignored) {
                     }
-
                 }
             });
         }
@@ -343,7 +347,6 @@ public class MessageListActivity extends AppCompatActivity {
         ask();
     }
 
-
     public void ask() {
         try {
             final AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -352,7 +355,6 @@ public class MessageListActivity extends AppCompatActivity {
                     .setPositiveButton("Vâng", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.dismiss();
-
 
                             if (user != null) {
                                 Intent intent = new Intent(MessageListActivity.this, RatingForExpertActivity.class);
@@ -392,7 +394,6 @@ public class MessageListActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -407,4 +408,23 @@ public class MessageListActivity extends AppCompatActivity {
     }
 
 
+    private void dowloadImage(String filename) {
+        StorageReference islandRef = mStorageRef.child(filename);
+
+        final long ONE_MEGABYTE = 1024 * 1024 * 100;
+        islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                btn_question.setEnabled(true);
+
+                Bitmap bitmap = ToolSupport.convertByteArrayToBitmap(bytes);
+                String filename = ToolSupport.saveToInternalStorage(bitmap, MessageListActivity.this);
+                question.setImage(filename);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+            }
+        });
+    }
 }

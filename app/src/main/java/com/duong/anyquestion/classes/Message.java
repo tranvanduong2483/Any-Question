@@ -1,5 +1,6 @@
 package com.duong.anyquestion.classes;
 
+import android.graphics.Bitmap;
 import android.text.format.Time;
 
 import org.json.JSONException;
@@ -20,9 +21,11 @@ public class Message {
     private boolean typeImage;
     private String time;
     private boolean status;
+    private Bitmap bitmap;
 
     public Message() {
     }
+
 
     public int getMessage_id() {
         return messages_id;
@@ -89,6 +92,24 @@ public class Message {
         this.typeImage = typeImage;
         SetTimeNow();
         this.status = status;
+    }
+
+    public Message(int conversation_id, String sender, String message, boolean typeImage, boolean status, Bitmap bitmap) {
+        this.conversation_id = conversation_id;
+        this.sender = sender;
+        this.message = message;
+        this.typeImage = typeImage;
+        SetTimeNow();
+        this.status = status;
+        this.bitmap = bitmap;
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
     public int getMessages_id() {

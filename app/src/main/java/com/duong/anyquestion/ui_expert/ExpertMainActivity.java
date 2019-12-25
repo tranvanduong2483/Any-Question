@@ -53,7 +53,6 @@ public class ExpertMainActivity extends AppCompatActivity {
         fm.beginTransaction().add(R.id.nav_host_fragment, fragment2, "2").hide(fragment2).commit();
         fm.beginTransaction().add(R.id.nav_host_fragment, fragment1, "1").commit();
 
-
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
         mSocket.on("send-question-to-expert", callback_question);
@@ -90,7 +89,12 @@ public class ExpertMainActivity extends AppCompatActivity {
         });
 
 
-        mSocket.on("server-sent-expert-balance", new Emitter.Listener() {
+        if (mSocket.connected()) {
+            mSocket.emit("expert-refresh-information", sessionManager.getAccount());
+        }
+
+
+        mSocket.on("server-sent-expert-information", new Emitter.Listener() {
             @Override
             public void call(final Object... args) {
                 runOnUiThread(new Runnable() {
@@ -104,11 +108,12 @@ public class ExpertMainActivity extends AppCompatActivity {
                                           update_expert.setMoney(balance);
                                           sessionManager.createSession(update_expert);
 
-
                                           ((AccountFragment) fragment1).UpdateMoney(balance);
-                                      } catch (Exception ignored) {
-                                          ToastNew.showToast(getApplication(), ignored + "", Toast.LENGTH_LONG);
-                                          ignored.printStackTrace();
+                                          ((AccountFragment) fragment1).UpdateSoCuocThaoLuan((int) args[2]);
+                                          ((AccountFragment) fragment1).UpdateSoSaoTB((Float.parseFloat(args[3] + "")));
+
+                                      } catch (Exception e) {
+                                          ToastNew.showToast(getApplication(), e + "", Toast.LENGTH_LONG);
                                       }
                                   }
                               }
@@ -134,7 +139,7 @@ public class ExpertMainActivity extends AppCompatActivity {
                         String gioithieu = edt_gioithieu.getText() + "";
                         Bundle bundle = new Bundle();
                         bundle.putString("tinnhangioithieu", gioithieu);
-                        bundle.putString("question", question_nhan.toJSON());
+                        bundle.putSerializable("question", question_nhan);
                         bundle.putInt("conversation_id", conversation_id);
 
                         Intent intent_nhantin = new Intent(ExpertMainActivity.this, MessageListActivity.class);
@@ -143,8 +148,7 @@ public class ExpertMainActivity extends AppCompatActivity {
 
 
                     } catch (Exception e) {
-
-                        ToastNew.showToast(getApplication(), "Lỗi", Toast.LENGTH_LONG);
+                        ToastNew.showToast(getApplication(), "Lỗi 1234", Toast.LENGTH_LONG);
                     }
                 }
             });
@@ -168,18 +172,14 @@ public class ExpertMainActivity extends AppCompatActivity {
                         Gson gson = new Gson();
                         question_nhan = gson.fromJson(noidung, Question.class);
 
-                        Bitmap question_bitmap = ToolSupport.convertStringBase64ToBitmap(question_nhan.getImageString());
-
                         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(ExpertMainActivity.this);
                         builder.setMessage(question_nhan.getTittle())
                                 .setTitle("Câu hỏi: " + question_nhan.getMoney() + " VND")
                                 .setCancelable(false)
-                                .setIcon(new BitmapDrawable(getResources(), question_bitmap))
                                 .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
 
-                                        PhanHoiYeuCauGiaiDap phanHoiYeuCauGiaiDap = new PhanHoiYeuCauGiaiDap(question_nhan.getId(), question_nhan.getFrom(), question_nhan.getMoney(), true);
-
+                                        PhanHoiYeuCauGiaiDap phanHoiYeuCauGiaiDap = new PhanHoiYeuCauGiaiDap(question_nhan.getQuestion_id(), question_nhan.getUser_id(), question_nhan.getMoney(), true);
                                         mSocket.emit("expert-phanhoi", phanHoiYeuCauGiaiDap.toJSON());
                                         mSocket.once("bat dau cuoc thao luan", callback_thaoluan);
                                         Switch sw_expert_ready = fragment2.getActivity().findViewById(R.id.sw_expert_ready);
@@ -190,7 +190,7 @@ public class ExpertMainActivity extends AppCompatActivity {
                                 })
                                 .setNegativeButton("Từ chối", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
-                                        PhanHoiYeuCauGiaiDap phanHoiYeuCauGiaiDap = new PhanHoiYeuCauGiaiDap(question_nhan.getId(), question_nhan.getFrom(), question_nhan.getMoney(), false);
+                                        PhanHoiYeuCauGiaiDap phanHoiYeuCauGiaiDap = new PhanHoiYeuCauGiaiDap(question_nhan.getQuestion_id(), question_nhan.getUser_id(), question_nhan.getMoney(), false);
                                         mSocket.emit("expert-phanhoi", phanHoiYeuCauGiaiDap.toJSON());
                                         mSocket.connect();
                                         dialog.cancel();
@@ -199,8 +199,8 @@ public class ExpertMainActivity extends AppCompatActivity {
                         androidx.appcompat.app.AlertDialog alert = builder.create();
                         alert.show();
                     } catch (Exception e) {
-
-                        ToastNew.showToast(getApplication(), "Lỗi", Toast.LENGTH_LONG);
+                        e.printStackTrace();
+                        ToastNew.showToast(getApplication(), "Lỗi nhận câu hỏi", Toast.LENGTH_LONG);
                     }
                 }
             });

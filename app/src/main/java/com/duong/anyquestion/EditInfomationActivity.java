@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -36,7 +37,7 @@ public class EditInfomationActivity extends AppCompatActivity {
     private Button btn_save, btn_cancel, btn_chonanhtuthuvien, btn_chupanh;
     private ImageView im_avatar;
     private EditText edt_fullname, edt_email, edt_address;
-    String avatar = null;
+    String avatar_path = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,14 +53,18 @@ public class EditInfomationActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            avatar = bundle.getString("avatar");
-            Bitmap bitmap = ToolSupport.loadImageFromStorage(avatar);
+            avatar_path = bundle.getString("avatar_path");
+
+
+            Bitmap bitmap = ToolSupport.loadAvatar(getApplication(), avatar_path);
             if (bitmap != null) {
                 im_avatar.setImageBitmap(bitmap);
             }
             edt_fullname.setText(bundle.getString("name", ""));
             edt_email.setText(bundle.getString("email", ""));
             edt_address.setText(bundle.getString("address", ""));
+
+            avatar_path = ToolSupport.saveToInternalStorage(bitmap, this);
         }
 
         btn_chupanh.setOnClickListener(new View.OnClickListener() {
@@ -87,9 +92,8 @@ public class EditInfomationActivity extends AppCompatActivity {
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Bundle bundle = new Bundle();
-                bundle.putString("avatar", avatar);
+                bundle.putString("avatar_path", avatar_path);
                 bundle.putString("name", edt_fullname.getText() + "");
                 bundle.putString("address", edt_address.getText() + "");
                 bundle.putString("email", edt_email.getText() + "");
@@ -127,12 +131,9 @@ public class EditInfomationActivity extends AppCompatActivity {
                 Bitmap avatar_bitmap = BitmapFactory.decodeStream(is);
                 avatar_bitmap = ToolSupport.resize(avatar_bitmap, 300, 300);
                 im_avatar.setImageBitmap(avatar_bitmap);
+                avatar_path = ToolSupport.saveToInternalStorage(avatar_bitmap, this);
 
-
-                avatar = ToolSupport.saveToInternalStorage(avatar_bitmap, this);
             } catch (Exception e) {
-                e.printStackTrace();
-                ToastNew.showToast(this, "Lỗi", Toast.LENGTH_SHORT);
             }
         } else if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             if (data.getExtras() == null) return;
@@ -140,7 +141,7 @@ public class EditInfomationActivity extends AppCompatActivity {
             avatar_bitmap = ToolSupport.resize(avatar_bitmap, 300, 300);
 
             im_avatar.setImageBitmap(avatar_bitmap);
-            avatar = ToolSupport.saveToInternalStorage(avatar_bitmap, this);
+            avatar_path = ToolSupport.saveToInternalStorage(avatar_bitmap, this);
         }
     }
 

@@ -1,38 +1,27 @@
 package com.duong.anyquestion;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.duong.anyquestion.classes.ConnectThread;
-import com.duong.anyquestion.classes.Expert;
 import com.duong.anyquestion.classes.Question;
-import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.classes.ToastNew;
-import com.duong.anyquestion.classes.User;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
-import com.google.gson.Gson;
-
-import org.json.JSONObject;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class LoadingSearchExpertActivity extends AppCompatActivity {
 
     private Socket mSocket = ConnectThread.getInstance().getSocket();
     final Handler handler = new Handler();
     TextView tv_tittle, tv_money, tv_note;
-    private String queston_json;
+    private Question question;
 
     private int count = 0;
     private Runnable finnish_time;
@@ -51,19 +40,16 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
 
 
         if (getIntent().getExtras() != null) {
-            queston_json = getIntent().getExtras().getString("question");
-            Gson gson = new Gson();
-            Question question = gson.fromJson(queston_json, Question.class);
+            question = (Question) getIntent().getExtras().getSerializable("question");
             tv_tittle.setText(question.getTittle());
             tv_money.setText(question.getMoney() +"");
-            tv_note.setText(question.getNote().isEmpty()?"Không có": question.getNote());
+            tv_note.setText(question.getDetailed_description().isEmpty() ? "Không có" : question.getDetailed_description());
         }
-
 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mSocket.emit("user-search-expert", queston_json);
+                mSocket.emit("user-search-expert", question.toJSON());
             }
         }, 5000);
 
@@ -137,7 +123,7 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
                             Intent intent_nhantin = new Intent(LoadingSearchExpertActivity.this, MessageListActivity.class);
 
                         Bundle bundle = new Bundle();
-                        bundle.putString("question", queston_json);
+                        bundle.putSerializable("question", question);
                         bundle.putInt("conversation_id", conversation_id);
                         intent_nhantin.putExtras(bundle);
 

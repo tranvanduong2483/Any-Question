@@ -27,20 +27,24 @@
                 android:layout_height="95dp"
                 android:src="@drawable/search_expert_bg_3" />
 
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_horizontal">
+
+                <ProgressBar
+                    android:id="@+id/pb_loading"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
                 <ImageView
                     android:id="@+id/iv_image"
                     android:layout_width="match_parent"
                     android:layout_height="120dp" />
 
-
-            </LinearLayout>
+            </RelativeLayout>
 
 
         </LinearLayout>
@@ -132,7 +136,7 @@
                     style="@style/textBigSearchExpert"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lĩnh vực" />
+                    android:text="Môn học" />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"

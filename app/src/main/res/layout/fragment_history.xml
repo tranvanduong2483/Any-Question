@@ -4,25 +4,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/rl_daytren"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:gravity="center"
         android:paddingRight="10dp"
         android:paddingLeft="10dp">
 
-
-        <TextView
+        <LinearLayout
+            android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Lịch sử"
-            android:textAllCaps="true"
-            android:textColor="#ffffff"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Toàn bộ"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
         <Button
             android:id="@+id/btn_myhistory"
             style="@style/loginButton4"
@@ -39,6 +42,7 @@
             android:layout_margin="10dp"
             android:text="Toàn bộ" />
 
+        </LinearLayout>
         <Button
             android:id="@+id/btn_refesh"
             style="@style/loginButton4"
@@ -47,7 +51,7 @@
             android:layout_margin="10dp"
             android:text="Làm mới"
             android:visibility="gone" />
-    </LinearLayout>
+    </RelativeLayout>
 
 
     <EditText
@@ -57,7 +61,7 @@
         android:hint="Tìm kiếm cuộc thảo luận"
         android:visibility="gone" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lv_history"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

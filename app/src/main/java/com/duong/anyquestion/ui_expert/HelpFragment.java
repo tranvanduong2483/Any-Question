@@ -1,10 +1,12 @@
 package com.duong.anyquestion.ui_expert;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.duong.anyquestion.ExpertHistoryActivity;
 import com.duong.anyquestion.R;
 import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.Introduction;
@@ -32,6 +35,7 @@ public class HelpFragment extends Fragment {
     private Socket mSocket = ConnectThread.getInstance().getSocket();
     private EditText edt_keywords, edt_gioithieu;
     private TextView tv_note;
+    private Button btn_history;
 
 
     public View onCreateView(@NonNull final LayoutInflater inflater,
@@ -44,6 +48,14 @@ public class HelpFragment extends Fragment {
         edt_gioithieu = view.findViewById(R.id.edt_gioithieu);
         edt_keywords = view.findViewById(R.id.edt_keywords);
         tv_note = view.findViewById(R.id.tv_note);
+        btn_history = view.findViewById(R.id.btn_history);
+        btn_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ExpertHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
 
         edt_keywords.setEnabled(false);
         edt_gioithieu.setEnabled(false);

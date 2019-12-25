@@ -32,7 +32,7 @@
             android:id="@+id/iv_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/avatar"
+            android:src="@drawable/loading2"
             android:visibility="visible" />
 
         <ImageView

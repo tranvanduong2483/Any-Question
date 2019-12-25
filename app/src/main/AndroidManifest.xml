@@ -14,32 +14,38 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:label="Nạp tiền"
-            android:name=".NapTienActivity"></activity>
+            android:label="Lịch sử của tôi"
+            android:name=".ExpertHistoryActivity" />
+        <activity
+            android:name=".ImageActivity"
+            android:theme="@style/generalnotitle5" />
+        <activity
+            android:name=".NapTienActivity"
+            android:label="Nạp tiền" />
         <activity
             android:name=".RutTienActivity"
             android:label="Rút tiền" />
         <activity
-            android:label="Tìm mật khẩu"
-            android:name=".ForgetPasswordctivity" />
+            android:name=".ForgetPasswordctivity"
+            android:label="Tìm mật khẩu" />
         <activity
-            android:label="Bảo mật tài khoản"
-            android:name=".SecurityActivity" />
+            android:name=".SecurityActivity"
+            android:label="Bảo mật tài khoản" />
         <activity
-            android:label="Cuộc thảo luận"
-            android:name=".MessageHistoryActivity" />
+            android:name=".MessageHistoryActivity"
+            android:label="Cuộc thảo luận" />
         <activity
             android:name=".DetailQuestionActivity"
             android:label="Chi tiết câu hỏi" />
         <activity
-            android:label="Phản hồi"
-            android:name=".RatingForExpertActivity" />
+            android:name=".RatingForExpertActivity"
+            android:label="Phản hồi" />
         <activity
-            android:label="Đổi mật khẩu"
-            android:name=".ChangePasswordActivity" />
+            android:name=".ChangePasswordActivity"
+            android:label="Đổi mật khẩu" />
         <activity
-            android:label="Cập nhật thông tin"
-            android:name=".EditInfomationActivity" />
+            android:name=".EditInfomationActivity"
+            android:label="Cập nhật thông tin" />
         <activity
             android:name=".MessageListActivity"
             android:label="Cuộc thảo luận" />
@@ -47,8 +53,8 @@
             android:name=".LoadingSearchExpertActivity"
             android:label="Tìm chuyên gia" />
         <activity
-            android:label="Đăng ký chuyên gia"
-            android:name=".register.ExpertRegisterActivity" />
+            android:name=".register.ExpertRegisterActivity"
+            android:label="Đăng ký chuyên gia" />
         <activity
             android:name=".ui_expert.ExpertMainActivity"
             android:label="@string/title_activity_expert_main"
@@ -73,6 +79,7 @@
         <activity
             android:name=".LoginActivity"
             android:label="Đăng nhập"
+            android:launchMode="singleInstance"
             android:theme="@style/generalnotitle2" />
     </application>
 

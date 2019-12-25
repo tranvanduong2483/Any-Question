@@ -5,14 +5,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,39 +20,38 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.duong.anyquestion.LoadingSearchExpertActivity;
-import com.duong.anyquestion.LoginActivity;
-import com.duong.anyquestion.MessageListActivity;
 import com.duong.anyquestion.R;
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
 import com.duong.anyquestion.classes.Field;
 import com.duong.anyquestion.classes.Question;
-import com.duong.anyquestion.classes.RialTextView;
 import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.classes.ToastNew;
-import com.duong.anyquestion.register.UserRegisterActivity;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class SearchExpertFragment extends Fragment {
 
-
+    private StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
     private Socket mSocket = ConnectThread.getInstance().getSocket();
     private EditText edt_tille, edt_note;
     private TextView tv_money_du, tv_cost;
@@ -65,19 +59,19 @@ public class SearchExpertFragment extends Fragment {
     private final int REQUEST_CHOOSE_PHOTO = 132;
     private View view;
     private ImageView iv_image;
-    private String avatarString = null;
+    private String question_filename = null;
     private ArrayList<Field> array_field;
     private ArrayAdapter<Field> adapter_field;
     private Spinner spn_field;
     private ProgressBar pb_loading_field;
     private   Button btn_search_expert;
     private SessionManager sessionManager;
+    private ProgressBar pb_loading;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_search_expert, container, false);
 
         sessionManager = new SessionManager(getActivity());
-
 
         edt_tille = view.findViewById(R.id.edt_tittle);
         edt_note = view.findViewById(R.id.edt_note);
@@ -86,6 +80,7 @@ public class SearchExpertFragment extends Fragment {
 
         iv_image = view.findViewById(R.id.iv_image);
         spn_field =view.findViewById(R.id.spn_field);
+        pb_loading = view.findViewById(R.id.pb_loading);
         pb_loading_field= view.findViewById(R.id.pb_loading_field);
         spn_field.setVisibility(View.GONE);
 
@@ -137,7 +132,6 @@ public class SearchExpertFragment extends Fragment {
             public void onClick(View view) {
                 String tittle = edt_tille.getText() + "";
                 int field_id = array_field.get(spn_field.getSelectedItemPosition()).getField_id();
-                String imageString = avatarString;
                 String note = edt_note.getText() + "";
                 int money = Integer.parseInt(tv_money_du.getText().toString());
                 int cost = Integer.parseInt(tv_cost.getText().toString());
@@ -145,27 +139,28 @@ public class SearchExpertFragment extends Fragment {
 
                 SessionManager sessionManager = new SessionManager(getActivity());
 
-                Question question = new Question(1, tittle, field_id, imageString, note, cost, sessionManager.getAccount());
+                Question question = new Question(field_id, tittle, question_filename, note, cost, sessionManager.getAccount());
 
                 if (money < 0) {
                     ToastNew.showToast(getActivity(), "Số dư còn lại không đủ!", Toast.LENGTH_SHORT);
                     return;
                 }
 
-                if ( avatarString ==null) {
+                if (question_filename == null) {
                     ToastNew.showToast(getActivity(), "Thiếu ảnh", Toast.LENGTH_SHORT);
                     return;
                 }
+
                 if (tittle.isEmpty() ||spn_field.getSelectedItemPosition()==0 ) {
                     ToastNew.showToast(getActivity(), "Thiếu thông tin", Toast.LENGTH_SHORT);
                     return;
                 }
 
                 Bundle bundle = new Bundle();
-                bundle.putString("question", question.toJSON());
-                Intent intent_loading_search_expert = new Intent(view.getContext(), LoadingSearchExpertActivity.class);
-                intent_loading_search_expert.putExtras(bundle);
-                startActivity(intent_loading_search_expert);
+                bundle.putSerializable("question", question);
+                Intent intent = new Intent(view.getContext(), LoadingSearchExpertActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
 
@@ -176,7 +171,7 @@ public class SearchExpertFragment extends Fragment {
                 edt_tille.setText("");
                 edt_note.setText("");
                 iv_image.setImageResource(R.drawable.math_example);
-                avatarString = null;
+                question_filename = null;
                 spn_field.setSelection(0);
             }
         });
@@ -253,30 +248,52 @@ public class SearchExpertFragment extends Fragment {
             try {
                 Uri uri = data.getData();
                 InputStream is = view.getContext().getContentResolver().openInputStream(uri);
+                Bitmap bitmap = BitmapFactory.decodeStream(is);
+                question_filename = null;
+                iv_image.setVisibility(View.INVISIBLE);
+                pb_loading.setVisibility(View.VISIBLE);
+                upload(bitmap);
 
-                Bitmap avatar_bitmap = BitmapFactory.decodeStream(is);
-                avatar_bitmap = ToolSupport.resize(avatar_bitmap, 300, 300);
-
-                iv_image.setImageBitmap(ToolSupport.BitmapWithRoundedCorners(avatar_bitmap));
-                avatarString = ToolSupport.convertBitmapToStringBase64(avatar_bitmap);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                ToastNew.showToast(view.getContext(), "Lỗi", Toast.LENGTH_SHORT);
+            } catch (Exception ignored) {
             }
         } else if (requestCode == REQUEST_TAKE_PHOTO && resultCode == Activity.RESULT_OK) {
             if (data.getExtras() == null) return;
-
-            Bitmap avatar_bitmap = (Bitmap) data.getExtras().get("data");
-            avatar_bitmap = ToolSupport.resize(avatar_bitmap, 300, 300);
-
-            iv_image.setImageBitmap(avatar_bitmap);
-            avatarString = ToolSupport.convertBitmapToStringBase64(avatar_bitmap);
+            question_filename = null;
+            iv_image.setVisibility(View.INVISIBLE);
+            pb_loading.setVisibility(View.VISIBLE);
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            upload(bitmap);
         }
 
-
-
     }
+
+
+    private void upload(final Bitmap bitmap) {
+        if (bitmap == null) return;
+        Calendar calendar = Calendar.getInstance();
+        final String filename = sessionManager.getAccount() + "_question_images_" + +calendar.getTimeInMillis() + ".png";
+        final StorageReference mountainsRef = mStorageRef.child(filename);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] data = baos.toByteArray();
+        UploadTask uploadTask = mountainsRef.putBytes(data);
+
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                question_filename = filename;
+                iv_image.setVisibility(View.VISIBLE);
+                pb_loading.setVisibility(View.GONE);
+                iv_image.setImageBitmap(ToolSupport.BitmapWithRoundedCorners(bitmap));
+            }
+        });
+    }
+
 
 
     private Emitter.Listener callback_get_field = new Emitter.Listener() {

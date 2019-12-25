@@ -61,7 +61,7 @@
                         style="@style/parent">
 
                         <EditText
-                            android:id="@+id/tv_money_hien_co"
+                            android:id="@+id/tv_balance"
                             style="@style/modifiedEditText"
                             android:layout_margin="10dp"
                             android:textStyle="bold"
@@ -97,13 +97,14 @@
                     android:layout_height="wrap_content">
 
                     <Spinner
-                        android:id="@+id/spn_security_question"
+                        android:id="@+id/spn_bank"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="invisible"
                         android:layout_margin="10dp" />
 
                     <ProgressBar
-                        android:id="@+id/pb_loading_question"
+                        android:id="@+id/pb_loading_bank"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true" />
@@ -114,7 +115,7 @@
                 <com.google.android.material.textfield.TextInputLayout style="@style/parent">
 
                     <EditText
-                        android:id="@+id/edt_sotaikhoan"
+                        android:id="@+id/edt_account_number"
                         style="@style/modifiedEditText"
                         android:layout_margin="10dp"
                         android:hint="SỐ TÀI KHOẢN"
@@ -129,7 +130,7 @@
                     style="@style/parent">
 
                     <EditText
-                        android:id="@+id/edt_ten_chu_the"
+                        android:id="@+id/edt_account_name"
                         style="@style/modifiedEditText"
                         android:layout_margin="10dp"
                         android:hint="TÊN CHỦ THẺ"
@@ -160,7 +161,7 @@
                     android:layout_marginTop="5dp">
 
                     <Button
-                        android:id="@+id/btn_save"
+                        android:id="@+id/btn_ruttien"
                         style="@style/loginButton1"
                         android:layout_height="35dp"
                         android:layout_marginRight="10dp"

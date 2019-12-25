@@ -52,8 +52,6 @@ public class SessionManager {
         editor.apply();
     }
 
-
-
     public void createSession(Expert expert) {
         editor.putBoolean(LOGIN, true);
         editor.putString(ACCOUNT, expert.getExpert_id());

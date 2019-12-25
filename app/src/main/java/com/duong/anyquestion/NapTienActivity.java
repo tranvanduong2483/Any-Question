@@ -61,7 +61,6 @@ public class NapTienActivity extends AppCompatActivity {
             }
         });
 
-
         mSocket.on("user-nap-tien-status", new Emitter.Listener() {
                     @Override
                     public void call(final Object... args) {
@@ -91,10 +90,7 @@ public class NapTienActivity extends AppCompatActivity {
                     }
                 }
         );
-
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

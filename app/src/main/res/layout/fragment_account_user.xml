@@ -18,8 +18,6 @@
             android:layout_weight="1"
             android:background="@drawable/bg_accountuser"
             android:orientation="vertical">
-
-
         </RelativeLayout>
     </LinearLayout>
 

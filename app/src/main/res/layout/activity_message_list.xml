@@ -7,6 +7,7 @@
     android:background="#ECEFF1"
     tools:context=".MessageListActivity">
 
+
     <!-- A horizontal line between the chatbox and RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/reyclerview_message_list"
@@ -113,15 +114,6 @@
             app:fab_size="mini"
             app:fab_title="Xem câu hỏi" />
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/btn_report"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="@color/white"
-            app:fab_colorPressed="@color/whitedark"
-            app:fab_icon="@drawable/ic_report_black_24dp"
-            app:fab_size="mini"
-            app:fab_title="Gửi khiếu nại" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_close"
@@ -132,7 +124,6 @@
             app:fab_icon="@drawable/ic_close"
             app:fab_size="mini"
             app:fab_title="Kết thúc" />
-
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

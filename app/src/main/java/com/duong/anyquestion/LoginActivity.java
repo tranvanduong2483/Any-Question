@@ -1,5 +1,6 @@
 package com.duong.anyquestion;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
@@ -18,6 +19,7 @@ import android.app.AlertDialog;
 
 import com.duong.anyquestion.Tool.ToolSupport;
 import com.duong.anyquestion.classes.ConnectThread;
+import com.duong.anyquestion.classes.Education;
 import com.duong.anyquestion.classes.Expert;
 import com.duong.anyquestion.classes.SessionManager;
 import com.duong.anyquestion.classes.ThongTinDangNhap;
@@ -29,11 +31,16 @@ import com.duong.anyquestion.ui_expert.ExpertMainActivity;
 import com.duong.anyquestion.ui_user.UserMainActivity;
 import com.github.nkzawa.emitter.Emitter;
 import com.github.nkzawa.socketio.client.Socket;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
+    private StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
     private Socket mSocket = ConnectThread.getInstance().getSocket();
     private Button btn_login;
     private EditText edt_username, edt_password;
@@ -142,46 +149,28 @@ public class LoginActivity extends AppCompatActivity {
                                     }
 
                                     String type = data.getString("type");
-                                    String avatar = null, name;
                                     Gson gson = new Gson();
                                     Intent intent_main;
-
-                                    if (args.length != 1) {
-                                        byte[] bytes = (byte[]) args[1];
-                                        if (bytes != null) {
-                                            Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                                            avatar = ToolSupport.saveToInternalStorage(bitmap, LoginActivity.this);
-                                        }
-                                    }
 
                                     SessionManager sessionManager = new SessionManager(LoginActivity.this);
 
                                     if (type.equals("user")) {
                                         User user = gson.fromJson(NoiDung, User.class);
-                                        user.setAvatar(avatar);
-                                        name = user.getFullName();
                                         sessionManager.createSession(user);
                                         intent_main = new Intent(LoginActivity.this, UserMainActivity.class);
                                     } else {
                                         Expert expert = gson.fromJson(NoiDung, Expert.class);
-                                        expert.setAvatar(avatar);
-                                        name = expert.getFullName();
+
                                         sessionManager.createSession(expert);
                                         intent_main = new Intent(LoginActivity.this, ExpertMainActivity.class);
                                     }
 
 
                                     intent_main.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
                                     startActivity(intent_main);
-                                    ToastNew.showToast(getApplication(), name + ", bạn đã đăng nhập thành công!", Toast.LENGTH_SHORT);
                                     finish();
                                 } catch (Exception e) {
-                                    e.printStackTrace();
-                                    ToastNew.showToast(LoginActivity.this, "Xuất hiện lỗi!", Toast.LENGTH_LONG);
                                 }
-
-
                             }
                         });
                     }
@@ -196,6 +185,21 @@ public class LoginActivity extends AppCompatActivity {
         tv_register = findViewById(R.id.tv_register);
         tv_forget_password = findViewById(R.id.tv_forget_password);
         pb_loading_login = findViewById(R.id.pb_loading_login);
+    }
+
+
+    private void dowloadImage(String name) {
+        StorageReference islandRef = mStorageRef.child(name);
+        final long ONE_MEGABYTE = 1024 * 1024 * 100;
+        islandRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+            }
+        });
     }
 
 

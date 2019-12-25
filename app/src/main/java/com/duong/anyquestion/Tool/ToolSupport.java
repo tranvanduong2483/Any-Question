@@ -48,6 +48,49 @@ public class ToolSupport {
         return directory.getAbsolutePath();
     }
 
+    public static String saveAvatar(Bitmap bitmapImage, Context context, String filename) {
+        ContextWrapper cw = new ContextWrapper(context);
+        // path to /data/data/yourapp/app_data/imageDir
+        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+        // Create imageDir
+        File mypath = new File(directory, filename);
+
+        FileOutputStream fos = null;
+        try {
+            fos = new FileOutputStream(mypath);
+            // Use the compress method on the BitMap object to write image to the OutputStream
+            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return directory.getAbsolutePath();
+    }
+
+    public static Bitmap loadAvatar(Context context, String filename) {
+        try {
+
+            if (filename == null) return null;
+
+            ContextWrapper cw = new ContextWrapper(context);
+            // path to /data/data/yourapp/app_data/imageDir
+            File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+            // Create imageDir
+            File mypath = new File(directory, filename);
+
+
+            return BitmapFactory.decodeStream(new FileInputStream(mypath));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static Bitmap loadImageFromStorage(String path) {
         try {
             File f=new File(path, "profile.jpg");
@@ -115,7 +158,6 @@ public class ToolSupport {
         if (bytes_image==null) return null;
         return ToolSupport.convertByteArrayToBitmap(bytes_image);
     }
-
 
     public static Bitmap BitmapWithRoundedCorners(Bitmap mbitmap){
         Bitmap imageRounded=Bitmap.createBitmap(mbitmap.getWidth(), mbitmap.getHeight(), mbitmap.getConfig());

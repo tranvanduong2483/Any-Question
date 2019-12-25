@@ -3,42 +3,35 @@ package com.duong.anyquestion.classes;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Question {
-    int id;
-    String tittle;
-    int field_id;
-    String imageString;
-    String note;
-    int money;
-    String from;
+import java.io.Serializable;
 
-    public Question(int id, String tittle, int field_id, String imageString, String note, int money, String from) {
-        this.id = id;
-        this.tittle = tittle;
+public class Question implements Serializable {
+    int question_id;
+    int field_id;
+    String title;
+    String image;
+    String detailed_description;
+    int money;
+    String user_id;
+
+    public Question(int field_id, String tittle, String image, String detailed_description, int money, String user_id) {
         this.field_id = field_id;
-        this.imageString = imageString;
-        this.note = note;
+        this.title = tittle;
+        this.image = image;
+        this.detailed_description = detailed_description;
         this.money = money;
-        this.from = from;
+        this.user_id = user_id;
     }
 
     public Question() {
     }
 
-    public int getId() {
-        return id;
+    public int getQuestion_id() {
+        return question_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getTittle() {
-        return tittle;
-    }
-
-    public void setTittle(String tittle) {
-        this.tittle = tittle;
+    public void setQuestion_id(int question_id) {
+        this.question_id = question_id;
     }
 
     public int getField_id() {
@@ -49,20 +42,28 @@ public class Question {
         this.field_id = field_id;
     }
 
-    public String getImageString() {
-        return imageString;
+    public String getTittle() {
+        return title;
     }
 
-    public void setImageString(String imageString) {
-        this.imageString = imageString;
+    public void setTittle(String tittle) {
+        this.title = tittle;
     }
 
-    public String getNote() {
-        return note;
+    public String getImage() {
+        return image;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDetailed_description() {
+        return detailed_description;
+    }
+
+    public void setDetailed_description(String detailed_description) {
+        this.detailed_description = detailed_description;
     }
 
     public int getMoney() {
@@ -73,24 +74,24 @@ public class Question {
         this.money = money;
     }
 
-    public String getFrom() {
-        return from;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String toJSON() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("id", id);
-            jsonObject.put("tittle", tittle);
+            jsonObject.put("question_id", question_id);
+            jsonObject.put("title", title);
             jsonObject.put("field_id", field_id);
-            jsonObject.put("imageString", imageString);
-            jsonObject.put("note", note);
+            jsonObject.put("image", image);
+            jsonObject.put("detailed_description", detailed_description);
             jsonObject.put("money", money);
-            jsonObject.put("from", from);
+            jsonObject.put("user_id", user_id);
             return jsonObject.toString();
         } catch (JSONException e) {
             e.printStackTrace();
