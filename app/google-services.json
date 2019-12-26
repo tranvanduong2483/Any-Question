@@ -1,0 +1,109 @@
+{
+  "project_info": {
+    "project_number": "878478083606",
+    "firebase_url": "https://any-question-59535.firebaseio.com",
+    "project_id": "any-question-59535",
+    "storage_bucket": "any-question-59535.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878478083606:android:f7a8b3c4b1078fa0dd9737",
+        "android_client_info": {
+          "package_name": "com.duong.anyquestion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878478083606-rp9nsp12rtius5pe9erfthqguj7dhv3k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.duong.anyquestion",
+            "certificate_hash": "23c864626a468a0b11b95ab6efeef2cdf496b3db"
+          }
+        },
+        {
+          "client_id": "878478083606-444qm6a1nnnt14osimo96t00fq8noiln.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.duong.anyquestion",
+            "certificate_hash": "5827efd19765ab9d9b920196801526045842612b"
+          }
+        },
+        {
+          "client_id": "878478083606-td1kb1t65qlc1rchrga2797gqk2qdn8m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.duong.anyquestion",
+            "certificate_hash": "8e414fd15d05b8baf5738f69a2d559caec41c730"
+          }
+        },
+        {
+          "client_id": "878478083606-cce0c6jv4cum3kn2509nsr9kkeumr11i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.duong.anyquestion",
+            "certificate_hash": "f825f73ac8f167a8c569fef46cc108a4d4e208c4"
+          }
+        },
+        {
+          "client_id": "878478083606-8b0op7neisa2774tg38a3v037f551l4e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtObhZfjNGX85BcD9Cs-8aF0guobbCSmQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878478083606-8b0op7neisa2774tg38a3v037f551l4e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878478083606:android:29db4c2f7d6694e0dd9737",
+        "android_client_info": {
+          "package_name": "com.duong.testupload"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878478083606-16fgjtf48jf5d87kq6v1eb3kpljo4qh3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.duong.testupload",
+            "certificate_hash": "f825f73ac8f167a8c569fef46cc108a4d4e208c4"
+          }
+        },
+        {
+          "client_id": "878478083606-8b0op7neisa2774tg38a3v037f551l4e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtObhZfjNGX85BcD9Cs-8aF0guobbCSmQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878478083606-8b0op7neisa2774tg38a3v037f551l4e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

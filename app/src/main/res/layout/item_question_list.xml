@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:alignmentMode="alignMargins"
+    android:columnCount="2"
+    android:columnOrderPreserved="false"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:rowCount="3">
+
+
+
+        <LinearLayout
+            android:background="@color/whiteCardColor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:id="@+id/relative_layout_id1"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/dodai80"
+                    android:layout_height="@dimen/dodai80"
+                    android:layout_weight="1"
+                    android:src="@drawable/expert_icon" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dodai20"
+                    android:layout_toRightOf="@id/relative_layout_id1"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_fromid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:text="Nguyễn Thái Minh"
+                        android:textSize="20sp"
+                        android:textColor="@color/blackTextColor"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_field"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vật lý "
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"
+                        android:textSize="15sp" />
+
+                    <RatingBar
+                        android:id="@+id/rb_danhgia"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:progressTint="#EF6C00"
+                        android:rating="5" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_tittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dodai10"
+                android:maxLines="2"
+                android:text="Cách không học mà vẫn giỏi"
+                android:textSize="15sp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/blackTextColor" />
+
+
+            <ImageView
+                android:id="@+id/iv_question"
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:layout_below="@id/relative_layout_id1"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/dodai10"
+                android:background="@drawable/math_example"
+                android:scaleType="centerCrop" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_detail1"
+                    style="@style/loginButton4"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/see_question"
+                    android:enabled="false"
+                    android:padding="@dimen/dodai10"
+                    android:text="Xem câu hỏi" />
+
+                <Button
+                    android:id="@+id/btn_detail2"
+                    style="@style/loginButton4"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/detail_question"
+                    android:enabled="false"
+                    android:padding="@dimen/dodai10"
+                    android:text="Chi tiết" />
+            </LinearLayout>
+        </LinearLayout>
+</GridLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context=".RatingForExpertActivity">
+
+    <ImageView
+        android:layout_marginTop="@dimen/dodai20"
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rating_for_expert_image3" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:text="Bạn có hài lòng về cuộc thảo luận này không?"
+        android:textSize="18sp"
+        android:textStyle="italic" />
+
+    <RatingBar
+        android:id="@+id/rb_danhgia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dodai10"
+        android:numStars="5"
+        android:progressTint="#FFEE58"
+        android:rating="5"
+        android:stepSize="1"
+        android:theme="@style/RatingBar" />
+
+
+    <TextView
+        android:id="@+id/tvRatingScale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:text="Awesome. I love it"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_marginTop="@dimen/dodai10"
+        android:backgroundTint="#E3F2FD"
+        android:id="@+id/edt_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/backgr"
+        android:hint="Nhập cảm nhận của bạn"
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:paddingLeft="@dimen/dodai15"
+        android:textColor="#000"
+        android:textColorHint="#BDBDBD"
+        android:textStyle="italic"
+        android:textSize="@dimen/cochu15"
+        android:layout_marginRight="@dimen/dodai15"
+        android:layout_marginLeft="@dimen/dodai15"/>
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Gửi dưới dạng khiếu nại"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        style="@style/loginButton8"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:padding="@dimen/dodai10"
+        android:text="Gửi phản hồi"
+        android:textColor="#fff"/>
+
+    <Button
+        android:id="@+id/btn_cancel"
+        style="@style/loginButton8"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:padding="@dimen/dodai10"
+        android:text="Hủy bỏ"
+        android:textColor="#fff"/>
+
+
+</LinearLayout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#81D4FA"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#fff"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
+        app:cardUseCompatPadding="true">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="centerCrop"
+            android:src="@drawable/anyquestion_question" />
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/dodai20">
+
+        <Switch
+            android:id="@+id/sw_expert_ready"
+            android:layout_width="300dp"
+            android:layout_height="@dimen/dodai50"
+            android:layout_gravity="center_horizontal"
+            android:checked="false"
+            android:fontFamily="@font/robotomedium"
+            android:text="Sẵn sàng nhận câu hỏi "
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:theme="@style/SCBSwitch" />
+
+        <EditText
+            android:id="@+id/edt_keywords"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dodai60"
+            android:layout_marginTop="@dimen/dodai20"
+            android:background="@drawable/text_vien"
+            android:fontFamily="@font/robotoregular"
+            android:hint="Những từ khóa liên quan hết lĩnh vực của bạn"
+            android:paddingLeft="@dimen/dodai10"
+            android:paddingRight="@dimen/dodai10"
+            android:textColor="#142e54"
+            android:textColorHint="#142e54" />
+
+        <EditText
+            android:id="@+id/edt_gioithieu"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dodai60"
+            android:layout_marginTop="@dimen/dodai20"
+            android:background="@drawable/text_vien"
+            android:fontFamily="@font/robotoregular"
+            android:hint="Tin nhắn giới thiệu mở đầu"
+            android:paddingLeft="@dimen/dodai10"
+            android:paddingRight="@dimen/dodai10"
+            android:textColor="#142e54"
+            android:textColorHint="#142e54" />
+
+        <TextView
+            android:id="@+id/tv_note"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/robotomedium"
+            android:hint="Nếu bạn rãnh hãy bấm sẳn sàng"
+            android:text="Sẵn sàng nhận câu hỏi "
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_history"
+            style="@style/loginButton9"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:padding="@dimen/dodai10"
+            android:text="Lịch sử của tôi" />
+
+    </LinearLayout>
+</LinearLayout>
