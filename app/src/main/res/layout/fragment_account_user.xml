@@ -143,7 +143,7 @@
                     android:layout_height="35dp"
                     android:layout_marginStart="20dp"
                     android:drawableLeft="@drawable/ic_add_money"
-                    android:padding="@dimen/dodai10"
+                    android:padding="@dimen/dodai5"
                     android:text="  Nạp tiền" />
 
             </LinearLayout>

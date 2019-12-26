@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingTop="17dp">
+    android:paddingTop="17dp"
+    android:background="#fff">
 
     <ImageView
         android:id="@+id/image_message_profile"
@@ -58,11 +59,13 @@
                     android:textColor="#000"
                     android:visibility="gone" />
 
+
+
                 <ImageView
                     android:id="@+id/iv_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/loading2"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/loading_demo"
                     android:visibility="visible" />
             </RelativeLayout>
 
