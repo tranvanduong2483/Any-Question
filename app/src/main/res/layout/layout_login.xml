@@ -28,6 +28,7 @@
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin">
 
+
             <EditText
                 android:textSize="20sp"
                 android:id="@+id/edt_username"

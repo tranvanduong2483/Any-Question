@@ -6,7 +6,8 @@
     android:layout_height="wrap_content"
     android:layoutDirection="rtl"
     android:paddingTop="17dp"
-    android:weightSum="2">
+    android:weightSum="2"
+    android:background="#fff">
 
 
     <RelativeLayout
@@ -30,16 +31,16 @@
 
         <ImageView
             android:id="@+id/iv_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/loading2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/loading_demo"
             android:visibility="visible" />
 
         <ImageView
             android:id="@+id/iv_image_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/avatar"
+            android:background="@drawable/user6"
             android:src="@drawable/blur"
             android:visibility="gone" />
 

@@ -43,7 +43,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_application_name"
                         android:layout_gravity="center"
-                        android:text="Nơi ước mơ được chấp cánh vươn xa"
+                        android:text="Nơi ước mơ được chắp cánh vươn xa"
                         android:textColor="@color/white"
                         android:textStyle="italic" />
                 </RelativeLayout>

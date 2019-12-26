@@ -89,7 +89,7 @@
                 android:layout_height="300dp"
                 android:layout_below="@id/relative_layout_id1"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="@dimen/dodai10"
+                android:layout_marginTop="@dimen/dodai15"
                 android:background="@drawable/math_example"
                 android:scaleType="centerCrop" />
 
@@ -99,6 +99,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:layout_marginTop="@dimen/dodai10"
                     android:id="@+id/btn_detail1"
                     style="@style/loginButton4"
                     android:layout_width="0dp"
@@ -110,6 +111,7 @@
                     android:text="Xem câu hỏi" />
 
                 <Button
+                    android:layout_marginTop="@dimen/dodai10"
                     android:id="@+id/btn_detail2"
                     style="@style/loginButton4"
                     android:layout_width="0dp"

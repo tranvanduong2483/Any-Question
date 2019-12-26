@@ -38,7 +38,7 @@
     <color name="whiteCardColor">#fff</color>
 
 
-    <color name="login_bk_color">#fff</color>
+    <color name="login_bk_color">#ffffff</color>
 
     <color name="darkTextColor">#020000</color>
     <color name="contentTextColor">#A983D8</color>

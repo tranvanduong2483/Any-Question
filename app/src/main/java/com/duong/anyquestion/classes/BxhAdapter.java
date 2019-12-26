@@ -1,10 +1,7 @@
 package com.duong.anyquestion.classes;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.duong.anyquestion.MessageHistoryActivity;
 import com.duong.anyquestion.R;
 
 import java.util.ArrayList;

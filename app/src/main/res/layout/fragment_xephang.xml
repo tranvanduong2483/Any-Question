@@ -25,18 +25,18 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/dodai200"
-            android:src="@drawable/list_rating_bg"></ImageView>
+            android:layout_height="255dp"
+            android:src="@drawable/rating_bg"></ImageView>
 
-        <TextView
-            style="@style/thankYouRatingExpert"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dodai10"
-            android:layout_marginBottom="@dimen/dodai20"
-            android:text="Thanks for your contributions">
+        <!--        <TextView-->
+        <!--            style="@style/thankYouRatingExpert"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="@dimen/dodai10"-->
+        <!--            android:layout_marginBottom="@dimen/dodai20"-->
+        <!--            android:text="Thanks for your contributions">-->
 
-        </TextView>
+        <!--        </TextView>-->
 
     </LinearLayout>
 

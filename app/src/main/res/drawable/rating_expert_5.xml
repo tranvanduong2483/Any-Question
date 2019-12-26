@@ -5,6 +5,6 @@
         android:width="2dp"
         android:color="@color/login_bk_color" />
 
-    <solid android:color="#82B1FF" />
+    <solid android:color="#E1F5FE" />
 
 </shape>
