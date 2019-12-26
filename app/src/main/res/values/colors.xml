@@ -58,5 +58,6 @@
     <color name="colorActive">#212121</color>
     <color name="colorStand">#212121</color>
 
+    <color name="register_bk_color">#11CFC5</color>
 
 </resources>

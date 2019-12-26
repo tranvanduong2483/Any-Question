@@ -75,7 +75,6 @@ public class ExpertMainActivity extends AppCompatActivity {
             }
         });
 
-
         mSocket.on("server-send-ghep-doi-khong-thanh-cong", new Emitter.Listener() {
             @Override
             public void call(final Object... args) {
