@@ -17,8 +17,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/bg_accountuser"
-            android:orientation="vertical">
-        </RelativeLayout>
+            android:orientation="vertical"></RelativeLayout>
     </LinearLayout>
 
 
@@ -33,8 +32,8 @@
             android:id="@+id/im_avatar"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/avatar"
-            app:civ_border_color="#FF000000"
+            android:src="@drawable/avatar6"
+            app:civ_border_color="#29B6F6"
             app:civ_border_width="2dp" />
 
         <TextView
@@ -67,7 +66,7 @@
                 <ImageView
                     android:id="@+id/nameImageView"
                     style="@style/profileDetailsImage"
-                    android:src="@drawable/ic_name" />
+                    android:src="@drawable/mail6" />
 
                 <TextView
                     android:id="@+id/nameTextView"
@@ -90,7 +89,7 @@
                 <ImageView
                     android:id="@+id/mobileImageView"
                     style="@style/profileDetailsImage"
-                    android:src="@drawable/ic_mobile" />
+                    android:src="@drawable/addr6" />
 
                 <TextView
                     android:id="@+id/phoneTextView"
@@ -120,7 +119,7 @@
                     <ImageView
                         android:id="@+id/emailImageView"
                         style="@style/profileDetailsImage"
-                        android:src="@drawable/ic_emails" />
+                        android:src="@drawable/money6" />
 
                     <TextView
                         android:id="@+id/moneyImageView"
@@ -137,14 +136,15 @@
 
                 </RelativeLayout>
 
-
                 <Button
                     android:id="@+id/btn_nap_tien"
+                    style="@style/loginButton7"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="35dp"
                     android:layout_marginStart="20dp"
-                    android:text="  Nạp tiền"
-                    android:drawableLeft="@drawable/ic_add_money" />
+                    android:drawableLeft="@drawable/ic_add_money"
+                    android:padding="@dimen/dodai10"
+                    android:text="  Nạp tiền" />
 
             </LinearLayout>
 
@@ -161,14 +161,13 @@
 
             <Button
                 android:id="@+id/btn_edit"
-                style="@style/loginButton2"
+                style="@style/loginButton7"
                 android:layout_height="35dp"
-                android:layout_gravity="center_horizontal"
                 android:text="Sửa" />
 
             <Button
                 android:id="@+id/btn_change_password"
-                style="@style/loginButton2"
+                style="@style/loginButton7"
                 android:layout_width="135dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="@dimen/dodai20"
@@ -177,8 +176,7 @@
 
             <Button
                 android:id="@+id/btn_security"
-                style="@style/loginButton2"
-                android:layout_width="80dp"
+                style="@style/loginButton7"
                 android:layout_height="35dp"
                 android:layout_gravity="center_horizontal"
                 android:text="Bảo mật" />
@@ -187,8 +185,7 @@
 
         <Button
             android:id="@+id/btn_dangxuat"
-            style="@style/loginButton2"
-            android:layout_width="100dp"
+            style="@style/loginButton7"
             android:layout_height="35dp"
             android:text="Thoát" />
     </LinearLayout>

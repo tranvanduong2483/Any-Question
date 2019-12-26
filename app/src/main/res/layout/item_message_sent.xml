@@ -39,7 +39,7 @@
             android:id="@+id/iv_image_loading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/avatar"
+            android:background="@drawable/user6"
             android:src="@drawable/blur"
             android:visibility="gone" />
 

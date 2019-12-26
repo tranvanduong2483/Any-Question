@@ -35,7 +35,7 @@
                     android:layout_margin="9dp"
                     android:padding="3dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/avatar" />
+                    android:src="@drawable/avatar6" />
 
             </RelativeLayout>
 
@@ -192,7 +192,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/ic_mobile" />
+                        android:src="@drawable/addr6" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -315,7 +315,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center_vertical"
 
-                    android:src="@drawable/ic_emails" />
+                    android:src="@drawable/money6" />
 
 
                 <LinearLayout
@@ -353,10 +353,12 @@
                     <Button
                         android:id="@+id/btn_rut_tien"
                         style="@style/loginButton7"
-                        android:layout_height="35dp"
-                        android:text="Rút tiền"
                         android:layout_width="wrap_content"
-                        />
+                        android:layout_height="@dimen/dodai35"
+                        android:layout_marginStart="20dp"
+                        android:drawableLeft="@drawable/ic_add_money"
+                        android:padding="@dimen/dodai10"
+                        android:text="   Rút tiền" />
                 </LinearLayout>
 
                 <!--                    <View-->
