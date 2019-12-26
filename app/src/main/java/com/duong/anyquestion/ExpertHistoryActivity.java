@@ -63,7 +63,7 @@ public class ExpertHistoryActivity extends AppCompatActivity {
                                         String noidung = data.get(i).toString();
                                         Gson gson = new Gson();
                                         History history = gson.fromJson(noidung, History.class);
-                                        list_history.add(0, history);
+                                        list_history.add(history);
 
                                         Log.d("test", history.getQuestion_id() + "");
                                     }

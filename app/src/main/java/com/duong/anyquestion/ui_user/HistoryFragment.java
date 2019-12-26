@@ -107,7 +107,7 @@ public class HistoryFragment extends Fragment {
 
                                         if (user_id != null) {
                                             if (user_id.equals(history.getId_user()))
-                                                list_history.add(0, history);
+                                                list_history.add(history);
                                         } else {
                                             list_history.add(0, history);
                                         }
