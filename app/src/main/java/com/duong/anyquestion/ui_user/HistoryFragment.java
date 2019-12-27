@@ -101,7 +101,7 @@ public class HistoryFragment extends Fragment {
                                     Gson gson = new Gson();
 
                                     list_history.clear();
-                                    for (int i = 0; i < data.length(); i++) {
+                                    for (int i = data.length() - 1; i >= 0; i--) {
                                         String noidung = data.get(i).toString();
                                         History history = gson.fromJson(noidung, History.class);
 
@@ -109,7 +109,7 @@ public class HistoryFragment extends Fragment {
                                             if (user_id.equals(history.getId_user()))
                                                 list_history.add(history);
                                         } else {
-                                            list_history.add(0, history);
+                                            list_history.add(history);
                                         }
 
                                     }

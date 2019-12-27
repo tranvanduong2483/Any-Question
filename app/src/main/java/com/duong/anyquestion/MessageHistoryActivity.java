@@ -48,8 +48,6 @@ public class MessageHistoryActivity extends AppCompatActivity {
 
     private StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +74,7 @@ public class MessageHistoryActivity extends AppCompatActivity {
 
 
         btn_question = findViewById(R.id.btn_question);
-        btn_question.setEnabled(false);
+        btn_question.setVisibility(View.INVISIBLE);
         btn_question.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,10 +108,10 @@ public class MessageHistoryActivity extends AppCompatActivity {
 
                     messageList.clear();
                     Gson gson = new Gson();
-                    for (int i = 0; i < data.length(); i++) {
+                    for (int i = data.length() - 1; i >= 0; i--) {
                         String noidung = data.get(i).toString();
                         Message message = gson.fromJson(noidung, Message.class);
-                        messageList.add(0, message);
+                        messageList.add(message);
                     }
 
                     question = gson.fromJson(question_json, Question.class);
@@ -121,8 +119,8 @@ public class MessageHistoryActivity extends AppCompatActivity {
                     mMessageRecycler.smoothScrollToPosition(0);
                     mMessageAdapter.notifyDataSetChanged();
 
-                } catch (Exception ignored) {
-                    ignored.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                     Log.d("test", args[1] + "");
                 }
 
@@ -144,7 +142,7 @@ public class MessageHistoryActivity extends AppCompatActivity {
                 Bitmap bitmap = ToolSupport.convertByteArrayToBitmap(bytes);
                 String filename = ToolSupport.saveToInternalStorage(bitmap, MessageHistoryActivity.this);
                 question.setImage(filename);
-                btn_question.setEnabled(true);
+                btn_question.setVisibility(View.VISIBLE);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

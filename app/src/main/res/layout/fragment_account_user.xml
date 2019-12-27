@@ -54,16 +54,22 @@
             android:orientation="vertical">
 
             <TextView
+                android:layout_marginTop="@dimen/dodai20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Thông tin cá nhân"
                 android:textColor="#000000"
-                android:textSize="18dp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <RelativeLayout style="@style/profileDetailsLayout">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dodai10">
 
                 <ImageView
+                    android:layout_marginRight="@dimen/dodai5"
+
                     android:id="@+id/nameImageView"
                     style="@style/profileDetailsImage"
                     android:src="@drawable/mail6" />
@@ -87,6 +93,8 @@
             <RelativeLayout style="@style/profileDetailsLayout">
 
                 <ImageView
+                    android:layout_marginRight="@dimen/dodai5"
+
                     android:id="@+id/mobileImageView"
                     style="@style/profileDetailsImage"
                     android:src="@drawable/addr6" />
@@ -95,7 +103,7 @@
                     android:id="@+id/phoneTextView"
                     style="@style/profileDetailsTextMain"
                     android:layout_toRightOf="@id/mobileImageView"
-                    android:text="Address" />
+                    android:text="Địa chỉ" />
 
                 <TextView
                     android:id="@+id/tv_address"
@@ -117,6 +125,8 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
+                        android:layout_marginRight="@dimen/dodai5"
+
                         android:id="@+id/emailImageView"
                         style="@style/profileDetailsImage"
                         android:src="@drawable/money6" />
@@ -125,7 +135,7 @@
                         android:id="@+id/moneyImageView"
                         style="@style/profileDetailsTextMain"
                         android:layout_toRightOf="@id/emailImageView"
-                        android:text="Money in Account" />
+                        android:text="Số dư" />
 
                     <com.duong.anyquestion.classes.RialTextView
                         android:id="@+id/tv_money"
@@ -137,11 +147,12 @@
                 </RelativeLayout>
 
                 <Button
+                    android:layout_marginTop="@dimen/dodai10"
                     android:id="@+id/btn_nap_tien"
                     style="@style/loginButton7"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="40dp"
                     android:drawableLeft="@drawable/ic_add_money"
                     android:padding="@dimen/dodai5"
                     android:text="  Nạp tiền" />
@@ -155,9 +166,10 @@
             android:id="@+id/id_daybutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:gravity="center_horizontal"
             android:paddingBottom="10dp">
+
 
             <Button
                 android:id="@+id/btn_edit"
@@ -187,8 +199,10 @@
             android:id="@+id/btn_dangxuat"
             style="@style/loginButton7"
             android:layout_height="35dp"
+            android:layout_marginTop="@dimen/dodai10"
             android:text="Thoát" />
     </LinearLayout>
+
 </RelativeLayout>
 
 

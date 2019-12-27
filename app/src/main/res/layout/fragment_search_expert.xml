@@ -72,15 +72,15 @@
 
                 <Button
                     android:id="@+id/btn_upload"
-                    style="@style/loginButton3"
-                    android:layout_height="30dp"
+                    style="@style/loginButton7"
+                    android:layout_height="35dp"
                     android:layout_marginBottom="15dp"
                     android:text="Tải lên" />
 
                 <Button
                     android:id="@+id/btn_camera"
-                    style="@style/loginButton3"
-                    android:layout_height="30dp"
+                    style="@style/loginButton7"
+                    android:layout_height="35dp"
                     android:text="Chụp mới" />
             </LinearLayout>
         </LinearLayout>
@@ -102,7 +102,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            android:layout_marginTop="@dimen/dodai10">
 
 
             <LinearLayout
@@ -162,6 +163,7 @@
 
 
         <TextView
+            android:layout_marginTop="@dimen/dodai10"
             style="@style/textBigSearchExpert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -173,13 +175,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Ghi chú về câu hỏi dành cho chuyên gia"
-            android:maxLines="2" />
+            android:maxLines="3" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="@dimen/dodai10">
 
             <TextView
                 style="@style/textBigSearchExpert"
@@ -208,7 +210,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="10dp">
 
             <TextView
                 style="@style/textBigSearchExpert"
@@ -238,22 +240,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="@dimen/dodai10"
             android:gravity="center">
 
             <Button
                 android:id="@+id/btn_clear"
-                style="@style/loginButton3"
+                style="@style/loginButton7"
                 android:layout_height="35dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="25dp"
                 android:text="Nhập lại" />
 
             <Button
                 android:id="@+id/btn_search_expert"
-                style="@style/loginButton3"
-                android:layout_width="150dp"
+                style="@style/loginButton7"
                 android:layout_height="35dp"
+                android:layout_width="150dp"
                 android:layout_gravity="center_horizontal"
                 android:text="Tìm chuyên gia" />
         </LinearLayout>

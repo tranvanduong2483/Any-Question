@@ -23,14 +23,15 @@
                 style="@style/viewParent.headerText.NoMode"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="Change your password for your security! "
+                android:text="Sự an toàn \ncủa bạn \nđược đặt lên \nhàng đầu!"
                 android:textColor="@color/colorPrimary" />
 
             <ImageView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="240dp"
                 android:layout_weight="1"
-                android:src="@drawable/anyquestion" />
+                android:layout_marginLeft="-20dp"
+                android:src="@drawable/any_question_best_logo4" />
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
@@ -75,7 +76,7 @@
                         android:id="@+id/edt_answer"
                         style="@style/modifiedEditText"
                         android:layout_margin="10dp"
-                        android:hint="Your answer"
+                        android:hint="Câu trả lời câu hỏi bảo mật"
                         android:inputType="textPersonName"
                         android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -89,7 +90,7 @@
                         android:id="@+id/edt_password"
                         style="@style/modifiedEditText"
                         android:layout_margin="10dp"
-                        android:hint="Fill your password to change"
+                        android:hint="Nhập mật khẩu của bạn"
                         android:inputType="textPassword"
                         android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -103,17 +104,17 @@
 
                     <Button
                         android:id="@+id/btn_save"
-                        style="@style/loginButton1"
+                        style="@style/loginButton7"
                         android:layout_height="35dp"
                         android:layout_marginRight="10dp"
-                        android:text="Confirm" />
+                        android:text="Xác nhận" />
 
                     <Button
                         android:id="@+id/btn_cancel"
-                        style="@style/loginButton1"
-                        android:layout_marginStart="10dp"
+                        style="@style/loginButton7"
                         android:layout_height="35dp"
-                        android:text="Cancel" />
+                        android:layout_marginStart="10dp"
+                        android:text="Hủy bỏ" />
                 </LinearLayout>
 
 

@@ -18,13 +18,57 @@ import com.github.nkzawa.socketio.client.Socket;
 
 public class LoadingSearchExpertActivity extends AppCompatActivity {
 
-    private Socket mSocket = ConnectThread.getInstance().getSocket();
     final Handler handler = new Handler();
     TextView tv_tittle, tv_money, tv_note;
+    private Socket mSocket = ConnectThread.getInstance().getSocket();
     private Question question;
 
     private int count = 0;
     private Runnable finnish_time;
+    private Emitter.Listener timkiemthabai = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    cancel_all();
+                    ToastNew.showToast(LoadingSearchExpertActivity.this, args[0] + "", Toast.LENGTH_SHORT);
+                    mSocket.emit("cancel-search-expert", "Chuyen gia tu choi");
+                    finish();
+                }
+
+            });
+        }
+    };
+    private Emitter.Listener callback_kqtkcg = new Emitter.Listener() {
+        @Override
+        public void call(final Object... args) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        ToastNew.showToast(LoadingSearchExpertActivity.this, "Đây nè", Toast.LENGTH_SHORT);
+
+                        int conversation_id = (int) args[0];
+                        Intent intent_nhantin = new Intent(LoadingSearchExpertActivity.this, MessageListActivity.class);
+
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("question", question);
+                        bundle.putInt("conversation_id", conversation_id);
+                        intent_nhantin.putExtras(bundle);
+
+                        cancel_all();
+                        intent_nhantin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent_nhantin);
+                        finish();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        ToastNew.showToast(LoadingSearchExpertActivity.this, "Lỗi gì đó", Toast.LENGTH_SHORT);
+                    }
+                }
+            });
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +86,7 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
         if (getIntent().getExtras() != null) {
             question = (Question) getIntent().getExtras().getSerializable("question");
             tv_tittle.setText(question.getTittle());
-            tv_money.setText(question.getMoney() +"");
+            tv_money.setText(question.getMoney() + "");
             tv_note.setText(question.getDetailed_description().isEmpty() ? "Không có" : question.getDetailed_description());
         }
 
@@ -85,60 +129,12 @@ public class LoadingSearchExpertActivity extends AppCompatActivity {
 
     }
 
-
     public void btn_cancel(View view) {
         mSocket.emit("cancel-search-expert", "Tu tay huy tim kiem chuyen gia");
         cancel_all();
         finish();
     }
 
-
-    private Emitter.Listener timkiemthabai = new Emitter.Listener() {
-        @Override
-        public void call(final Object... args) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    cancel_all();
-                    ToastNew.showToast(LoadingSearchExpertActivity.this, args[0] + "", Toast.LENGTH_SHORT);
-                    mSocket.emit("cancel-search-expert", "Chuyen gia tu choi");
-                    finish();
-                }
-
-            });
-        }
-    };
-
-
-    private Emitter.Listener callback_kqtkcg = new Emitter.Listener() {
-        @Override
-        public void call(final Object... args) {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        ToastNew.showToast(LoadingSearchExpertActivity.this, "Đây nè", Toast.LENGTH_SHORT);
-
-                        int conversation_id = (int) args[0];
-                            Intent intent_nhantin = new Intent(LoadingSearchExpertActivity.this, MessageListActivity.class);
-
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("question", question);
-                        bundle.putInt("conversation_id", conversation_id);
-                        intent_nhantin.putExtras(bundle);
-
-                        cancel_all();
-                            intent_nhantin.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent_nhantin);
-                            finish();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        ToastNew.showToast(LoadingSearchExpertActivity.this, "Lỗi gì đó", Toast.LENGTH_SHORT);
-                    }
-                }
-            });
-        }
-    };
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

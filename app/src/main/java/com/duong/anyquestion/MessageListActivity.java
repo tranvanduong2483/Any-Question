@@ -88,19 +88,14 @@ public class MessageListActivity extends AppCompatActivity {
 
         bundle = getIntent().getExtras();
         if (bundle != null) {
-            String stringAvatar = bundle.getString("stringAvatar");
-            if (stringAvatar != null)
-                bitmap_you = ToolSupport.convertStringBase64ToBitmap(stringAvatar);
             question = (Question) bundle.getSerializable("question");
             dowloadImage(question.getImage());
-
             conversation_id = bundle.getInt("conversation_id");
-            ToastNew.showToast(MessageListActivity.this, conversation_id + "", Toast.LENGTH_LONG);
         }
 
         mSocket.on("server-send-message", callback_nhantinnhan);
         mSocket.on("user-ready-thao-luan", callback_gioithieu);
-        mSocket.on("server-bao-nguoi-kia-da-roi-cuoc-thao-luan", new Emitter.Listener() {
+        mSocket.once("server-bao-nguoi-kia-da-roi-cuoc-thao-luan", new Emitter.Listener() {
             @Override
             public void call(final Object... args) {
                 runOnUiThread(new Runnable() {
@@ -309,7 +304,7 @@ public class MessageListActivity extends AppCompatActivity {
                         Gson gson = new Gson();
                         Message message_new = gson.fromJson(message, Message.class);
                         messageList.add(message_new);
-                        mMessageAdapter.notifyDataSetChanged();
+                        mMessageAdapter.notifyItemInserted(messageList.size() - 1);
                         mMessageRecycler.smoothScrollToPosition(mMessageAdapter.getItemCount());
                     } catch (Exception ignored) {
                     }

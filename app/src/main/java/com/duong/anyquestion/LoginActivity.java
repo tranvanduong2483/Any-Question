@@ -144,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
                                     String NoiDung = data.getString("ketqua");
 
                                     if (NoiDung.equals("INCORRECT")) {
-                                        ToastNew.showToast(getApplication(), "Sai tên đăng nhập hoặc mật khẩu!", Toast.LENGTH_SHORT);
+                                        ToastNew.showToast(getApplication(), "Sai tên đăng nhập, mật khẩu, hoặc bị khóa, hoặc email chưa xác minh!", Toast.LENGTH_SHORT);
                                         return;
                                     }
 

@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:background="@color/register_bk_color"
+    android:layout_gravity="center"
+    android:background="@drawable/expert_grad"
     android:focusableInTouchMode="true"
     android:gravity="center"
-    android:layout_gravity="center">
+    android:paddingLeft="@dimen/dodai5"
+    tools:context=".LoginActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -19,26 +20,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:paddingRight="5dp"
+            android:paddingLeft="5dp">
 
-            <RelativeLayout
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="@dimen/dodai20"
                     style="@style/viewParent.headerText.NoMode"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="Hãy\ntham gia\ncùng \nchúng tôi\nAny Question!"
                     android:textColor="@color/whiteTextColor"
-                    android:text="Here’s\nyour first\nstep with \nus! " />
+                    android:fontFamily="@font/robotobold"
+                    android:layout_marginLeft="@dimen/dodai10" />
 
                 <ImageView
-                    android:layout_width="260dp"
-                    android:layout_height="260dp"
-                    android:src="@drawable/anyquestion"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true" />
-            </RelativeLayout>
+                    android:layout_width="230dp"
+                    android:layout_height="230dp"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="-30dp"
+                    android:src="@drawable/anyquestionregister" />
+            </LinearLayout>
 
             <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
@@ -46,13 +52,16 @@
                 android:layout_marginTop="10dp"
                 app:cardBackgroundColor="@color/whiteTextColor"
                 app:cardCornerRadius="10dp"
-                app:cardUseCompatPadding="true"
-                app:cardElevation="3dp">
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="5dp"
                     android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -62,28 +71,29 @@
                         <EditText
                             android:id="@+id/edt_fullname"
                             style="@style/modifiedEditText"
+                            android:hint="Tên của bạn"
+                            android:text="@string/test_fullname"
                             android:inputType="textPersonName"
-                            android:maxLines="1"
-                            android:hint="Name" />
+                            android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
-                        android:weightSum="2"
-                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
 
                         <Spinner
                             android:id="@+id/spn_education"
-                            android:layout_weight="1"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
 
                         <Spinner
                             android:id="@+id/spn_field"
-                            android:layout_weight="1"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1" />
                     </LinearLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -93,9 +103,10 @@
                         <EditText
                             android:id="@+id/edt_introdution"
                             style="@style/modifiedEditText"
+                            android:hint="Giới thiệu về bản thân của bạn"
                             android:inputType="textEmailAddress"
-                            android:maxLines="1"
-                            android:hint="Short introduction about you" />
+                            android:text="@string/test_introdution"
+                            android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -105,9 +116,10 @@
                         <EditText
                             android:id="@+id/edt_email"
                             style="@style/modifiedEditText"
+                            android:hint="@string/login_email_hint"
+                            android:text="@string/test_email"
                             android:inputType="textEmailAddress"
-                            android:maxLines="1"
-                            android:hint="@string/login_email_hint" />
+                            android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -116,10 +128,11 @@
 
                         <EditText
                             android:id="@+id/edt_address"
-                            style="@style/modifiedEditText1"
+                            style="@style/modifiedEditText"
+                            android:hint="Địa chỉ"
+                            android:text="@string/test_address"
                             android:inputType="textEmailAddress"
-                            android:maxLines="1"
-                            android:hint="Address" />
+                            android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -129,9 +142,8 @@
                         <EditText
                             android:id="@+id/edt_account"
                             style="@style/modifiedEditText"
-                            android:inputType="phone"
-                            android:maxLines="1"
-                            android:hint="User" />
+                            android:hint="Tên tài khoản"
+                            android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -141,9 +153,10 @@
                         <EditText
                             android:id="@+id/edt_password1"
                             style="@style/modifiedEditText"
-                            android:hint="@string/login_password_hint"
-                            android:maxLines="1"
-                            android:inputType="textPassword" />
+                            android:hint="Mật khẩu"
+                            android:inputType="textPassword"
+                            android:text="@string/test_password"
+                            android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -154,45 +167,48 @@
                         <EditText
                             android:id="@+id/edt_password2"
                             style="@style/modifiedEditText"
-                            android:hint="Confirm Password"
-                            android:maxLines="1"
-                            android:inputType="textPassword" />
+                            android:hint="Nhập lại mật khẩu"
+                            android:text="@string/test_password"
+                            android:inputType="textPassword"
+                            android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
-                    <RelativeLayout
+                    <LinearLayout
+                        android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="10dp">
 
                         <Button
-                            android:layout_height="35dp"
                             android:id="@+id/btn_register"
-                            style="@style/loginButton1"
-                            android:text="Register"
+                            style="@style/loginButton7"
+                            android:layout_height="35dp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_alignParentLeft="true" />
+                            android:layout_alignParentLeft="true"
+                            android:text="Đăng ký"
+                            android:layout_marginRight="@dimen/dodai20" />
 
                         <Button
                             android:id="@+id/btn_clear"
+                            style="@style/loginButton7"
                             android:layout_height="35dp"
-                            style="@style/loginButton1"
-                            android:text="Retype"
                             android:layout_gravity="center_horizontal"
-                            android:layout_alignParentRight="true" />
-                    </RelativeLayout>
+                            android:layout_alignParentRight="true"
+                            android:text="Nhập lại" />
+                    </LinearLayout>
 
 
                     <Button
                         android:id="@+id/btn_login"
-                        android:background="#FFFFFF"
                         style="@style/parent"
+                        android:layout_marginTop="10dp"
+                        android:background="#FFFFFF"
+                        android:text="Bạn đã có tài khoản?"
                         android:textAlignment="center"
-                        android:textStyle="bold"
-                        android:textColor="@color/themeColor"
+                        android:textColor="#03A9F4"
                         android:textSize="17sp"
-                        android:text="Already have an account?" />
+                        android:textStyle="bold" />
                     />
 
                 </LinearLayout>

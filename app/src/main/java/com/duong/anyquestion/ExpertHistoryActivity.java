@@ -59,13 +59,11 @@ public class ExpertHistoryActivity extends AppCompatActivity {
                                 try {
                                     JSONArray data = (JSONArray) args[0];
                                     list_history.clear();
-                                    for (int i = 0; i < data.length(); i++) {
+                                    for (int i = data.length() - 1; i >= 0; i--) {
                                         String noidung = data.get(i).toString();
                                         Gson gson = new Gson();
                                         History history = gson.fromJson(noidung, History.class);
                                         list_history.add(history);
-
-                                        Log.d("test", history.getQuestion_id() + "");
                                     }
                                     historyAdapter.notifyDataSetChanged();
                                 } catch (Exception e) {

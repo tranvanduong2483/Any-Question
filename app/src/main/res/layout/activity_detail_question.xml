@@ -19,7 +19,7 @@
                 android:id="@+id/iv_image"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:src="@drawable/loading2" />
+                android:src="@drawable/loading_demo" />
         </LinearLayout>
 
         <Button

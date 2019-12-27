@@ -174,7 +174,7 @@ public class ExpertRegisterActivity extends AppCompatActivity {
                     try {
                         noidung = data.getString("ketqua");
                         if (noidung=="true"){
-                            Toast.makeText(getApplicationContext(), "Đăng ký thành công",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Đăng ký thành công, cần kiểm tra gmail để xác minh!", Toast.LENGTH_LONG).show();
                             onBackPressed();
                         }else{
                             Toast.makeText(getApplicationContext(), "Đăng ký thất bại!",Toast.LENGTH_LONG).show();

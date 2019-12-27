@@ -28,4 +28,14 @@
     <string name="login_password_hint1">Confirm Password</string>
     <string name="title_activity_profile">Profile</string>
     <string name="action_settings">Settings</string>
+
+
+    <string name="test_account">duong</string>
+    <string name="test_fullname">Trần Văn Dương</string>
+    <string name="test_email">tranvanduong2483@gmail.com</string>
+    <string name="test_password">1</string>
+    <string name="test_address">71 Đồng kè, Hòa Khánh</string>
+    <string name="test_introdution">Tôi là giáo viên</string>
+
+
 </resources>
