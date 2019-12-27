@@ -13,7 +13,7 @@ public class ConnectThread extends Thread {
     private Socket mSocket;
     //private String URL = "https://server-anyquestion-3.herokuapp.com";///
 
-    private String URL = "http://172.20.10.11:3000";///
+    private String URL = "http://172.20.10.4:3000";///
 
 
     public static ConnectThread getInstance(){
