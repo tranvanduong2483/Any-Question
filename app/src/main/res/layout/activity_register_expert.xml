@@ -72,7 +72,6 @@
                             android:id="@+id/edt_fullname"
                             style="@style/modifiedEditText"
                             android:hint="Tên của bạn"
-                            android:text="@string/test_fullname"
                             android:inputType="textPersonName"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -105,7 +104,6 @@
                             style="@style/modifiedEditText"
                             android:hint="Giới thiệu về bản thân của bạn"
                             android:inputType="textEmailAddress"
-                            android:text="@string/test_introdution"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -117,7 +115,6 @@
                             android:id="@+id/edt_email"
                             style="@style/modifiedEditText"
                             android:hint="@string/login_email_hint"
-                            android:text="@string/test_email"
                             android:inputType="textEmailAddress"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -130,7 +127,6 @@
                             android:id="@+id/edt_address"
                             style="@style/modifiedEditText"
                             android:hint="Địa chỉ"
-                            android:text="@string/test_address"
                             android:inputType="textEmailAddress"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -155,7 +151,6 @@
                             style="@style/modifiedEditText"
                             android:hint="Mật khẩu"
                             android:inputType="textPassword"
-                            android:text="@string/test_password"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -168,7 +163,6 @@
                             android:id="@+id/edt_password2"
                             style="@style/modifiedEditText"
                             android:hint="Nhập lại mật khẩu"
-                            android:text="@string/test_password"
                             android:inputType="textPassword"
                             android:maxLines="1" />
                     </com.google.android.material.textfield.TextInputLayout>

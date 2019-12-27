@@ -25,7 +25,7 @@
             android:layout_centerInParent="true"
             android:layout_marginTop="43dp"
             android:src="@drawable/avatar6"
-            app:civ_border_color="#FF000000"
+            app:civ_border_color="#64B5F6"
             app:civ_border_width="2dp" />
         <LinearLayout
             android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
 
             <Button
                 android:id="@+id/btn_chonanhtuthuvien"
-                style="@style/loginButton2"
+                style="@style/loginButton7"
                 android:layout_height="35dp"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center_horizontal"
@@ -45,7 +45,7 @@
 
             <Button
                 android:id="@+id/btn_chupanh"
-                style="@style/loginButton2"
+                style="@style/loginButton7"
                 android:layout_height="35dp"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center_horizontal"
@@ -76,7 +76,7 @@
                     android:id="@+id/edt_fullname"
                     style="@style/modifiedEditText"
                     android:layout_margin="5dp"
-                    android:hint="Change your name"
+                    android:hint="Thay đổi tên của bạn"
                     android:inputType="textPersonName"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -89,7 +89,7 @@
                     android:id="@+id/edt_email"
                     style="@style/modifiedEditText"
                     android:layout_margin="5dp"
-                    android:hint="Change your gmail"
+                    android:hint="Thay đổi địa chỉ mail của bạn"
                     android:inputType="textPersonName"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -102,7 +102,7 @@
                     android:id="@+id/edt_address"
                     style="@style/modifiedEditText"
                     android:layout_margin="5dp"
-                    android:hint="Change your address"
+                    android:hint="Thay đổi địa chỉ của bạn"
                     android:inputType="textPersonName"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -118,7 +118,7 @@
 
         <Button
             android:id="@+id/btn_cancel"
-            style="@style/loginButton2"
+            style="@style/loginButton7"
             android:layout_height="40dp"
             android:layout_marginEnd="10dp"
             android:layout_gravity="center_horizontal"
@@ -126,7 +126,7 @@
 
         <Button
             android:id="@+id/btn_save"
-            style="@style/loginButton2"
+            style="@style/loginButton7"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:layout_gravity="center_horizontal"

@@ -162,15 +162,16 @@
 
                     <Button
                         android:id="@+id/btn_ruttien"
-                        style="@style/loginButton1"
+                        style="@style/loginButton7"
                         android:layout_height="35dp"
                         android:layout_marginRight="10dp"
                         android:text="Rút tiền" />
 
                     <Button
                         android:id="@+id/btn_cancel"
-                        style="@style/loginButton1"
+                        style="@style/loginButton7"
                         android:layout_marginStart="10dp"
+                        android:layout_width="100dp"
                         android:layout_height="35dp"
                         android:text="Cancel" />
                 </LinearLayout>

@@ -64,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/image_message_profile"
-                    android:maxWidth="300dp"
+                    android:maxWidth="500dp"
                     android:maxLines="1"
                     android:text="Tran Van Duong" />
 
