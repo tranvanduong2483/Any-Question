@@ -152,7 +152,6 @@ public class ExpertRegisterActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                this.finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -179,7 +178,7 @@ public class ExpertRegisterActivity extends AppCompatActivity {
                         }else{
                             Toast.makeText(getApplicationContext(), "Đăng ký thất bại!",Toast.LENGTH_LONG).show();
                         }
-                    } catch (JSONException ignored) {
+                    } catch (Exception ignored) {
                     }
 
                 }

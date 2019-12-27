@@ -136,7 +136,7 @@ public class UserRegisterActivity extends AppCompatActivity {
                         }
 
 
-                    } catch (JSONException e) {
+                    } catch (Exception e) {
                         return;
                     }
 

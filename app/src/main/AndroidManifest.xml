@@ -79,7 +79,6 @@
         <activity
             android:name=".LoginActivity"
             android:label="Đăng nhập"
-            android:launchMode="singleInstance"
             android:theme="@style/generalnotitle2" />
     </application>
 
