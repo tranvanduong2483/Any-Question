@@ -34,10 +34,12 @@
     thắc mắc đến các chuyên gia đúng lĩnh vực để đưa ra cách giải quyết nhanh chóng, tiện lợi và hiệu
     quả. Về phía chuyên gia, ứng dụng giúp các chuyên gia kiếm tiền vào những thời gian rảnh rỗi
     trong ngày của mình.
+
     - Hệ thống phục vụ cho 3 đối tượng chính:
         + Người quản trị.
         + Giáo viên.
         + Học sinh.
+
     - Ứng dụng cho phép người dùng đặt câu hỏi lên hệ thống bằng cách đăng nhập vào tài khoản đã đăng ký.
     Sau khi đặt câu hỏi, hệ thống sẽ tìm kiếm chuyên gia phù hợp và chuyển người dùng vào màn hình nhắn tin
     với chuyên gia. Sau khi câu hỏi thắc mắc được chuyên gia giải đáp, người dùng có thể đánh giá số sao
