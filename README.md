@@ -45,35 +45,26 @@
     tùy vào mức độ câu hỏi, số tiền này sẽ được gửi đến các chuyên gia cũng như duy trì hệ thống.
 
 
-#### 2. Mô tả bài toán: Xây dựng ứng dụng Android thông báo từ việc lấy dữ liệu từ sv.dut.udn.vn
-    - Nhận "Thông báo chung"
-    - Nhận "Thông báo đến lớp học phần"
-    - Nhận thông báo qua email hoặc thông báo ngay trên ứng dụng
-    - Xem lịch học offline
+#### 2. Sơ đồ ca sử dụng:
 
-#### 3. Sơ đồ ca sử dụng:
-
-    - Actor: Học sinh
+#### Actor: Học sinh
 
     ![Image description](https://github.com/tranvanduong2483/AnyQuestion/blob/master/image/100.png)
 
 
-    - Actor: Giáo viên
+#### Actor: Giáo viên
 
     ![Image description](https://github.com/tranvanduong2483/AnyQuestion/blob/master/image/101.png)
 
 
-    - Actor: Người quản trị
+#### Actor: Người quản trị
 
     ![Image description](https://github.com/tranvanduong2483/AnyQuestion/blob/master/image/102.png)
 
 
-#### 4. Mã nguồn server:
+#### 3. Mã nguồn server:
 
     Server (Nodejs): https://github.com/tranvanduong2483/server-any-question-final
 
-#### 5. Demo ứng dụng:
-
-    https://www.youtube.com/watch?v=vbTvzUCPBqM
 
  
