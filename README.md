@@ -1,7 +1,7 @@
 # AnyQuestion
 
 
-![Image description](https://github.com/tranvanduong2483/NotificationDUT/blob/master/image/1.png) ![Image description](https://github.com/tranvanduong2483/NotificationDUT/blob/master/image/2.png)
+![Image description](https://github.com/tranvanduong2483/AnyQuestion/tree/master/image/1.png) ![Image description](https://github.com/tranvanduong2483/AnyQuestion/tree/master/image/2.png)
 
 
 
