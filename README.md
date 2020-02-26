@@ -49,17 +49,17 @@
 
 #### Actor: Học sinh
 
-    ![Image description](https://github.com/tranvanduong2483/AnyQuestion/blob/master/image/100.png)
+![Image description](https://github.com/tranvanduong2483/AnyQuestion/blob/master/image/100.png)
 
 
 #### Actor: Giáo viên
 
-    ![Image description](https://github.com/tranvanduong2483/AnyQuestion/blob/master/image/101.png)
+![Image description](https://github.com/tranvanduong2483/AnyQuestion/blob/master/image/101.png)
 
 
 #### Actor: Người quản trị
 
-    ![Image description](https://github.com/tranvanduong2483/AnyQuestion/blob/master/image/102.png)
+![Image description](https://github.com/tranvanduong2483/AnyQuestion/blob/master/image/102.png)
 
 
 #### 3. Mã nguồn server:
