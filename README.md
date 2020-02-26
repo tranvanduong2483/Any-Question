@@ -44,25 +44,7 @@
     tương ứng với mức độ đóng góp của chuyên gia. Mỗi câu hỏi người dùng sẽ trả tiền ở mức giá nhất định
     tùy vào mức độ câu hỏi, số tiền này sẽ được gửi đến các chuyên gia cũng như duy trì hệ thống.
 
-
-#### 2. Sơ đồ ca sử dụng:
-
-#### Actor: Học sinh
-
-![Image description](https://github.com/tranvanduong2483/AnyQuestion/blob/master/image/100.png)
-
-
-#### Actor: Giáo viên
-
-![Image description](https://github.com/tranvanduong2483/AnyQuestion/blob/master/image/101.png)
-
-
-#### Actor: Người quản trị
-
-![Image description](https://github.com/tranvanduong2483/AnyQuestion/blob/master/image/102.png)
-
-
-#### 3. Mã nguồn server:
+#### 2. Mã nguồn server:
 
     Server (Nodejs): https://github.com/tranvanduong2483/server-any-question-final
 
